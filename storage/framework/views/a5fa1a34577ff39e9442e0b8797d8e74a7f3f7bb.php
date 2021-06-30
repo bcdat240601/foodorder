@@ -73,41 +73,13 @@
                 <div class="left-sidebar">
                     <h2 style="color:red">Category</h2>
                     <div class="panel-group category-products" id="accordian"><!--category-productsr-->
+                        <?php $__currentLoopData = $category; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h4 class="panel-title"><a href="<?php echo e(asset('shop/freshfood')); ?>" style="color: green;">Fresh Food</a></h4>
+                                <h4 class="panel-title"><a href="<?php echo e(asset('shop/'.$item->id)); ?>" style="color: green;"><?php echo e($item->CatagoryName); ?></a></h4>
                             </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="<?php echo e(asset('shop/vegetables')); ?>" style="color: green">Vegetables</a></h4>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="<?php echo e(asset('shop/meat')); ?>" style="color: green">Meat</a></h4>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="<?php echo e(asset('shop/seafood')); ?>" style="color: green">Seafood</a></h4>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="<?php echo e(asset('shop/fruit')); ?>" style="color: green">Fruit</a></h4>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="<?php echo e(asset('shop/cannerfood')); ?>" style="color: green">Canner Food</a></h4>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="<?php echo e(asset('shop/drinks')); ?>" style="color: green">Drinks</a></h4>
-                            </div>
-                        </div>
+                        </div>           
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>     
                     </div><!--/category-products-->
                     <div class="shipping text-center"><!--shipping-->
                         <img src="<?php echo e(asset('images/home/s11.jpg')); ?>" alt="" />

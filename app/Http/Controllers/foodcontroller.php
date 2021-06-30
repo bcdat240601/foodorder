@@ -4,30 +4,32 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Food;
+use App\Models\Category;
 
 use DB;
 class foodcontroller extends Controller
 {
-    public function show($name_food){
+    public function show($id){
+        $category = Category::where([['id','>',1],['id','<',9]])->get();
         $data=null;
-        if($name_food=="all")
+        if($id=="all")
             $data = Food::paginate(9);
-        else if($name_food=="freshfood")
+        else if($id=="2")
             $data = Food::where('CategoryID','=',2)->paginate(9);
-        else if($name_food=="meat")
+        else if($id=="3")
             $data = Food::where('CategoryID','=',3)->paginate(9);
-        else if($name_food=="fruit")
+        else if($id=="4")
             $data = Food::where('CategoryID','=',4)->paginate(9);
-        else if($name_food=="seafood")
+        else if($id=="5")
             $data = Food::where('CategoryID','=',5)->paginate(9);
-        else if($name_food=="cannerfood")
+        else if($id=="6")
             $data = Food::where('CategoryID','=',6)->paginate(9);
-        else if($name_food=="vegetables")
+        else if($id=="7")
             $data = Food::where('CategoryID','=',7)->paginate(9);
-        else if($name_food=="drinks")
+        else if($id=="8")
             $data = Food::where('CategoryID','=',8)->paginate(9);
 
-        return view ("Web/Shop", ["data"=>$data]);
+        return view ("Web/Shop", ["data"=>$data,'category'=>$category]);
     }
     public function index(){
         $data = food::select("id","FoodName","Price","Quantity","CategoryID","Image_Name")->get();

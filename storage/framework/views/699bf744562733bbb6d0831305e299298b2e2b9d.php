@@ -94,13 +94,9 @@
 								<li><a href="<?php echo e(asset('home')); ?>" class="active" style="color: green">Home</a></li>
 								<li class="dropdown"><a href="#" style="color: green">Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-										<li><a href="<?php echo e(asset('shop/freshfood')); ?>">Fresh Food</a></li>
-										<li><a href="<?php echo e(asset('shop/vegetables')); ?>">Vegetables</a></li>
-										<li><a href="<?php echo e(asset('shop/meat')); ?>">Meat</a></li>
-										<li><a href="<?php echo e(asset('shop/seafood')); ?>">Sea Food</a></li> 
-										<li><a href="<?php echo e(asset('shop/fruit')); ?>">Fruit</a></li> 
-										<li><a href="<?php echo e(asset('shop/cannerfood')); ?>">Canner Food</a></li> 
-										<li><a href="<?php echo e(asset('shop/drinks')); ?>">Drinks</a></li> 
+										<?php $__currentLoopData = $category; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+											<li><a href="<?php echo e(asset('shop/'.$item->id)); ?>"><?php echo e($item->CatagoryName); ?></a></li>										
+										<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </ul>
                                 </li> 
 								<li><a href="<?php echo e(asset('Introduce')); ?>" style="color: green">Introduce</a></li>								

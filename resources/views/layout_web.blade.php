@@ -94,13 +94,9 @@
 								<li><a href="{{ asset('home') }}" class="active" style="color: green">Home</a></li>
 								<li class="dropdown"><a href="#" style="color: green">Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-										<li><a href="{{ asset('shop/freshfood') }}">Fresh Food</a></li>
-										<li><a href="{{ asset('shop/vegetables') }}">Vegetables</a></li>
-										<li><a href="{{ asset('shop/meat') }}">Meat</a></li>
-										<li><a href="{{ asset('shop/seafood')}}">Sea Food</a></li> 
-										<li><a href="{{ asset('shop/fruit')}}">Fruit</a></li> 
-										<li><a href="{{ asset('shop/cannerfood')}}">Canner Food</a></li> 
-										<li><a href="{{ asset('shop/drinks')}}">Drinks</a></li> 
+										@foreach ($category as $item)
+											<li><a href="{{ asset('shop/'.$item->id) }}">{{$item->CatagoryName}}</a></li>										
+										@endforeach
                                     </ul>
                                 </li> 
 								<li><a href="{{ asset('Introduce')}}" style="color: green">Introduce</a></li>								

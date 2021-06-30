@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Models\Food;
+use App\Models\Category;
 
 class CartController extends Controller
 {
@@ -55,8 +56,9 @@ class CartController extends Controller
         return $found;
     }
     public function show(){
+        $category = Category::where([['id','>',1],['id','<',9]])->get();
         $cart= session()->get("cart");
-        return view('web/Cart',['data'=>$cart]);
+        return view('web/Cart',['data'=>$cart,'category'=>$category]);
     }
     public function UpQuantity()
     {

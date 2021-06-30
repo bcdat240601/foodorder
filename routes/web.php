@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\foodcontroller;
 use App\Models\Food;
+use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -47,11 +48,13 @@ Route::get('/cart', function(){
 Route::get('/food', 'foodcontroller@show');
 
 Route::get('/Contact',function(){
-    return view('Web/Contact');
+    $category = Category::where([['id','>',1],['id','<',9]])->get();
+    return view('Web/Contact',['category'=>$category]);
 });
 
 Route::get('/Introduce',function(){
-    return view('Web/Introduce');
+    $category = Category::where([['id','>',1],['id','<',9]])->get();
+    return view('Web/Introduce',['category'=>$category]);
 });
 
 Route::get('/Shoppingguide',function(){
@@ -77,14 +80,15 @@ Route::get('/InformationPrivacy', function (){
 });
 
 Route::get('/checkout', function(){
-    return view('Web/checkout');
+    $category = Category::where([['id','>',1],['id','<',9]])->get();
+    return view('Web/checkout',['category'=>$category]);
 });
 Route::get('/login', function(){
     return view('Web/login');
 });
 
 
-Route::get('/shop/{name_food}', 'foodcontroller@show');
+Route::get('/shop/{id}', 'foodcontroller@show');
 
 Route::get('upfile','upfilecontroller@show');
 Route::post('upfile','upfilecontroller@up')->name('upfile');

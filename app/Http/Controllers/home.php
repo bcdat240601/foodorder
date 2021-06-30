@@ -13,10 +13,8 @@ class home extends Controller
     public function home(){
         if(session('login') != 1){
             session()->put('login',0); 
-        }
-        return view('Web/home');
-    }
-    public function showcategory(){
-        $category;
-    }
+        }        
+        $category = Category::where([['id','>',1],['id','<',9]])->get();
+        return view('Web/home',['category'=>$category]);
+    }    
 }

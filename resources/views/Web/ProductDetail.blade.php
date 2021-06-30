@@ -6,41 +6,13 @@
                 <div class="left-sidebar">
                     <h2 style="color: red">Category</h2>
                     <div class="panel-group category-products" id="accordian"><!--category-productsr-->
+                        @foreach ($category as $item)
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h4 class="panel-title"><a href="{{ asset('shop/freshfood')}}" style="color: green">Fresh Food</a></h4>
+                                <h4 class="panel-title"><a href="{{ asset('shop/'.$item->id)}}" style="color: green;">{{$item->CatagoryName}}</a></h4>
                             </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="{{ asset('shop/vegetables')}}" style="color: green">Vegetables</a></h4>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="{{ asset('shop/meat')}}" style="color: green">Meat</a></h4>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="{{ asset('shop/seafood')}}" style="color: green"> Sea Food</a></h4>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="{{ asset('shop/fruit')}}" style="color: green">Fruit</a></h4>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="{{ asset('shop/cannerfood')}}" style="color: green">Canner Food</a></h4>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="{{ asset('shop/drinks') }}" style="color: green">Drinks</a></h4>
-                            </div>
-                        </div>
+                        </div>           
+                        @endforeach
                     </div><!--/category-products-->   
                 </div>
             </div>
@@ -58,7 +30,7 @@
                     <div class="col-sm-7">
                         <div class="product-information"><!--/product-information-->
                             <h2 style="color: green"> {{$data->FoodName}}</h2>
-                            <p><b>ID:</b> {{$data->id}}</p>
+                            {{-- <p><b>ID:</b> {{$data->id}}</p> --}}
                             <p><b>Price:</b></p>
                             <span>
                                 <span style="color: red">{{$data->Price}} đ</span>
