@@ -17,6 +17,6 @@ class home extends Controller
         return view('Web/home');
     }
     public function showcategory(){
-        $category = 
+        $category;
     }
 }
