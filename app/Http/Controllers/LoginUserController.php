@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,6 +19,9 @@ class LoginUserController extends Controller
         echo $request->Password;
         if (Auth::attempt($credentials)) {
             session()->put('login',1);
+            $o = User::where('email','=',$request->email)->first();
+            $idkh = $o->id;
+            session()->put('idkh',$idkh);
             return redirect()->route('home');
         } else {
             echo'sai password';

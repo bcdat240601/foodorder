@@ -60,6 +60,19 @@
 							<a href="<?php echo e(asset('home')); ?>"><img src="<?php echo e(asset('images/home/logo5.png')); ?>" alt="" /></a>
 						</div>
 					</div>
+					<!-- Search Form -->
+					<div class="search-top">
+						<div class="top-search"><a href="#0"><i class="ti-search"></i></a></div>
+						<!-- Search Form -->
+						<div class="search-top">
+							<form class="search-form">
+								<input type="text" placeholder="Search here..." name="search">
+								<button value="search" type="submit"><i class="ti-search"></i></button>
+							</form>
+						</div>
+						<!--/ End Search Form -->
+					</div>
+					<!--/ End Search Form -->
 					<div class="col-md-8 clearfix">
 						<div class="shop-menu clearfix pull-right">
 							<ul class="nav navbar-nav">
@@ -101,7 +114,7 @@
                                 </li> 
 								<li><a href="<?php echo e(asset('Introduce')); ?>" style="color: green">Introduce</a></li>								
 								<li><a href="<?php echo e(asset('Contact')); ?>" style="color: green">Contact</a></li>
-								<li><a href="<?php echo e(asset('checkout')); ?>" style="color: green">Checkout</a></li>
+								
 								<li><a href="<?php echo e(asset('cart')); ?>" style="color: green">Cart</a></li>
 								<li><a href="" style="color: green">Wishlist</a></li>
 								<li><a href="" style="color: green">Account</a></li>

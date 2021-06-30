@@ -84,7 +84,8 @@ Route::get('/checkout', function(){
     return view('Web/checkout',['category'=>$category]);
 });
 Route::get('/login', function(){
-    return view('Web/login');
+    $category = Category::where([['id','>',1],['id','<',9]])->get();
+    return view('Web/login',['category'=>$category]);
 });
 
 
@@ -123,6 +124,7 @@ Route::post('/Customer/AddCustomer', 'Customercontroller@addcustomer')->name('cu
 //Route::get('admin/Category/AddCategory', "Categorycontroller@showformaddcate");
 
 Route::get('/logout','LoginUserController@logout');
+Route::get('/addbill','CartController@addbill');
 
 
 
