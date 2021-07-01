@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\foodcontroller;
+use App\Http\Controllers\MyprofileController;
 use App\Models\Food;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -120,5 +121,5 @@ Route::post('/Customer/AddCustomer', 'Customercontroller@addcustomer')->name('cu
 
 Route::get('/logout','LoginUserController@logout');
 
-
-
+Route::get('/myprofile', [MyprofileController::class, 'show']);
+Route::post('detail/khachhang/save',[MyprofileController::class, 'edit'])->name('editkh');

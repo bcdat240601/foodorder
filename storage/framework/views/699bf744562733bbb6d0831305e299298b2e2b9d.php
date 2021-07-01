@@ -7,6 +7,8 @@
     <meta name="author" content="">
     <title>Home | GreenFood</title>
     <link href="<?php echo e(asset('css/bootstrap.min.css')); ?> " rel="stylesheet">
+	
+	<link href="<?php echo e(asset('css/css.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('css/font-awesome.min.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('css/prettyPhoto.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('css/price-range.css')); ?>" rel="stylesheet">

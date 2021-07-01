@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,9 +14,13 @@ class LoginUserController extends Controller
            return view('Web/Login');
         }
         $credentials = $request->only(['email', 'password']);
+        $o = User::where('email','=',$request->email)->first();
         session()->put('login',1);
         echo $request->Password;
         if (Auth::attempt($credentials)) {
+            $o = User::where('email','=',$request->email)->first();
+            $idkh = $o->id;
+            session()->put('idkh',$idkh);
             session()->put('login',1);
             return redirect()->route('home');
         } else {
