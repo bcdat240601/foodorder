@@ -22,6 +22,9 @@ class LoginUserController extends Controller
             $idkh = $o->id;
             session()->put('idkh',$idkh);
             session()->put('login',1);
+            $o = User::where('email','=',$request->email)->first();
+            $idkh = $o->id;
+            session()->put('idkh',$idkh);
             return redirect()->route('home');
         } else {
             echo'sai password';

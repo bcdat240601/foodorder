@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Models\Food;
+use App\Models\orderbill;
+use App\Models\orderfood;
+use App\Models\Category;
+use DB;
 
 class CartController extends Controller
 {
@@ -16,6 +20,7 @@ class CartController extends Controller
             $sl = $_GET["sl"];
             $price = $_GET["price"];
             $name =$_GET["name"];
+            $subtotal = $sl*$price;
             //echo "Đã thêm vào giỏ hàng".$id."\t Soluong:".$sl."\t price".$price;
             $pos = $this->isExists($id);
             $cart = session()->get('cart');
@@ -27,6 +32,7 @@ class CartController extends Controller
                 $item ->price=$price;
                 $item ->quantity= $sl;
                 $item -> name=$name;
+                $item ->subtotal = $subtotal;
                 session()->push("cart",$item);
             }
             else{
@@ -55,8 +61,9 @@ class CartController extends Controller
         return $found;
     }
     public function show(){
+        $category = Category::where([['id','>',1],['id','<',9]])->get();
         $cart= session()->get("cart");
-        return view('web/Cart',['data'=>$cart]);
+        return view('web/Cart',['data'=>$cart,'category'=>$category]);
     }
     public function UpQuantity()
     {
@@ -97,11 +104,43 @@ class CartController extends Controller
             
             echo"The product has been removed from the cart";
         }
-        
 
         
         
     }
+    public function addbill(){
+        $idkh = session()->get('idkh');
+        $total = $_GET['total'];
+        $hd = new orderfood();
+        $hd->Dateshipped = null;
+        $hd->Status = 0;
+        $hd->Total = $total;
+        $hd->CustomerID = $idkh;        
+        $cart = session()->get('cart');
+        $hd->save();
+        $id = DB::table('orderfood')->select('ID')->max('ID');
+        // $dem = $this->count();
+        foreach ($cart as $key => $value) {
+            $cthd = new orderbill();
+            $cthd->OrderFoodID = $id;
+            $cthd->FoodID = $value->id;
+            $cthd->FoodName = $value->name;
+            $cthd->Quantity = $value->quantity;
+            $cthd->UnitCost = $value->price;
+            $cthd->Subtotal = $value->subtotal;
+            $cthd->save();
+        }        
+        session()->forget('cart');
+        echo 'Add Bill Thành Công';
+    }
+    // public function count(){
+    //     $cart=session()->get('cart');
+    //     $dem = 0;
+    //     foreach ($cart as $value) {
+    //         $dem = $dem + 1;
+    //     }
+    //     return $dem;
+    // }
     
 }
 

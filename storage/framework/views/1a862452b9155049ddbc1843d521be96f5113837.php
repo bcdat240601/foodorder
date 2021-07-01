@@ -109,7 +109,9 @@
 								<li><a href="<?php echo e(asset('cart')); ?>" style="color: green">Cart</a></li>
 								<li><a href="" style="color: green">Wishlist</a></li>
 								<li><a href="" style="color: green">Account</a></li>
-								<li><a href="<?php echo e(asset('/Customer/AddCustomer')); ?>" style="color: blue">Sign-Up</a></li>				
+								<?php if(session('login') == 0): ?>
+									<li><a href="<?php echo e(asset('/Customer/AddCustomer')); ?>" style="color: blue">Sign-Up</a></li>
+								<?php endif; ?>
 							</ul>
 						</div>
 					</div>

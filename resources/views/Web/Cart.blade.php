@@ -32,8 +32,11 @@
                 </tbody>
             </table>
             <h1 style="float: right" >Total: <span id="total" style="color: red"></span></h1>
-            
+            <span id="login" style="display: none">{{session()->get('login')}}</span>
         </div>
+        @if (session('cart') != null)
+            <div style="text-align: center"><button id="addbill">Xác Nhận Thanh Toán</button></div>
+        @endif
     </div>
     
 </section> <!--/#cart_items-->
@@ -44,16 +47,16 @@
 @section('scripts')
     <script>
         function tinh(){
-            var len=document.getElementsByClassName("sub-total").length;
+            var len=document.getElementsByClassName("sub-total").length;            
             var sum = 0;
             for(var i =0;i<len;i++)
             {
                 var val=document.getElementsByClassName("sub-total").item(i).innerHTML;
-                sum = sum + parseInt(val);
-            }
+                sum = sum + parseInt(val);                
+            }    
             document.getElementById('total').innerText=sum;
         }
-        $('.quantities').change(function(){
+        $('.quantities').change(function(){            
             if($(this).val()<=0)
             {
                 $(this).val(1)
@@ -63,19 +66,35 @@
             var id=$(this).data('id')
             var id_sub="#sub-"+id;
             $.get('upquantity',{ id:id, sl:val },
-                function(data){
+                function(data){                         
                     $(id_sub).text(data)
-            })
-            tinh()
+                    tinh()
+            })                        
         })
         $('.btn-del').click(function(){
             var id = $(this).data('id');
             $.get('delitem',{id:id},function(data){
-              alert(data)
+              alert(data);
+              window.location.reload(true);
             })
             $('#row-'+id).remove();
             tinh()
         })
         tinh()
+        $('#addbill').click(function () {            
+            var login = $('#login').text();
+            var total = $('#total').text();             
+            if(login == 0 || login == null){
+                alert('Bạn Cần Đăng Nhập Mới Có Thể Thanh Toán');
+                return 0;
+            }
+            var f = confirm('Bạn Có Add Hóa Đơn');        
+            if(f == true && login == 1){
+                $.get('addbill',{total:total},function(data){
+                    alert(data);
+                    window.location.reload(true);
+                });
+            }
+        });
     </script>
 @endsection

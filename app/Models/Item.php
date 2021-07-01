@@ -11,6 +11,7 @@ class Item extends Model
     public $price;
     public $quantity;
     public $name;
+    public $subtotal;
 
     public function getSubTotal(){
         return($this-> quantity)*($this->price);

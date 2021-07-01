@@ -73,41 +73,13 @@
                 <div class="left-sidebar">
                     <h2 style="color:red">Category</h2>
                     <div class="panel-group category-products" id="accordian"><!--category-productsr-->
+                        @foreach ($category as $item)
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h4 class="panel-title"><a href="{{ asset('shop/freshfood')}}" style="color:green">Fresh Food</a></h4>
+                                <h4 class="panel-title"><a href="{{ asset('shop/'.$item->id)}}" style="color: green;">{{$item->CatagoryName}}</a></h4>
                             </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="{{ asset('shop/vegetables')}}" style="color:green">Vegetables</a></h4>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="{{ asset('shop/meat')}}" style="color: green">Meat</a></h4>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="{{ asset('shop/seafood')}}" style="color: green">SeaFood</a></h4>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="{{ asset('shop/fruit')}}" style="color: green">Fruit</a></h4>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="{{ asset('shop/cannerfood')}}" style="color:green">Canner Food</a></h4>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="{{ asset('shop/drinks')}}" style="color:green">Drinks</a></h4>
-                            </div>
-                        </div>
+                        </div>           
+                        @endforeach
                     </div><!--/category-productsr-->       
                 </div>
             </div>
@@ -124,7 +96,7 @@
                                 <img src="{{ asset('images/product-details/'.$item->Image_Name) }}" alt="" style="height: 200px"/>
                                 <h2 style="color: green">{{$item->FoodName}}</h2>
                                 <p style="color: red">{{$item->Price}} đ</p>
-                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                {{-- <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a> --}}
                             </div>
                             <div class="product-overlay">
                                 <div class="overlay-content">

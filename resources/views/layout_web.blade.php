@@ -62,6 +62,19 @@
 							<a href="{{ asset('home') }}"><img src="{{ asset('images/home/logo5.png') }}" alt="" /></a>
 						</div>
 					</div>
+					<!-- Search Form -->
+					<div class="search-top">
+						<div class="top-search"><a href="#0"><i class="ti-search"></i></a></div>
+						<!-- Search Form -->
+						<div class="search-top">
+							<form class="search-form">
+								<input type="text" placeholder="Search here..." name="search">
+								<button value="search" type="submit"><i class="ti-search"></i></button>
+							</form>
+						</div>
+						<!--/ End Search Form -->
+					</div>
+					<!--/ End Search Form -->
 					<div class="col-md-8 clearfix">
 						<div class="shop-menu clearfix pull-right">
 							<ul class="nav navbar-nav">
@@ -96,18 +109,14 @@
 								<li><a href="{{ asset('home') }}" class="active" style="color: green">Home</a></li>
 								<li class="dropdown"><a href="#" style="color: green">Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-										<li><a href="{{ asset('shop/freshfood') }}">Fresh Food</a></li>
-										<li><a href="{{ asset('shop/vegetables') }}">Vegetables</a></li>
-										<li><a href="{{ asset('shop/meat') }}">Meat</a></li>
-										<li><a href="{{ asset('shop/seafood')}}">Sea Food</a></li> 
-										<li><a href="{{ asset('shop/fruit')}}">Fruit</a></li> 
-										<li><a href="{{ asset('shop/cannerfood')}}">Canner Food</a></li> 
-										<li><a href="{{ asset('shop/drinks')}}">Drinks</a></li> 
+										@foreach ($category as $item)
+											<li><a href="{{ asset('shop/'.$item->id) }}">{{$item->CatagoryName}}</a></li>										
+										@endforeach
                                     </ul>
                                 </li> 
 								<li><a href="{{ asset('Introduce')}}" style="color: green">Introduce</a></li>								
 								<li><a href="{{ asset('Contact')}}" style="color: green">Contact</a></li>
-								<li><a href="{{ asset('checkout')}}" style="color: green">Checkout</a></li>
+								{{-- <li><a href="{{ asset('checkout')}}" style="color: green">Checkout</a></li> --}}
 								<li><a href="{{ asset('cart')}}" style="color: green">Cart</a></li>
 								<li><a href="" style="color: green">Wishlist</a></li>
 								<li><a href="" style="color: green">Account</a></li>
