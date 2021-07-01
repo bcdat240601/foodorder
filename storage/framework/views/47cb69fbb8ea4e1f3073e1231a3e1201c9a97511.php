@@ -76,7 +76,7 @@
                         <?php $__currentLoopData = $category; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h4 class="panel-title"><a href="<?php echo e(asset('shop/'.$item->id)); ?>" style="color: green;"><?php echo e($item->CatagoryName); ?></a></h4>
+                                <h4 class="panel-title"><a href="<?php echo e(asset('shop?id='.$item->id)); ?>" style="color: green;"><?php echo e($item->CatagoryName); ?></a></h4>
                             </div>
                         </div>           
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -88,8 +88,9 @@
                 <div class="features_items"><!--features_items-->
                     <h2 class="title text-center" style="color: red">Product Item List</h2>
 
-                  <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                  <div class="col-sm-4">
+                <?php if(isset($data)): ?>
+                <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <div class="col-sm-4">
                     <div class="product-image-wrapper">
                         <div class="single-products">
                             <div class="productinfo text-center">
@@ -111,7 +112,7 @@
                         <div class="choose">
                             <ul class="nav nav-pills nav-justified">
                                 <li><a href="<?php echo e(asset('/detail?id='.$item->id)); ?>"><i class="fa fa-plus-square"></i>Detail</a></li>
-                                <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+                                <li><button class="add-wish" data-name="<?php echo e($item->FoodName); ?>" data-id="<?php echo e($item->id); ?>"><i class="fa fa-plus-square"></i>Add to wishlist</button></li>
                             </ul>
                         </div>
                     </div>
@@ -122,6 +123,7 @@
                         <?php echo $data->links(); ?>
 
                     </div>
+                <?php endif; ?>
                 </div><!--features_items-->
             </div>
         </div>
@@ -158,6 +160,24 @@
 
             
             
+        });
+        $('.add-wish').click(function () {      
+            var name = $(this).data('name');                   
+            var f = confirm('Bạn Có Chắc Muốn Thêm '+name+' Vào Danh Sách Ưa Thích');
+            var id = $(this).data('id');
+            if(f == true){                
+                $.get('addwish',{id:id},function(data){
+                    if(data == 0){
+                        alert('Bạn Phải Đăng Nhập Để Thêm Sản Phẩm Vào Danh Sách Yêu Thích');                        
+                    }
+                    if(data == 1){
+                        alert('Thêm Vào Danh Sách Yêu Thích Thành Công');                        
+                    }
+                    if(data == 2){
+                        alert('Đã Thêm Sản Phẩm Này Vào Danh Sách Ưa Thích');                        
+                    }                    
+                });
+            }            
         });
     </script>
 <?php $__env->stopSection(); ?>

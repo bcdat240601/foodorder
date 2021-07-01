@@ -9,7 +9,7 @@
                         <?php $__currentLoopData = $category; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h4 class="panel-title"><a href="<?php echo e(asset('shop/'.$item->id)); ?>" style="color: green;"><?php echo e($item->CatagoryName); ?></a></h4>
+                                <h4 class="panel-title"><a href="<?php echo e(asset('shop?id='.$item->id)); ?>" style="color: green;"><?php echo e($item->CatagoryName); ?></a></h4>
                             </div>
                         </div>           
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

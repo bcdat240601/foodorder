@@ -9,7 +9,8 @@ use App\Models\Category;
 use DB;
 class foodcontroller extends Controller
 {
-    public function show($id){
+    public function show(){
+        $id = $_GET['id'];
         $category = Category::where([['id','>',1],['id','<',9]])->get();
         $data=null;
         if($id=="all")

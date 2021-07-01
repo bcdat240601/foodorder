@@ -110,7 +110,7 @@
 								<li class="dropdown"><a href="#" style="color: green">Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
 										<?php $__currentLoopData = $category; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-											<li><a href="<?php echo e(asset('shop/'.$item->id)); ?>"><?php echo e($item->CatagoryName); ?></a></li>										
+											<li><a href="<?php echo e(asset('shop?id='.$item->id)); ?>"><?php echo e($item->CatagoryName); ?></a></li>										
 										<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </ul>
                                 </li> 
@@ -118,7 +118,7 @@
 								<li><a href="<?php echo e(asset('Contact')); ?>" style="color: green">Contact</a></li>
 								
 								<li><a href="<?php echo e(asset('cart')); ?>" style="color: green">Cart</a></li>
-								<li><a href="" style="color: green">Wishlist</a></li>
+								<li><a href="<?php echo e(asset('wishlist')); ?>" style="color: green">Wishlist</a></li>
 								<li><a href="" style="color: green">Account</a></li>
 								<?php if(session('login') == 0): ?>
 									<li><a href="<?php echo e(asset('/Customer/AddCustomer')); ?>" style="color: blue">Sign-Up</a></li>

@@ -90,7 +90,7 @@ Route::get('/login', function(){
 });
 
 
-Route::get('/shop/{id}', 'foodcontroller@show');
+Route::get('shop', 'foodcontroller@show');
 
 Route::get('upfile','upfilecontroller@show');
 Route::post('upfile','upfilecontroller@up')->name('upfile');
@@ -128,5 +128,7 @@ Route::get('/logout','LoginUserController@logout');
 Route::get('/addbill','CartController@addbill');
 
 Route::get('/wishlist','DController@showwishlist');
+Route::get('addwish','DController@addwish');
+Route::get('delete','DController@delete');
 Route::get('/myprofile', [MyprofileController::class, 'show']);
 Route::post('detail/khachhang/save',[MyprofileController::class, 'edit'])->name('editkh');

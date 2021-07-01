@@ -9,7 +9,7 @@
                         @foreach ($category as $item)
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h4 class="panel-title"><a href="{{ asset('shop/'.$item->id)}}" style="color: green;">{{$item->CatagoryName}}</a></h4>
+                                <h4 class="panel-title"><a href="{{ asset('shop?id='.$item->id)}}" style="color: green;">{{$item->CatagoryName}}</a></h4>
                             </div>
                         </div>           
                         @endforeach

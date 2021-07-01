@@ -76,7 +76,7 @@
                         @foreach ($category as $item)
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h4 class="panel-title"><a href="{{ asset('shop/'.$item->id)}}" style="color: green;">{{$item->CatagoryName}}</a></h4>
+                                <h4 class="panel-title"><a href="{{ asset('shop?id='.$item->id)}}" style="color: green;">{{$item->CatagoryName}}</a></h4>
                             </div>
                         </div>           
                         @endforeach
@@ -88,8 +88,9 @@
                 <div class="features_items"><!--features_items-->
                     <h2 class="title text-center" style="color: red">Product Item List</h2>
 
-                  @foreach ($data as $item)
-                  <div class="col-sm-4">
+                @if (isset($data))
+                @foreach ($data as $item)
+                <div class="col-sm-4">
                     <div class="product-image-wrapper">
                         <div class="single-products">
                             <div class="productinfo text-center">
@@ -111,7 +112,7 @@
                         <div class="choose">
                             <ul class="nav nav-pills nav-justified">
                                 <li><a href="{{ asset('/detail?id='.$item->id) }}"><i class="fa fa-plus-square"></i>Detail</a></li>
-                                <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+                                <li><button class="add-wish" data-name="{{$item->FoodName}}" data-id="{{$item->id}}"><i class="fa fa-plus-square"></i>Add to wishlist</button></li>
                             </ul>
                         </div>
                     </div>
@@ -121,6 +122,7 @@
                     <div>
                         {!!$data->links()!!}
                     </div>
+                @endif
                 </div><!--features_items-->
             </div>
         </div>
@@ -157,6 +159,24 @@
 
             
             
+        });
+        $('.add-wish').click(function () {      
+            var name = $(this).data('name');                   
+            var f = confirm('Bạn Có Chắc Muốn Thêm '+name+' Vào Danh Sách Ưa Thích');
+            var id = $(this).data('id');
+            if(f == true){                
+                $.get('addwish',{id:id},function(data){
+                    if(data == 0){
+                        alert('Bạn Phải Đăng Nhập Để Thêm Sản Phẩm Vào Danh Sách Yêu Thích');                        
+                    }
+                    if(data == 1){
+                        alert('Thêm Vào Danh Sách Yêu Thích Thành Công');                        
+                    }
+                    if(data == 2){
+                        alert('Đã Thêm Sản Phẩm Này Vào Danh Sách Ưa Thích');                        
+                    }                    
+                });
+            }            
         });
     </script>
 @endsection

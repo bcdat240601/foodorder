@@ -7,6 +7,8 @@
     <meta name="author" content="">
     <title>Home | GreenFood</title>
     <link href="<?php echo e(asset('css/bootstrap.min.css')); ?> " rel="stylesheet">
+	
+	<link href="<?php echo e(asset('css/css.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('css/font-awesome.min.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('css/prettyPhoto.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('css/price-range.css')); ?>" rel="stylesheet">
@@ -60,6 +62,19 @@
 							<a href="<?php echo e(asset('home')); ?>"><img src="<?php echo e(asset('images/home/logo5.png')); ?>" alt="" /></a>
 						</div>
 					</div>
+					<!-- Search Form -->
+					<div class="search-top">
+						<div class="top-search"><a href="#0"><i class="ti-search"></i></a></div>
+						<!-- Search Form -->
+						<div class="search-top">
+							<form class="search-form">
+								<input type="text" placeholder="Search here..." name="search">
+								<button value="search" type="submit"><i class="ti-search"></i></button>
+							</form>
+						</div>
+						<!--/ End Search Form -->
+					</div>
+					<!--/ End Search Form -->
 					<div class="col-md-8 clearfix">
 						<div class="shop-menu clearfix pull-right">
 							<ul class="nav navbar-nav">
@@ -94,20 +109,16 @@
 								<li><a href="<?php echo e(asset('home')); ?>" class="active" style="color: green">Home</a></li>
 								<li class="dropdown"><a href="#" style="color: green">Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-										<li><a href="<?php echo e(asset('shop/freshfood')); ?>">Fresh Food</a></li>
-										<li><a href="<?php echo e(asset('shop/vegetables')); ?>">Vegetables</a></li>
-										<li><a href="<?php echo e(asset('shop/meat')); ?>">Meat</a></li>
-										<li><a href="<?php echo e(asset('shop/seafood')); ?>">Sea Food</a></li> 
-										<li><a href="<?php echo e(asset('shop/fruit')); ?>">Fruit</a></li> 
-										<li><a href="<?php echo e(asset('shop/cannerfood')); ?>">Canner Food</a></li> 
-										<li><a href="<?php echo e(asset('shop/drinks')); ?>">Drinks</a></li> 
+										<?php $__currentLoopData = $category; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+											<li><a href="<?php echo e(asset('shop?id='.$item->id)); ?>"><?php echo e($item->CatagoryName); ?></a></li>										
+										<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </ul>
                                 </li> 
 								<li><a href="<?php echo e(asset('Introduce')); ?>" style="color: green">Introduce</a></li>								
 								<li><a href="<?php echo e(asset('Contact')); ?>" style="color: green">Contact</a></li>
-								<li><a href="<?php echo e(asset('checkout')); ?>" style="color: green">Checkout</a></li>
+								
 								<li><a href="<?php echo e(asset('cart')); ?>" style="color: green">Cart</a></li>
-								<li><a href="" style="color: green">Wishlist</a></li>
+								<li><a href="<?php echo e(asset('wishlist')); ?>" style="color: green">Wishlist</a></li>
 								<li><a href="" style="color: green">Account</a></li>
 								<?php if(session('login') == 0): ?>
 									<li><a href="<?php echo e(asset('/Customer/AddCustomer')); ?>" style="color: blue">Sign-Up</a></li>
