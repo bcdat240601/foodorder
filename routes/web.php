@@ -127,5 +127,6 @@ Route::post('/Customer/AddCustomer', 'Customercontroller@addcustomer')->name('cu
 Route::get('/logout','LoginUserController@logout');
 Route::get('/addbill','CartController@addbill');
 
+Route::get('/addbill','CartController@addbill');
 Route::get('/myprofile', [MyprofileController::class, 'show']);
 Route::post('detail/khachhang/save',[MyprofileController::class, 'edit'])->name('editkh');
