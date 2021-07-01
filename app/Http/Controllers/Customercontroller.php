@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\customer;
+use App\Models\Category;
 
 use DB;
 class Customercontroller extends Controller
@@ -13,7 +14,12 @@ class Customercontroller extends Controller
         return view("admin/customer/indexcustomer",["data"=>$data]);
     }
     public function addcustomer(Request $req){
-
+        $checkemail = DB::table('customer')->select('email')->get();
+        foreach ($checkemail as $value) {
+            if($value->email == $req -> Email){                
+                return 2;
+            }
+        }
         $CustomerName = $req -> CustomerName;
         $Address = $req -> Address;
         $Phone = $req -> Phone;
@@ -28,12 +34,13 @@ class Customercontroller extends Controller
         $customer -> email = $Email;
         $customer -> password = bcrypt($Password);
 
-        $customer ->save();
-        return view("Admin/Customer/AddCustomer");
+        $customer ->save();        
+        return 0;
 
     }
     public function showformaddcustomer(){
-        return view("Admin/Customer/AddCustomer");
+        $category = Category::where([['id','>',1],['id','<',9]])->get();
+        return view("Admin/Customer/AddCustomer",['category'=>$category]);
     }
 
     public function editcustomer(Request $req){
