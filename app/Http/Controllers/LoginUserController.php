@@ -34,6 +34,7 @@ class LoginUserController extends Controller
     public function logout(){
         Auth::logout();
         session()->put('login',0);
+        session()->forget('idkh');
         return redirect('/home');
     }
 }

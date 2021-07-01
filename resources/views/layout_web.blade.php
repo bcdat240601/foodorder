@@ -118,7 +118,9 @@
 								<li><a href="{{ asset('Contact')}}" style="color: green">Contact</a></li>
 								{{-- <li><a href="{{ asset('checkout')}}" style="color: green">Checkout</a></li> --}}
 								<li><a href="{{ asset('cart')}}" style="color: green">Cart</a></li>
+								@if (session()->has('idkh'))
 								<li><a href="{{ asset('wishlist') }}" style="color: green">Wishlist</a></li>
+								@endif
 								<li><a href="" style="color: green">Account</a></li>
 								@if (session('login') == 0)
 									<li><a href="{{ asset('/Customer/AddCustomer')}}" style="color: blue">Sign-Up</a></li>
