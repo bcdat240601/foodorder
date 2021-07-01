@@ -13,7 +13,8 @@ class MyprofileController extends Controller
     public function show(){
         $idkh = session()->get('idkh');
         $user = User::where('id','=',$idkh)->first();
-        return view('user/myprofile',['user'=>$user]);
+        $items = session()->get('cart');
+        return view('user/myprofile',['items'=>$items,'user'=>$user]);
     }
     public function edit(Request $req){
         $model = User::find($req->id);
