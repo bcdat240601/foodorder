@@ -25,6 +25,8 @@ class LoginUserController extends Controller
             $o = User::where('email','=',$request->email)->first();
             $idkh = $o->id;
             session()->put('idkh',$idkh);
+            $namekh = $o->CustomerName;
+            session()->put('namekh',$namekh);
             return redirect()->route('home');
         } else {
             echo'sai password';
@@ -35,6 +37,7 @@ class LoginUserController extends Controller
         Auth::logout();
         session()->put('login',0);
         session()->forget('idkh');
+        session()->forget('namekh');
         return redirect('/home');
     }
 }

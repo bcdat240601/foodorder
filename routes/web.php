@@ -129,6 +129,7 @@ Route::get('/addbill','CartController@addbill');
 
 Route::get('/wishlist','DController@showwishlist');
 Route::get('addwish','DController@addwish');
+Route::post('comment','DController@comment');
 Route::get('delete','DController@delete');
 Route::get('/myprofile', [MyprofileController::class, 'show']);
 Route::post('detail/khachhang/save',[MyprofileController::class, 'edit'])->name('editkh');

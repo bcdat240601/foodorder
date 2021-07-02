@@ -50,28 +50,38 @@
                             <strong style="color:red"> Exchange and return products within 7 days</strong>
                         </div><!--/product-information-->
                     </div>
-                    <div class="col-sm-7">
+                    <div class="col-sm-8" class="col-sm-7 cmt" style="width: 100%">
                         <div class="product-information">
                             <h2 style="color:green">Product Description</h2>
                             <p>{{$data->Description}}</p>
                         </div>
                     </div>
-                    <div class="col-sm-7 cmt">
+                    <div class="col-sm-7 cmt" style="width: 100%">
                         <div class="product-information" >
-                            <h2 style="color:green">Product Comment</h2>
-                            <form action="" method="post">
-                                @csrf
+                            <h2 style="color:green">Product Comment</h2>                                                            
                                 <div class="row mt-2">
                                     <div class="row mt-3">
-                                <input type="text" name="id" value="" style="display: none">
-                                <div class="col-md-12"><label class="labels" for="Comment"></label> <img class="img-profile rounded-circle"src="{{ asset('img/man.png') }}" style="text-align: right;"><input class="form-control" type="text" name="comment" style="width:79%;text-align:left;margin-left: 14%;margin-top: -39px;"></div>
-                                <div class="col-md-12"><button type="submit" class="btn btn-warning" style="background: #7553f1;margin-top:11px;margin-bottom: 11px;">lưu</button>   
-                            </div></div>
-                            </form>
-                            <p>{{$data->Description}}</p>
+                                <input type="text" name="id" class="getidfood" value="{{$data->id}}" style="display: none">                                
+                                <div class="col-md-12"><label class="labels" for="Comment"></label> <img class="img-profile rounded-circle"src="{{ asset('img/man.png') }}" style="text-align: right;">
+                                    <input class="form-control formnhap" type="text" name="comment" style="width:79%;text-align:left;margin-left: 14%;margin-top: -39px;">
+                                    <button type="submit" class="btn btn-warning binhluan" style="background: #7553f1;margin-top:11px;margin-bottom: 11px;">Lưu</button>
+                                </div>
+                                {{-- <div class="col-md-12">   
+                            </div> --}}
+                                    </div>                                                    
+                                </div>
                         </div>
-                    </div>
-                </div><!--/product-details-->
+                        {{-- binhluan --}}
+                        <div id="cmtarea">
+                            @if (isset($binhluan))
+                                @foreach ($binhluan as $item)
+                                    <h3 class="name">{{$item->CustomerName}}</h3>
+                                    <span class="cmt">{{$item->loibinhluan}}</span>
+                                @endforeach
+                            @endif
+                        </div>
+                        {{-- endbinhluan --}}
+                    </div><!--/product-details-->
 
                     <div class="recommended_items"><!--recommended_items-->
                         <h2 class="title text-center" style="color: red">Related products</h2>
@@ -169,7 +179,7 @@
                               </a>			
                         </div>
                     </div>
-                    
+                <span style="display: none" id="getcusname">@if (session()->has('namekh')){{session()->get('namekh')}}@endif</span>    
             </div>
         </div>
     </div>
@@ -202,6 +212,24 @@
            var id= $(this).data("id");
            $(".cmt").css("display","block");
         
+        });
+        $('.binhluan').click(function () { 
+            var loibinhluan = $('.formnhap').val();
+            var idfood = $('.getidfood').val();
+            var cusname = $('#getcusname').text();            
+            if(loibinhluan != ''){
+                $.post('comment',{"_token": "{{ csrf_token() }}",loibinhluan:loibinhluan,idfood:idfood},function(data){
+                    if(data == 0){
+                        alert('Bạn Phải Đăng Nhập Để Bình Luận');
+                    }
+                    if(data != 0){                        
+                        $('#cmtarea').prepend(data);
+                    }                    
+                });
+            }else{
+                alert('Bạn Chưa Nhập Gì Vào Khung Bình Luận');
+            }
+            
         });
 
     </script>
