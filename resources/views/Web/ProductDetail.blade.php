@@ -40,6 +40,10 @@
                                     <i class="fa fa-shopping-cart"></i>
                                     Add to cart
                                 </button>
+                                <button type="button" class="btn btn-fefault cart btn-cmt" data-id="{{$data->id}}">
+                                    <i class="fa fa-shopping-cart"></i>
+                                    comment
+                                </button>
                             </span>
                             <p><b>Availability:</b> In Stock</p>
                             <p><b>Order online:</b> Order online for home delivery on time (if late, you will receive a voucher of VND 50000) </p>
@@ -49,6 +53,21 @@
                     <div class="col-sm-7">
                         <div class="product-information">
                             <h2 style="color:green">Product Description</h2>
+                            <p>{{$data->Description}}</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-7 cmt">
+                        <div class="product-information" >
+                            <h2 style="color:green">Product Comment</h2>
+                            <form action="" method="post">
+                                @csrf
+                                <div class="row mt-2">
+                                    <div class="row mt-3">
+                                <input type="text" name="id" value="" style="display: none">
+                                <div class="col-md-12"><label class="labels" for="Comment"></label> <img class="img-profile rounded-circle"src="{{ asset('img/man.png') }}" style="text-align: right;"><input class="form-control" type="text" name="comment" style="width:79%;text-align:left;margin-left: 14%;margin-top: -39px;"></div>
+                                <div class="col-md-12"><button type="submit" class="btn btn-warning" style="background: #7553f1;margin-top:11px;margin-bottom: 11px;">lưu</button>   
+                            </div></div>
+                            </form>
                             <p>{{$data->Description}}</p>
                         </div>
                     </div>
@@ -177,9 +196,14 @@
                 function (data) {
                     alert('You have successfully added the product to your cart');    
                 }
-            );
-            
+            );   
         });
+        $(".btn-cmt").click(function (e) {
+           var id= $(this).data("id");
+           $(".cmt").css("display","block");
+        
+        });
+
     </script>
     
 @endsection
