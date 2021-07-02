@@ -51,14 +51,14 @@
                         </div><!--/product-information-->
                     </div>
                     <div class="col-sm-8" class="col-sm-7 cmt" style="width: 100%">
-                        <div class="product-information">
+                        <div class="product-information" style="">
                             <h2 style="color:green">Product Description</h2>
                             <p>{{$data->Description}}</p>
                         </div>
                     </div>
-                    <div class="col-sm-7 cmt" style="width: 100%">
-                        <div class="product-information" >
-                            <h2 style="color:green">Product Comment</h2>                                                            
+                    <div class="col-sm-7 cmt" style="width: 100%;">
+                        <div class="product-information"  style="padding-bottom:5px;">
+                            <h2 style="color:rgb(235, 181, 44);">Product Comment</h2>                                                            
                                 <div class="row mt-2">
                                     <div class="row mt-3">
                                 <input type="text" name="id" class="getidfood" value="{{$data->id}}" style="display: none">                                
@@ -72,13 +72,16 @@
                                 </div>
                         </div>
                         {{-- binhluan --}}
-                        <div id="cmtarea">
+                        <div id="cmtarea" style="overflow-y: scroll;height:200px;padding-top:0px;border: 1px solid black;">
+                            <div class="product-information" >
                             @if (isset($binhluan))
                                 @foreach ($binhluan as $item)
-                                    <h3 class="name">{{$item->CustomerName}}</h3>
-                                    <span class="cmt">{{$item->loibinhluan}}</span>
+                                <span><img class="img-profile rounded-circle"src="{{ asset('img/man.png') }}" style="text-align: right;"><h3 class="name" style="margin-top: -58px;
+                                    margin-left: 60px;">{{$item->CustomerName}}</h3></span>
+                                    <span class="cmt" style=" margin-left: 64px;margin-top: -3px;">{{$item->loibinhluan}}</span>
                                 @endforeach
                             @endif
+                            </div>
                         </div>
                         {{-- endbinhluan --}}
                     </div><!--/product-details-->
