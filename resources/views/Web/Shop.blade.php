@@ -88,7 +88,7 @@
                 <div class="features_items"><!--features_items-->
                     <h2 class="title text-center" style="color: red">Product Item List</h2>
 
-                @if (isset($data))
+                @if (isset($data) && !$data->isEmpty() )
                 @foreach ($data as $item)
                 <div class="col-sm-4">
                     <div class="product-image-wrapper">
@@ -122,6 +122,8 @@
                     <div>
                         {!!$data->links()!!}
                     </div>
+                @else
+                <h2>Không Tìm Thấy Sản Phẩm</h2>
                 @endif
                 </div><!--features_items-->
             </div>

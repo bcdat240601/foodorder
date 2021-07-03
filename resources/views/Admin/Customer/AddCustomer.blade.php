@@ -8,6 +8,12 @@
         <link href="css/login.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
+        <style>
+            .input-box
+            {
+                margin: 20px 0px 20px 0px;
+            }
+        </style>
         <div id="urllogin" style="display: none;">{{ asset('login') }}</div>
         <main style="background-color:white; min-height: 300px; padding: 7.5px 15px;">
             <div class="container" style="width: 100%; max-width: 1200px; margin-left: auto; margin-right: auto;">
@@ -15,7 +21,7 @@
                     <h1 style="color:red; font-size: 20px; margin-bottom: 30px;">New User Signup!</h1>
                     <span id="thongtin" style="display: none;width:332px;color:red;">Thiếu Thông Tin, Xin Vui Lòng Điền Đầy Đủ Thông Tin</span>
                     <span id="ten" style="display: none;width:332px;color:red;">Tên Người Dùng Có Kí Tự Đặc Biệt</span>
-                    <div class="input-box" style="margin-bottom: 10px;">
+                    <div class="input-box" >
                         <i ></i>
                         <input type="name" class="name" name="CustomerName" placeholder="Enter your customer name" style="padding: 7.5px 7.5px;width: 100%; border: 1px solid #cccccc;outline: none;" required>
                     </div>

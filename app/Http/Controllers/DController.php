@@ -51,8 +51,16 @@ class DController extends Controller
         $binhluan->idfood = $req->idfood;
         $binhluan->loibinhluan = $req->loibinhluan;
         $binhluan->save();
-        return '<h3 class="name">'.$cusname.'</h3>
-        <span class="cmt" style="display:block">'.$req->loibinhluan.'</span>';
+        return '<div style="border:solid 1px;padding-left: 35px;"><span><img class="img-profile rounded-circle" src="'.asset("img/man.png").'" style="text-align: right;"><h3 class="name" style="margin-top: -58px;
+        margin-left: 60px;">'.$cusname.'</h3></span>
+        <span class="cmt" style=" margin-left: 64px;margin-top: -3px;display:block">'.$req->loibinhluan.'</span></div>';
+        
 
+    }
+    public function search(){
+        $category = Category::where([['id','>',1],['id','<',9]])->get();
+        $search = $_GET['search'];
+        $data = DB::table('food')->where('FoodName','LIKE',"%{$search}%")->paginate(9);
+        return view ("Web/Shop", ["data"=>$data,'category'=>$category]);
     }    
 }

@@ -73,12 +73,14 @@
                         </div>
                         {{-- binhluan --}}
                         <div id="cmtarea" style="overflow-y: scroll;height:200px;padding-top:0px;border: 1px solid black;">
-                            <div class="product-information" >
+                            <div class="product-information bl" style="padding-left: 0px;padding-top: 0px;padding-bottom: 0px;" >
                             @if (isset($binhluan))
                                 @foreach ($binhluan as $item)
-                                <span><img class="img-profile rounded-circle"src="{{ asset('img/man.png') }}" style="text-align: right;"><h3 class="name" style="margin-top: -58px;
-                                    margin-left: 60px;">{{$item->CustomerName}}</h3></span>
-                                    <span class="cmt" style=" margin-left: 64px;margin-top: -3px;">{{$item->loibinhluan}}</span>
+                                <div style="border:solid 1px;padding-left: 35px;">
+                                    <span><img class="img-profile rounded-circle"src="{{ asset('img/man.png') }}" style="text-align: right;"><h3 class="name" style="margin-top: -58px;
+                                        margin-left: 60px;">{{$item->CustomerName}}</h3></span>
+                                        <span class="cmt" style=" margin-left: 64px;margin-top: -3px;">{{$item->loibinhluan}}</span>
+                                </div>
                                 @endforeach
                             @endif
                             </div>
@@ -226,7 +228,7 @@
                         alert('Bạn Phải Đăng Nhập Để Bình Luận');
                     }
                     if(data != 0){                        
-                        $('#cmtarea').prepend(data);
+                        $('.bl').prepend(data);
                     }                    
                 });
             }else{
