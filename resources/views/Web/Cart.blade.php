@@ -27,10 +27,12 @@
                         
                     </tr>
                     @endforeach
-                    @endisset
-                    
-                </tbody>
+                    @endisset                    
+                </tbody>                
             </table>
+            @if ($data == null)
+                <h2 style="text-align: center">Không Có Sản Phẩm Nào Trong Giỏ Hàng</h2>
+            @endif
             <h1 style="float: right" >Total: <span id="total" style="color: red"></span></h1>
             <span id="login" style="display: none">{{session()->get('login')}}</span>
         </div>

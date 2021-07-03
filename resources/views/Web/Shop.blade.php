@@ -89,38 +89,42 @@
                     <h2 class="title text-center" style="color: red">Product Item List</h2>
 
                 @if (isset($data) && !$data->isEmpty() )
+                <div style="display: inline-block">
                 @foreach ($data as $item)
-                <div class="col-sm-4">
-                    <div class="product-image-wrapper">
-                        <div class="single-products">
-                            <div class="productinfo text-center">
-                                <img src="{{ asset('images/product-details/'.$item->Image_Name) }}" alt="" style="height: 200px"/>
-                                <h2 style="color: green">{{$item->FoodName}}</h2>
-                                <p style="color: red">{{$item->Price}} đ</p>
-                                {{-- <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a> --}}
-                            </div>
-                            <div class="product-overlay">
-                                <div class="overlay-content">
-                                    <h2  style="color: green"><span id="price-{{$item->id}}">{{$item->Price}}</span><span> đ</span></h2>
-                                    
-                                    <p>{{$item->FoodName}}</p>
-                                    <input type="text" id="sl-{{$item->id}}" value="1" required>
-                                    <button  class="btn btn-default add-to-cart" data-name="{{$item->FoodName}}" data-id="{{$item->id}}"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+                    <div class="col-sm-4">
+                        <div class="product-image-wrapper">
+                            <div class="single-products">
+                                <div class="productinfo text-center">
+                                    <img src="{{ asset('images/product-details/'.$item->Image_Name) }}" alt="" style="height: 200px"/>
+                                    <h2 style="color: green">{{$item->FoodName}}</h2>
+                                    <p style="color: red">{{$item->Price}} đ</p>
+                                    {{-- <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a> --}}
+                                </div>
+                                <div class="product-overlay">
+                                    <div class="overlay-content">
+                                        <h2  style="color: green"><span id="price-{{$item->id}}">{{$item->Price}}</span><span> đ</span></h2>
+                                        
+                                        <p>{{$item->FoodName}}</p>
+                                        <input type="text" id="sl-{{$item->id}}" value="1" required>
+                                        <button  class="btn btn-default add-to-cart" data-name="{{$item->FoodName}}" data-id="{{$item->id}}"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="choose">
-                            <ul class="nav nav-pills nav-justified">
-                                <li><a href="{{ asset('/detail?id='.$item->id) }}"><i class="fa fa-plus-square"></i>Detail</a></li>
-                                <li><button class="add-wish" data-name="{{$item->FoodName}}" data-id="{{$item->id}}"><i class="fa fa-plus-square"></i>Add to wishlist</button></li>
-                            </ul>
+                            <div class="choose">
+                                <ul class="nav nav-pills nav-justified">
+                                    <li><a href="{{ asset('/detail?id='.$item->id) }}"><i class="fa fa-plus-square"></i>Detail</a></li>
+                                    <li><button class="add-wish" data-name="{{$item->FoodName}}" data-id="{{$item->id}}"><i class="fa fa-plus-square"></i>Add to wishlist</button></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
                 @endforeach
+                </div>
                 
                     <div>
-                        {!!$data->links()!!}
+                        @if (isset($id))
+                        {!! $data->appends(['id'=>$id])->render() !!}
+                        @endif
                     </div>
                 @else
                 <h2>Không Tìm Thấy Sản Phẩm</h2>

@@ -30,7 +30,7 @@ class foodcontroller extends Controller
         else if($id=="8")
             $data = Food::where('CategoryID','=',8)->paginate(9);
 
-        return view ("Web/Shop", ["data"=>$data,'category'=>$category]);
+        return view ("Web/Shop", ["data"=>$data,'category'=>$category,'id'=>$id]);
     }
     public function index(){
         $data = food::select("id","FoodName","Price","Quantity","CategoryID","Image_Name")->get();
