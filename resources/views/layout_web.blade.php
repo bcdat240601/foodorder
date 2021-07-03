@@ -10,6 +10,7 @@
 	{{-- <link href="{{ asset('css/bootstrap.css') }} " rel="stylesheet"> --}}
 	<link href="{{asset('css/css.css')}}" rel="stylesheet">
     <link href="{{asset('css/font-awesome.min.css')}}" rel="stylesheet">
+	<link href="{{asset('css/all.min.css')}}" rel="stylesheet">
     <link href="{{ asset('css/prettyPhoto.css')}}" rel="stylesheet">
     <link href="{{ asset('css/price-range.css') }}" rel="stylesheet">
     <link href="{{ asset('css/animate.css') }}" rel="stylesheet">
@@ -67,9 +68,13 @@
 						<div class="top-search"><a href="#0"><i class="ti-search"></i></a></div>
 						<!-- Search Form -->
 						<div class="search-top">
-							<form class="search-form">
-								<input type="text" placeholder="Search here..." name="search">
-								<button value="search" type="submit"><i class="ti-search"></i></button>
+							<form class="search-form col-md-8 clearfix input-group">
+								<input type="text" placeholder="Search here..." name="search" class="ip-search">
+								<div class="input-group-append">
+                                <button class=" btns"value="search" type="submit">
+									<i class="fa fa-search" aria-hidden="true"></i>
+                                </button>
+                            </div>
 							</form>
 						</div>
 						<!--/ End Search Form -->

@@ -28,3 +28,28 @@ img {
 ::-webkit-scrollbar {
     display: none;
     }
+.ip-search{
+    outline-color: green;
+    width: 39%;
+    height: 35px;
+    border: 4px solid rgb(46, 126, 15);
+}
+.input-group {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+}
+.input-group-append{
+    display: flex;
+    margin-top: -1.6%;
+    height: 48px;
+   
+ 
+}
+.btns{
+    background: #FE980F;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    margin-top: 12px;
+}
