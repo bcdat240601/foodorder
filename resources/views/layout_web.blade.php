@@ -24,8 +24,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ asset('images/ico/apple-touch-icon-144-precomposed.png') }}">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ asset('images/ico/apple-touch-icon-114-precomposed.png') }}">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ asset('images/ico/apple-touch-icon-72-precomposed.png') }}">
-    <link rel="apple-touch-icon-precomposed" href="{{ asset('images/ico/apple-touch-icon-57-precomposed.png') }}">
-
+    <link rel="apple-touch-icon-precomposed" href="{{ asset('images/ico/apple-touch-icon-57-precomposed.png') }}">	
 </head><!--/head-->
 
 <body>
@@ -67,14 +66,16 @@
 					<div class="search-top">
 						<div class="top-search"><a href="#0"><i class="ti-search"></i></a></div>
 						<!-- Search Form -->
-						<div class="search-top">
-							<form class="search-form col-md-8 clearfix input-group">
+						<div class="search-top">							
+							<form action="{{ route('search') }}" method="get" class="search-form col-md-8 clearfix input-group">
 								<input type="text" placeholder="Search here..." name="search" class="ip-search">
 								<div class="input-group-append">
                                 <button class=" btns"value="search" type="submit">
 									<i class="fa fa-search" aria-hidden="true"></i>
                                 </button>
-                            </div>
+                            	</div>
+								<div id="hint"></div>
+								{{ csrf_field() }}
 							</form>
 						</div>
 						<!--/ End Search Form -->
@@ -126,7 +127,9 @@
 								@if (session()->has('idkh'))
 								<li><a href="{{ asset('wishlist') }}" style="color: green">Wishlist</a></li>
 								@endif
-								<li><a href="" style="color: green">Account</a></li>
+								@if (session('login') == 1)
+									<li><a href="{{ asset('myprofile') }}" style="color: green">Account</a></li>
+								@endif
 								@if (session('login') == 0)
 									<li><a href="{{ asset('/Customer/AddCustomer')}}" style="color: blue">Sign-Up</a></li>
 								@endif
@@ -227,6 +230,19 @@
 	<script src="{{ asset('js/price-range.js') }}"></script>
     <script src="{{ asset('js/jquery.prettyPhoto.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
+	<script>
+		$('.ip-search').keyup(function () {			 
+			var gethint = $(this).val();
+			if(gethint != null){
+				$.post('hint',{"_token": "{{ csrf_token() }}",gethint:gethint},function(data){
+					if(gethint != null){
+						$('#hint').fadeIn();
+						$('#hint').html(data);
+					}
+				});
+			}
+		});		
+	</script>
 	@yield('scripts')
 </body>
 </html>

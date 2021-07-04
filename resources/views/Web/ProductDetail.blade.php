@@ -63,7 +63,7 @@
                                     <div class="row mt-3">
                                 <input type="text" name="id" class="getidfood" value="{{$data->id}}" style="display: none">                                
                                 <div class="col-md-12"><label class="labels" for="Comment"></label> <img class="img-profile rounded-circle"src="{{ asset('img/man.png') }}" style="text-align: right;">
-                                    <input class="form-control formnhap" type="text" name="comment" style="width:79%;text-align:left;margin-left: 14%;margin-top: -39px;">
+                                    <input class="form-control formnhap" type="text" name="comment" placeholder="Đánh Giá Sản Phẩm..." style="width:79%;text-align:left;margin-left: 14%;margin-top: -39px;">
                                     <button type="submit" class="btn btn-warning binhluan" style="background: #7553f1;margin-top:11px;margin-bottom: 11px;">Lưu</button>
                                 </div>
                                 {{-- <div class="col-md-12">   
@@ -73,12 +73,14 @@
                         </div>
                         {{-- binhluan --}}
                         <div id="cmtarea" style="overflow-y: scroll;height:200px;padding-top:0px;border: 1px solid black;">
-                            <div class="product-information" >
+                            <div class="product-information bl" style="padding-left: 0px;padding-top: 0px;padding-bottom: 0px;" >
                             @if (isset($binhluan))
                                 @foreach ($binhluan as $item)
-                                <span><img class="img-profile rounded-circle"src="{{ asset('img/man.png') }}" style="text-align: right;"><h3 class="name" style="margin-top: -58px;
-                                    margin-left: 60px;">{{$item->CustomerName}}</h3></span>
-                                    <span class="cmt" style=" margin-left: 64px;margin-top: -3px;">{{$item->loibinhluan}}</span>
+                                <div style="border:solid 1px;padding-left: 35px;">
+                                    <span><img class="img-profile rounded-circle"src="{{ asset('img/man.png') }}" style="text-align: right;"><h3 class="name" style="margin-top: -58px;
+                                        margin-left: 60px;">{{$item->CustomerName}}</h3></span>
+                                        <span class="cmt" style=" margin-left: 64px;margin-top: -3px;">{{$item->loibinhluan}}</span>
+                                </div>
                                 @endforeach
                             @endif
                             </div>
@@ -226,7 +228,7 @@
                         alert('Bạn Phải Đăng Nhập Để Bình Luận');
                     }
                     if(data != 0){                        
-                        $('#cmtarea').prepend(data);
+                        $('.bl').prepend(data);
                     }                    
                 });
             }else{
