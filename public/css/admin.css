@@ -1,0 +1,10 @@
+.imge{
+    width: 99%;
+    margin-top: 50px;
+}
+.product{
+    display: flex;
+    background: white;
+    margin-bottom: 15px;
+    box-shadow: 14px 10px #6c464e;
+}

@@ -1,15 +1,27 @@
 @extends('admin/layout')
 @section('content')
+
 <div class="container">
     <br>
         {{-- <button style="background-color: crimson;"><a href="{{ asset('admin/product/add') }}" style="color: white">Add New Product</a></button><br> --}}
-        <br>
+        <div class="product">
+            <div class="">
+            <img class="imge" src="{{ asset('images/product-details/'.$data->Image_Name) }}" alt="" />
+            </div>
+            <div class="info">
+                <h2 style="color: green"> {{$data->FoodName}}</h2>
+                <h2 style="color:green">Product Description</h2>
+                            <p>{{$data->Description}}</p>
+            </div>
+        </div>
+    <br>
+    <div class="table-responsive">
     <table class="table table-bordered display" id="table_id">
         <thead>
             <tr>
-                <td style="color: white; background-color: orangered">Avatar</td>
-                <td style="color: white; background-color: orangered">Customer Name</td>
-                <td style="color: white; background-color: orangered">Comment</td>
+                <td style="color: white; background-color: #72A1E5">Avatar</td>
+                <td style="color: white; background-color: #72A1E5">Customer Name</td>
+                <td style="color: white; background-color: #72A1E5">Comment</td>
             </tr>
         </thead>
         <tbody>
@@ -30,6 +42,7 @@
             @endif
         </tbody>
     </table>
+    </div>
 </div>
     
 @endsection
