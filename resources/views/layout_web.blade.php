@@ -73,7 +73,9 @@
                                 <button class=" btns"value="search" type="submit">
 									<i class="fa fa-search" aria-hidden="true"></i>
                                 </button>
-                            </div>
+                            	</div>
+								<div id="hint"></div>
+								{{ csrf_field() }}
 							</form>
 						</div>
 						<!--/ End Search Form -->
@@ -228,6 +230,19 @@
 	<script src="{{ asset('js/price-range.js') }}"></script>
     <script src="{{ asset('js/jquery.prettyPhoto.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
+	<script>
+		$('.ip-search').keyup(function () {			 
+			var gethint = $(this).val();
+			if(gethint != null){
+				$.post('hint',{"_token": "{{ csrf_token() }}",gethint:gethint},function(data){
+					if(gethint != null){
+						$('#hint').fadeIn();
+						$('#hint').html(data);
+					}
+				});
+			}
+		});		
+	</script>
 	@yield('scripts')
 </body>
 </html>

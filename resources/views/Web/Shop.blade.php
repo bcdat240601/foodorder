@@ -125,6 +125,9 @@
                         @if (isset($id))
                         {!! $data->appends(['id'=>$id])->render() !!}
                         @endif
+                        @if (isset($search))
+                        {!! $data->appends(['search'=>$search])->render() !!}
+                        @endif
                     </div>
                 @else
                 <h2>Không Tìm Thấy Sản Phẩm</h2>

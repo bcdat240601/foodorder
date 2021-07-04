@@ -135,3 +135,4 @@ Route::get('/myprofile', [MyprofileController::class, 'show']);
 Route::post('detail/khachhang/save',[MyprofileController::class, 'edit'])->name('editkh');
 
 Route::get('search','DController@search' )->name('search');
+Route::post('hint','DController@hint');

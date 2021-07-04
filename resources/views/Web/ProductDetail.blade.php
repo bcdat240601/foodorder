@@ -63,7 +63,7 @@
                                     <div class="row mt-3">
                                 <input type="text" name="id" class="getidfood" value="{{$data->id}}" style="display: none">                                
                                 <div class="col-md-12"><label class="labels" for="Comment"></label> <img class="img-profile rounded-circle"src="{{ asset('img/man.png') }}" style="text-align: right;">
-                                    <input class="form-control formnhap" type="text" name="comment" style="width:79%;text-align:left;margin-left: 14%;margin-top: -39px;">
+                                    <input class="form-control formnhap" type="text" name="comment" placeholder="Đánh Giá Sản Phẩm..." style="width:79%;text-align:left;margin-left: 14%;margin-top: -39px;">
                                     <button type="submit" class="btn btn-warning binhluan" style="background: #7553f1;margin-top:11px;margin-bottom: 11px;">Lưu</button>
                                 </div>
                                 {{-- <div class="col-md-12">   
