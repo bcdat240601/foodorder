@@ -20,6 +20,7 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body id="page-top">
@@ -43,7 +44,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="{{ asset('admin') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span style="color: yellow">Dashboard</span></a>
             </li>
@@ -109,7 +110,7 @@
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="{{ asset('admin/product/comment') }}">
                     <i class="fas fa-fw fa-table"></i>
                     <span style="color: yellow">Comment</span></a>
             </li>
@@ -308,7 +309,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
                                 <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                                    src="{{ asset('img/undraw_profile.svg') }}">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -400,6 +401,21 @@
     <!-- Page level custom scripts -->
     <script src="{{ asset('js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('js/demo/chart-pie-demo.js') }}"></script>
+    <script src="{{ asset('js/demo/chart-bar-demo.js') }}"></script>
+    {{-- newscript --}}
+    <script src="{{asset('js/popper.min.js')}}"></script>
+    <script src="{{asset('js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('js/slicknav.min.js')}}"></script>
+    <script src="{{asset('js/owl-carousel.js')}}"></script>
+    <script src="{{asset('js/magnific-popup.js')}}"></script>
+    <script src="{{asset('js/waypoints.min.js')}}"></script>
+    <script src="{{asset('js/finalcountdown.min.js')}}"></script>
+    <script src="{{asset('js/flex-slider.js')}}"></script>
+    <script src="{{asset('js/scrollup.js')}}"></script>
+    <script src="{{asset('js/onepage-nav.min.js')}}"></script>
+    <script src="{{asset('js/easing.js')}}"></script>
+    <script src="{{asset('js/active.js')}}"></script>
+
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
     <script>
         $(document).ready( function () {

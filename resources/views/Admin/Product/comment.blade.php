@@ -2,7 +2,7 @@
 @section('content')
 <div class="container">
     <br>
-        <button style="background-color: crimson;"><a href="{{ asset('admin/product/add') }}" style="color: white">Add New Product</a></button><br>
+        {{-- <button style="background-color: crimson;"><a href="{{ asset('admin/product/add') }}" style="color: white">Add New Product</a></button><br> --}}
         <br>
     <table class="table table-bordered display" id="table_id">
         <thead>
@@ -14,7 +14,6 @@
                 <td style="color: white; background-color: orangered">CategoryID</td>
                 <td style="color: white; background-color: orangered">Image_Name</td>
                 <td style="color: white; background-color: orangered">Status</td>
-                <td style="color: white; background-color: orangered">Comment</td>
             </tr>
         </thead>
         <tbody>
@@ -39,10 +38,7 @@
                         <img src="{{ asset('images/product-details/'.$item->Image_Name) }}" alt="" style="width: 50px; height: 50px;">
                     </td>
                     <td>
-                        <a href="{{ asset('admin/product/edit/'.$item->id) }}">Edit</a>
-                    </td>
-                    <td>
-                        <a >Comment</a>
+                        <a href="{{ asset('admin/product/comment/'.$item->id) }}">Comment</a>
                     </td>
                 </tr>
             @endforeach

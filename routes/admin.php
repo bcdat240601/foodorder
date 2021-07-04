@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoginAdminController;
+use App\Http\Controllers\MyprofileController;
 use App\Http\Controllers\Admin\HomeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -74,3 +75,5 @@ Route::get('/logout',function(){
     Auth::logout();
     return redirect('admin/login');
 });
+Route::get('product/comment/', [MyprofileController::class, 'comment']);
+Route::get('product/comment/{id}', [MyprofileController::class, 'showcomment']);

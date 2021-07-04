@@ -26,4 +26,13 @@ class MyprofileController extends Controller
         $model->save();
         return redirect()->back();
     }
+    public function Comment(){
+        $data = food::select("id","FoodName","Price","Quantity","CategoryID","Image_Name")->get();
+        return view("admin/product/comment",["data"=>$data]);
+    }
+    public function showcomment($id){
+        $data=Food::find($id);
+        $binhluan = DB::table('binhluan')->join('customer','binhluan.idkh','=','customer.id')->where('idfood',$id)->orderByDesc('created_at')->get();
+        return view('admin/Product/Showcomment',["data"=>$data,'binhluan'=>$binhluan]);
+    }
 }
