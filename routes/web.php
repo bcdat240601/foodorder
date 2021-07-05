@@ -137,3 +137,6 @@ Route::post('detail/khachhang/save',[MyprofileController::class, 'edit'])->name(
 Route::get('search','DController@search' )->name('search');
 Route::post('hint','DController@hint');
 Route::get('changepass', 'DController@showchangepass');
+Route::post('changepass','DController@changepass')->name('changepass');
+
+Route::get('sendemail', 'DController@sendmail');
