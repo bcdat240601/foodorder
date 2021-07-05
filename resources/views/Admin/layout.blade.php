@@ -385,7 +385,7 @@
             </div>
         </div>
     </div>
-
+    
     <!-- Bootstrap core JavaScript-->
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -416,6 +416,9 @@
     <script src="{{asset('js/onepage-nav.min.js')}}"></script>
     <script src="{{asset('js/easing.js')}}"></script>
     <script src="{{asset('js/active.js')}}"></script>
+    {{-- jquery --}}
+    <script src="{{asset('js/jquery.js')}}"></script>
+    <script src="{{asset('js/jquery.min.js')}}"></script>
 
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
     <script>
@@ -423,6 +426,7 @@
             $('#table_id').DataTable();
         } );
     </script>
+    @yield('script')
 </body>
 
 </html>

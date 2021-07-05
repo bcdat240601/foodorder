@@ -22,12 +22,13 @@
                 <td style="color: white; background-color: #72A1E5">Avatar</td>
                 <td style="color: white; background-color: #72A1E5">Customer Name</td>
                 <td style="color: white; background-color: #72A1E5">Comment</td>
+                <td style="color: white; background-color: #72A1E5">Delete</td>
             </tr>
         </thead>
         <tbody>
             @if (isset($binhluan))
             @foreach ($binhluan as $item)
-                <tr>
+                <tr  id="cmt-{{$item->id}}" data-row="{{$item->id}}">
                     <td style="color: black">
                         <img class="img-profile rounded-circle"src="{{ asset('img/man.png') }}" style="text-align: right;">
                     </td>
@@ -37,6 +38,7 @@
                     <td style="color: Green">
                         {{$item->loibinhluan}}
                     </td>
+                    <td><button class="delete" data-row="{{$item->id}}">Delete</button></td>
                 </tr>
             @endforeach
             @endif
@@ -45,4 +47,18 @@
     </div>
 </div>
     
+@endsection
+@section('script')
+<script>
+       $(".delete").click(function () {         
+            var f=confirm("Bạn có muốn xóa");
+            if(f==true)
+            {     
+                var row=$(this).data("row");                
+                // $.get("detail/"+object+"/delete",{row:row},function(data){
+                // });
+                $("#cmt-"+row).hide();
+            }
+        });
+        </script>
 @endsection
