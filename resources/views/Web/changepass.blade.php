@@ -54,19 +54,21 @@
                                             <span class="error    " style="color: red;">
                                             </span>
                                     </div>
-                                    <form class="user" method="POST" action="">
+                                    <form class="user" method="POST" action="{{ route('changepass') }}">
                                         @csrf
                                         <div class="form-group">
-
+                                            @if (isset($check))
+                                                <span style="color: red">{{$check}}</span>
+                                            @endif
                                             <input type="password" class="form-control form-control-user" name="oldpass"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Enter Your Old Password...">
+                                                placeholder="Enter Your Old Password..." required>
                                             <input type="password" class="form-control form-control-user" name="newpass1"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Enter Your New Password...">
+                                                placeholder="Enter Your New Password..." required>
                                             <input type="password" class="form-control form-control-user" name="newpass2"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Confirm Your New Password...">
+                                                placeholder="Confirm Your New Password..." required>
                                         </div>
                                         <button type="submit" class="btn btn-primary btn-user btn-block" style="color: #1A5E63;background-color: #E4FF1A;">
                                             CONFIRM PASSWORD
@@ -102,8 +104,7 @@
     <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
-
+    <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>    
 </body>
 
 </html>

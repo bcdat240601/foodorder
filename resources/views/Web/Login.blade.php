@@ -15,13 +15,16 @@
                 <form method="POST" action="{{ asset('login') }}">
                     @csrf
                     <h1 style="color:red; font-size: 20px; margin-bottom: 30px;">Login to your account</h1>
+                    @if (isset($check))
+                        <span style="color: red">Sai Tài Khoản Hoặc Mật Khẩu</span>
+                    @endif
                     <div class="input-box" style="margin-bottom: 10px;">
                         <i ></i>
-                        <input type="text" name="email" placeholder="Enter your email address" style="padding: 7.5px 7.5px;width: 100%; border: 1px solid #cccccc;outline: none;">
+                        <input type="text" name="email" placeholder="Enter your email address" style="padding: 7.5px 7.5px;width: 100%; border: 1px solid #cccccc;outline: none;" required>
                     </div>
                     <div class="input-box">
                         <i ></i>
-                        <input type="password" name="password" placeholder="Enter password" style="padding: 7.5px 7.5px;width: 100%; border: 1px solid #cccccc;outline: none;">
+                        <input type="password" name="password" placeholder="Enter password" style="padding: 7.5px 7.5px;width: 100%; border: 1px solid #cccccc;outline: none;" required>
                     </div>
                     <div class="btn-box" style="text-align: right;margin-top: 30px;">
                         <button type="submit" style="padding: 7.5px 15px;border-radius: 2px;background-color: #009999;color: #ffffff;border: none;outline: none;">

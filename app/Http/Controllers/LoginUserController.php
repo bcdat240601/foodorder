@@ -5,6 +5,7 @@ use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Category;
 
 class LoginUserController extends Controller
 {
@@ -29,7 +30,9 @@ class LoginUserController extends Controller
             session()->put('namekh',$namekh);
             return redirect()->route('home');
         } else {
-            echo'sai password';
+            $category = Category::where([['id','>',1],['id','<',9]])->get();
+            $check = 1;
+            return view('Web/Login',['check'=>$check,'category'=>$category]);
             //return redirect()->back()->withInput();
         }
     }

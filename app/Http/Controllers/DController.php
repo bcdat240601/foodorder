@@ -6,7 +6,11 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\wishlist;
 use App\Models\binhluan;
+use App\Models\customer;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use DB;
+use Mail;
 
 class DController extends Controller
 {
@@ -80,6 +84,42 @@ class DController extends Controller
     }
     public function showchangepass(){
         return view('Web/changepass');
+    }
+    public function changepass(Request $req){
+        $idkh = session()->get('idkh');                
+        $currentpassword = $req->oldpass;
+        $newpassword1 = $req->newpass1;
+        $newpassword2 = $req->newpass2;
+        if($idkh != null){
+            $data = DB::table('customer')->select('password')->where('id',$idkh)->first();
+            if (Hash::check($currentpassword , $data->password)) {
+                if($newpassword1 == $newpassword2){
+                    $model = customer::find($idkh);
+                    $model->password = Hash::make($newpassword1);
+                    $model->save();
+                    Auth::logout();
+                    session()->put('login',0);
+                    session()->forget('idkh');
+                    session()->forget('namekh');
+                    return redirect('login');
+                }else {
+                    $check = 'Nhập Lại Mật Khẩu Không Trùng Khóp';
+                    return view('Web/changepass',['check'=>$check]);
+                }
+            }else {
+                $check = 'Mật Khẩu Cũ Nhập Không Đúng';
+                return view('Web/changepass',['check'=>$check]);
+            }         
+        }        
+    }
+    public function sendmail(){        
+        $dt = [
+            'title'=> 'Mail Từ GreenFood',
+            'body'=> 'Green Food Gửi Bạn Mã Code Để Reset Password',
+            'code'=> 'aaaaa'
+        ];
+        \Mail::to('buitridat240601@gmail.com')->send(new \App\Mail\mail($dt));
+        echo 'Mail Đã Được Gửi';
     }
 
 }
