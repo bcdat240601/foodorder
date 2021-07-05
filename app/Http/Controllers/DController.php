@@ -78,5 +78,8 @@ class DController extends Controller
         }
         
     }
+    public function showchangepass(){
+        return view('Web/changepass');
+    }
 
 }

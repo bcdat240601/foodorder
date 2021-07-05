@@ -27,7 +27,7 @@
         <tbody>
             @if (isset($binhluan))
             @foreach ($binhluan as $item)
-                <tr>
+                <tr data-id="{{$item->stt}}">
                     <td style="color: black">
                         <img class="img-profile rounded-circle"src="{{ asset('img/man.png') }}" style="text-align: right;">
                     </td>
