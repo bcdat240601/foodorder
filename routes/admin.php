@@ -77,3 +77,7 @@ Route::get('/logout',function(){
 });
 Route::get('product/comment/', [MyprofileController::class, 'comment']);
 Route::get('product/comment/{id}', [MyprofileController::class, 'showcomment']);
+
+Route::get('forget',function(){
+    return view("web/changepass");
+});
