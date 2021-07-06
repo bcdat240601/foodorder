@@ -35,4 +35,9 @@ class MyprofileController extends Controller
         $binhluan = DB::table('binhluan')->join('customer','binhluan.idkh','=','customer.id')->where('idfood',$id)->orderByDesc('created_at')->get();
         return view('admin/Product/Showcomment',["data"=>$data,'binhluan'=>$binhluan]);
     }
+    public function deletecmt(Request $req){
+        $row = $req->row;
+        $model = DB::table('binhluan')->where('stt', '=', $row)->delete();
+        return view('admin/Product/Showcomment');
+    }
 }

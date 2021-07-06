@@ -14,7 +14,7 @@
                 <td style="color: white; background-color: orangered">CategoryID</td>
                 <td style="color: white; background-color: orangered">Image_Name</td>
                 <td style="color: white; background-color: orangered">Status</td>
-                <td style="color: white; background-color: orangered">Comment</td>
+                
             </tr>
         </thead>
         <tbody>
@@ -41,9 +41,7 @@
                     <td>
                         <a href="{{ asset('admin/product/edit/'.$item->id) }}">Edit</a>
                     </td>
-                    <td>
-                        <a >Comment</a>
-                    </td>
+                    
                 </tr>
             @endforeach
         </tbody>

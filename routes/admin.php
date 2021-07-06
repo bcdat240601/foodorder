@@ -76,5 +76,6 @@ Route::get('/logout',function(){
     return redirect('admin/login');
 });
 Route::get('product/comment/', [MyprofileController::class, 'comment']);
-Route::get('product/comment/{id}', [MyprofileController::class, 'showcomment']);
-
+Route::get('product/comment={id}', [MyprofileController::class, 'showcomment']);
+Route::get('product/comment/delete', [MyprofileController::class, 'deletecmt']);
+ 

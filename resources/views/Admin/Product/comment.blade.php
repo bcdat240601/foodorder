@@ -38,7 +38,7 @@
                         <img src="{{ asset('images/product-details/'.$item->Image_Name) }}" alt="" style="width: 50px; height: 50px;">
                     </td>
                     <td>
-                        <a href="{{ asset('admin/product/comment/'.$item->id) }}">Comment</a>
+                        <a href="{{ asset('admin/product/comment='.$item->id) }}">Comment</a>
                     </td>
                 </tr>
             @endforeach

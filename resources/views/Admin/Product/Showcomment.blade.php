@@ -28,7 +28,7 @@
         <tbody>
             @if (isset($binhluan))
             @foreach ($binhluan as $item)
-                <tr data-id="{{$item->stt}}">
+                <tr id="cmt-{{$item->stt}}" data-id="{{$item->stt}}">
                     <td style="color: black">
                         <img class="img-profile rounded-circle"src="{{ asset('img/man.png') }}" style="text-align: right;">
                     </td>
@@ -38,7 +38,7 @@
                     <td style="color: Green">
                         {{$item->loibinhluan}}
                     </td>
-                    <td><button class="delete" data-row="{{$item->id}}">Delete</button></td>
+                    <td><button class="delete" data-row="{{$item->stt}}">Delete</button></td>
                 </tr>
             @endforeach
             @endif
@@ -55,8 +55,8 @@
             if(f==true)
             {     
                 var row=$(this).data("row");                
-                // $.get("detail/"+object+"/delete",{row:row},function(data){
-                // });
+                $.get("comment/delete",{row:row},function(data){
+                });
                 $("#cmt-"+row).hide();
             }
         });
