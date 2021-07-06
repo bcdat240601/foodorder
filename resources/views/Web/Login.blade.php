@@ -26,6 +26,7 @@
                         <i ></i>
                         <input type="password" name="password" placeholder="Enter password" style="padding: 7.5px 7.5px;width: 100%; border: 1px solid #cccccc;outline: none;" required>
                     </div>
+                    <a href="{{ asset('forgotpw') }}">Forgot Password?</a>
                     <div class="btn-box" style="text-align: right;margin-top: 30px;">
                         <button type="submit" style="padding: 7.5px 15px;border-radius: 2px;background-color: #009999;color: #ffffff;border: none;outline: none;">
                             Login

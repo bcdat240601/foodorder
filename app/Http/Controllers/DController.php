@@ -9,6 +9,7 @@ use App\Models\binhluan;
 use App\Models\customer;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use DB;
 use Mail;
 
@@ -112,14 +113,60 @@ class DController extends Controller
             }         
         }        
     }
-    public function sendmail(){        
-        $dt = [
-            'title'=> 'Mail Từ GreenFood',
-            'body'=> 'Green Food Gửi Bạn Mã Code Để Reset Password',
-            'code'=> 'aaaaa'
-        ];
-        \Mail::to('buitridat240601@gmail.com')->send(new \App\Mail\mail($dt));
-        echo 'Mail Đã Được Gửi';
+    public function showformmail(){
+        $category = Category::where([['id','>',1],['id','<',9]])->get();
+        return view('Web/forgotpassword',['category'=>$category]);
+    }
+    public function sendmail(Request $req){        
+        $category = Category::where([['id','>',1],['id','<',9]])->get();
+        $email = $req->email;
+        $data = DB::table('customer')->select('email')->where('email',$email)->get();
+        if(!$data->isEmpty()){
+            session()->put('email',$email);
+            $code = Str::random(6);
+            $dt = [
+                'title'=> 'Mail Từ GreenFood',
+                'body'=> 'Green Food Gửi Bạn Mã Code Để Reset Password',
+                'code'=> $code
+            ];
+            session()->put('code',$code);
+            \Mail::to($email)->send(new \App\Mail\mail($dt));            
+            $check = 1;
+            return view('Web/forgotpassword',['category'=>$category,'check'=>$check,'email'=>$email]); 
+        }else{
+            $error = 1;            
+            return view('Web/forgotpassword',['category'=>$category,'error'=>$error]);
+        }
+    }    
+    public function verifycode(Request $req){
+        $category = Category::where([['id','>',1],['id','<',9]])->get();
+        $code = $req->code;
+        $codeverify = session()->get('code');
+        if($code == $codeverify){
+            $check = 2;
+            return view('Web/forgotpassword',['category'=>$category,'check'=>$check]); 
+        }else{
+            $error = 1;            
+            $check = 1;
+            return view('Web/forgotpassword',['category'=>$category,'error'=>$error,'check'=>$check]);
+        }
+    }
+    public function getpass(Request $req){
+        $category = Category::where([['id','>',1],['id','<',9]])->get();
+        $password1 = $req->password1;
+        $password2 = $req->password2;
+        $email = session()->get('email');
+        if($password1 == $password2){
+            $data = DB::table('customer')->select('id')->where('email',$email)->first();
+            $model = customer::find($data->id);
+            $model->password = Hash::make($password1);
+            $model->save();
+            return redirect('login'); 
+        }else{
+            $error = 1;
+            $check = 2;            
+            return view('Web/forgotpassword',['category'=>$category,'error'=>$error,'check'=>$check]);
+        }
     }
 
 }

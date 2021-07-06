@@ -139,4 +139,7 @@ Route::post('hint','DController@hint');
 Route::get('changepass', 'DController@showchangepass');
 Route::post('changepass','DController@changepass')->name('changepass');
 
-Route::get('sendemail', 'DController@sendmail');
+Route::get('forgotpw', 'DController@showformmail');
+Route::post('sendemail', 'DController@sendmail')->name('sendmail');
+Route::post('verifycode', 'DController@verifycode')->name('verifycode');
+Route::post('getpass','DController@getpass')->name('getpass');
