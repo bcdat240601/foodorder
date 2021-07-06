@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\customer;
 use App\Models\Category;
+use Illuminate\Support\Str;
 
 use DB;
 class Customercontroller extends Controller
@@ -20,6 +21,10 @@ class Customercontroller extends Controller
                 return 2;
             }
         }
+        $code = session()->get('rgcode');
+        if($code != $req->code){
+            return $req->code;
+        }                    
         $CustomerName = $req -> CustomerName;
         $Address = $req -> Address;
         $Phone = $req -> Phone;
@@ -35,7 +40,7 @@ class Customercontroller extends Controller
         $customer -> password = bcrypt($Password);
 
         $customer ->save();        
-        return 0;
+        return 3;
 
     }
     public function showformaddcustomer(){
@@ -60,5 +65,16 @@ class Customercontroller extends Controller
     public function showformeditcustomer($id){
         $data = customer::find($id);
         return view('Admin/Customer/EditCustomer',['data'=>$data]);
+    }
+    public function sendmail(Request $req){
+        $email = $req->email;        
+        $code = Str::random(6);
+        $dt = [
+            'title'=> 'Mail Từ GreenFood',
+            'body'=> 'Green Food Gửi Bạn Mã Code Để Đăng Kí Tài Khoản',
+            'code'=> $code
+        ];
+        session()->put('rgcode',$code);
+        \Mail::to($email)->send(new \App\Mail\mail($dt));            
     }
 }

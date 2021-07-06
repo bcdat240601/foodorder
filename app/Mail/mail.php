@@ -29,6 +29,6 @@ class mail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Reset Password')->view('mail');
+        return $this->subject('Gửi Mã Xác Nhận')->view('Email/mail');
     }
 }
