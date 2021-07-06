@@ -43,6 +43,12 @@
                         <i ></i>
                         <input type="password" class="password" name="Password" placeholder="Enter your password" style="padding: 7.5px 7.5px;width: 100%; border: 1px solid #cccccc;outline: none;" required>
                     </div>
+                    <span id="code" style="display: none;width:332px;color:red;">Mã Xác Nhận Không Đúng</span>
+                    <div class="input-box" style="margin-bottom: 10px;">
+                        <i ></i>
+                        <input type="text" name="code" class="code" placeholder="Nhập Mã Xác Nhận" style="padding: 7.5px 7.5px;width: 80%; border: 1px solid #cccccc;outline: none;" >
+                        <button id="sendagain">Gửi Mã</button>
+                    </div>            
                     <div class="btn-box" style="text-align: right;margin-top: 30px;">
                         <button type="submit" style="padding: 7.5px 15px;border-radius: 2px;background-color: #009999;color: #ffffff;border: none;outline: none; width: 100px;" class="nhan">
                             Sign-up
@@ -63,21 +69,26 @@
             $('#SDT').css('display', 'none');
             // $('#Email1').css('display', 'none');
             $('#Email2').css('display', 'none');
+            $('#code').css('display', 'none');
             // var fullname = $('.fullname').val();
             var CustomerName = $('.name').val();
             var Password = $('.password').val();
             var Address = $('.address').val();
             // var birthday = $('.birthday').val();
             var Phone = $('.phone').val();
-            var Email = $('.email').val();                    
-            if(CustomerName != '' && Password != '' && Address != '' && Phone != '' && Email != ''){
+            var Email = $('.email').val();  
+            var code = $('.code').val();                  
+            if(CustomerName != '' && Password != '' && Address != '' && Phone != '' && Email != ''&& code != ''){
                 if (checkphone(Phone)) {                
                     if(checkfullname(CustomerName)){
-                        $.post('AddCustomer',{"_token": "{{ csrf_token() }}",CustomerName:CustomerName,Password:Password,Address:Address,Phone:Phone,Email:Email},function(data){                    
+                        $.post('AddCustomer',{"_token": "{{ csrf_token() }}",CustomerName:CustomerName,Password:Password,Address:Address,Phone:Phone,Email:Email,code:code},function(data){                    
                         if(data == 2){
                             $('#Email2').css('display', 'inline-block');                            
                         }
-                        if(data == 0){
+                        if(data == 1){
+                            $('#code').css('display', 'inline-block');                                                        
+                        }                        
+                        if(data == 3){
                             alert('Đăng Kí Thành Công,Bạn Sẽ Được Chuyển Sang Trang Đăng Nhập');
                             window.location.href = $('#urllogin').text();
                         }
@@ -92,6 +103,16 @@
                 $('#thongtin').css('display', 'inline-block');
             }        
             
+        });
+        $('#sendagain').click(function () {             
+            var Email = $('.email').val();
+            if(Email != ""){
+                $.post('rgsendemail',{"_token": "{{ csrf_token() }}",email:Email},function(){
+                    alert('Đã Gửi Mã Xác Nhận');
+                });
+            }else{
+                alert('Bạn Cần Nhập Email Để Nhận Mã Xác Nhận');
+            }     
         });
     function checkphone(pho){
         var phone = pho;
@@ -123,6 +144,13 @@
         a = a.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/, "u");
         a = a.replace(/ỳ|ý|ỵ|ỷ|ỹ/, "y");
         a = a.replace(/đ/, "d");
+        a = a.replace(/À|Á|Ạ|Ả|Ã|Â|Ầ|Ấ|Ậ|Ẩ|Ẫ|Ă|Ằ|Ắ|Ặ|Ẳ|Ẵ/,'a');
+        a = a.replace(/È|É|Ẹ|Ẻ|Ẽ|Ê|Ề|Ế|Ệ|Ể|Ễ/, "e");
+        a = a.replace(/Ì|Í|Ị|Ỉ|Ĩ/, "i");
+        a = a.replace(/Ò|Ó|Ọ|Ỏ|Õ|Ô|Ồ|Ố|Ộ|Ổ|Ỗ|Ơ|Ờ|Ớ|Ợ|Ở|Ỡ/, "o");
+        a = a.replace(/Ú|Ù|Ủ|Ũ|Ụ|Ư|Ứ|Ừ|Ử|Ữ|Ự/, "u");
+        a = a.replace(/Ý|Ỳ|Ỷ|Ỹ|Ỵ/, "y");
+        a = a.replace(/Đ/, "d");
         a = a.replace(/ {1,}/," ");
         return a;
         

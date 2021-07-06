@@ -140,6 +140,16 @@ Route::get('changepass', 'DController@showchangepass');
 Route::post('changepass','DController@changepass')->name('changepass');
 
 Route::get('forgotpw', 'DController@showformmail');
+Route::get('sendemail', function () {
+    return view('Web/invalid');
+});
+Route::get('verifycode', function () {
+    return view('Web/invalid');
+});
+Route::get('getpass', function () {
+    return view('Web/invalid');
+});
 Route::post('sendemail', 'DController@sendmail')->name('sendmail');
 Route::post('verifycode', 'DController@verifycode')->name('verifycode');
 Route::post('getpass','DController@getpass')->name('getpass');
+Route::post('Customer/rgsendemail', 'Customercontroller@sendmail');
