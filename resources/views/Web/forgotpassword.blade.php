@@ -40,7 +40,7 @@
             <div class="input-box" style="margin-bottom: 10px;">
                 <i ></i>
                 <input type="text" name="code" placeholder="Nhập Mã Xác Nhận" style="padding: 7.5px 7.5px;width: 100%; border: 1px solid #cccccc;outline: none;" >
-                <button id="sendagain">Gửi Lại Mã</button>
+                <a href="#" id="sendagain" style="display: inline-block;padding: 7.5px 15px;border-radius: 2px;background-color: orange;color: #ffffff;border: none;outline: none;">Gửi Lại Mã</a>
             </div>            
             <div class="btn-box" style="text-align: right;margin-top: 30px;">
                 <button type="submit" style="padding: 7.5px 15px;border-radius: 2px;background-color: #009999;color: #ffffff;border: none;outline: none;">

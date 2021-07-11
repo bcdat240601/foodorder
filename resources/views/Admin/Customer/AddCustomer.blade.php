@@ -34,6 +34,7 @@
                         <i ></i>
                         <input type="phone" class="phone" name="Phone" placeholder="Enter your phone" style="padding: 7.5px 7.5px;width: 100%; border: 1px solid #cccccc;outline: none;" required>
                     </div>
+                    <span id="Email1" style="display: none;width:332px;color:red;">Email Không Hợp Lệ</span>
                     <span id="Email2" style="display: none;width:332px;color:red;">Trùng Email</span>
                     <div class="input-box">
                         <i ></i>
@@ -67,7 +68,7 @@
             $('#thongtin').css('display', 'none');
             // $('#taikhoan').css('display', 'none');
             $('#SDT').css('display', 'none');
-            // $('#Email1').css('display', 'none');
+            $('#Email1').css('display', 'none');
             $('#Email2').css('display', 'none');
             $('#code').css('display', 'none');
             // var fullname = $('.fullname').val();
@@ -81,18 +82,22 @@
             if(CustomerName != '' && Password != '' && Address != '' && Phone != '' && Email != ''&& code != ''){
                 if (checkphone(Phone)) {                
                     if(checkfullname(CustomerName)){
-                        $.post('AddCustomer',{"_token": "{{ csrf_token() }}",CustomerName:CustomerName,Password:Password,Address:Address,Phone:Phone,Email:Email,code:code},function(data){                    
-                        if(data == 2){
-                            $('#Email2').css('display', 'inline-block');                            
+                        if(checkemail(Email)){
+                            $.post('AddCustomer',{"_token": "{{ csrf_token() }}",CustomerName:CustomerName,Password:Password,Address:Address,Phone:Phone,Email:Email,code:code},function(data){                    
+                                if(data == 2){
+                                    $('#Email2').css('display', 'inline-block');                            
+                                }
+                                if(data == 1){
+                                    $('#code').css('display', 'inline-block');                                                        
+                                }                        
+                                if(data == 3){
+                                    alert('Đăng Kí Thành Công,Bạn Sẽ Được Chuyển Sang Trang Đăng Nhập');
+                                    window.location.href = $('#urllogin').text();
+                                }
+                            });
+                        }else{
+                            $('#Email1').css('display', 'inline-block');
                         }
-                        if(data == 1){
-                            $('#code').css('display', 'inline-block');                                                        
-                        }                        
-                        if(data == 3){
-                            alert('Đăng Kí Thành Công,Bạn Sẽ Được Chuyển Sang Trang Đăng Nhập');
-                            window.location.href = $('#urllogin').text();
-                        }
-                    });
                     }else{
                         $('#ten').css('display', 'inline-block');
                     }                                    
@@ -123,7 +128,7 @@
     }
     function checkemail(ema){
         var email = ema;
-        if(email.match(/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/) != null){
+        if(email.match(/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{3,})$/) != null){
             return true;
         }
         return false;
