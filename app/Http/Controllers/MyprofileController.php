@@ -40,4 +40,55 @@ class MyprofileController extends Controller
         $model = DB::table('binhluan')->where('stt', '=', $row)->delete();
         return view('admin/Product/Showcomment');
     }
+    public function thongke(){
+        session()->put('typeall',1);
+        $type = $_GET['select'];
+        if ($_GET['from'] == null) {
+            $message = 'please insert started time';
+            return view('admin/thongke',['message'=>$message]);
+        }elseif($_GET['to'] == null){
+            $message = 'please insert ended time';
+            return view('admin/thongke',['message'=>$message]);
+        }elseif($_GET['from'] >= $_GET['to']){
+            $message = 'please insert correct time';
+            return view('admin/thongke',['message'=>$message]);
+        }
+        else{
+            $from = $_GET['from']." 00:00:00";
+            $to = $_GET['to']." 00:00:00";
+            if ($type == 1) {
+                $title = ['Best selling Product','Cost','Quantity'];
+                $thongke = DB::table('orderdetail')->join('food','orderdetail.FoodID','=','food.id')->select('food.FoodName','orderdetail.Subtotal',DB::raw('SUM(orderdetail.Quantity) as Quantity'))->where([['created_at','>',$from],['created_at','<',$to]])->groupBy('food.FoodName','orderdetail.Subtotal')->orderByDesc('Quantity')->take(10)->get();
+                session()->put('thongketype',1);
+            }
+            if ($type == 2) {
+                $title = ['Top Customer of time','buying time'];
+                $thongke = DB::table('orderfood')->join( 'customer','orderfood.CustomerID','=','customer.id')->select('customer.CustomerName',DB::raw('COUNT(customer.id) as solan'))->where([['created_at','>',$from],['created_at','<',$to]])->groupBy('customer.CustomerName')->orderByDesc('solan')->take(10)->get();
+                session()->put('thongketype',2);
+            }
+            return view('admin/thongke',['thongke'=>$thongke,'from'=>$from,'to'=>$to,'title'=>$title]);
+        }
+    }
+    public function thongkeloai(){
+        session()->put('typeall',2);
+        $type = $_GET['type'];
+        if ($_GET['from'] == null) {
+            $message = 'please insert started time';
+            return view('admin/thongke',['message'=>$message]);
+        }elseif($_GET['to'] == null){
+            $message = 'please insert ended time';
+            return view('admin/thongke',['message'=>$message]);
+        }elseif($_GET['from'] >= $_GET['to']){
+            $message = 'please insert correct time';
+            return view('admin/thongke',['message'=>$message]);
+        }
+        else{
+            $from = $_GET['from']." 00:00:00";
+            $to = $_GET['to']." 00:00:00";
+            $title = ['Best selling Product','Cost','Quantity'];
+            $thongke = DB::table('orderdetail')->join('food','orderdetail.FoodID','=','food.id')->select('food.FoodName','orderdetail.Subtotal',DB::raw('SUM(orderdetail.Quantity) as Quantity'))->where([['created_at','>',$from],['created_at','<',$to],['CategoryID','=',$type]])->groupBy('food.FoodName','orderdetail.Subtotal')->orderByDesc('Quantity')->take(10)->get();
+            session()->put('typesanpham',$type);
+            return view('admin/thongke',['thongke'=>$thongke,'from'=>$from,'to'=>$to,'title'=>$title]);
+        }
+    }
 }

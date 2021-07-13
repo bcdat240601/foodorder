@@ -104,7 +104,7 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="{{ asset('admin/product/thongke') }}">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span style="color: yellow">Statistical</span></a>
             </li>

@@ -13,12 +13,13 @@ class LoginAdminController extends Controller
         if ($request->getMethod() == 'GET') {
             return view('Admin/Auth/Login');
         }
-
         $credentials = $request->only(['email','password']);
         if (Auth::guard('admin')->attempt($credentials)) {
+            session()->put('islogin',1);
             return redirect()->route('dashboard');
         } else {
-            return redirect()->back()->withInput();
+            $message = 'tài khoản  không hợp lệ';
+            return view('Admin/Auth/Login',['message'=>$message]);
         }
     }
 }
