@@ -130,7 +130,11 @@ class DController extends Controller
                 'code'=> $code
             ];
             session()->put('code',$code);
-            \Mail::to($email)->send(new \App\Mail\mail($dt));            
+            if($email != null){
+                \Mail::to($email)->send(new \App\Mail\mail($dt));            
+            }else{
+                \Mail::to(session()->get('email'))->send(new \App\Mail\mail($dt));            
+            }
             $check = 1;
             return view('Web/forgotpassword',['category'=>$category,'check'=>$check,'email'=>$email]); 
         }else{
