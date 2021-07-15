@@ -1,5 +1,13 @@
 @extends('layout_Web')
 @section('content')
+<style>
+    #slide-relate{
+        /* color: red;
+        background-color: blue; */
+        width: 100%;
+        display: inline-block;
+    }
+</style>
     <div class="container">
         <div class="row">
             <div class="col-sm-3">
@@ -185,8 +193,19 @@
                         </div>
                     </div>
                 <span style="display: none" id="getcusname">@if (session()->has('namekh')){{session()->get('namekh')}}@endif</span>    
+            </div>            
             </div>
-        </div>
+            <div id="slide-relate">
+                <h2 style="display: block">MỘT SỐ SẢN PHẨM LIÊN QUAN</h2>
+                @if (isset($getrelate))
+                    @foreach ($getrelate as $item)
+                        <div class="item-relate" style="display: inline-block">
+                            <div><a href="{{ asset('detail?id='.$item->id) }}"><img style="width: 230px;height:240px;border: solid 1px black" src="{{ asset('images/product-details/'.$item->Image_Name) }}" alt=""></a></div>
+                            <div style="text-align: center"><a href="{{ asset('detail?id='.$item->id) }}">{{$item->FoodName}}</a></div>
+                        </div>
+                    @endforeach
+                @endif
+            </div>
     </div>
 </section>
 
@@ -235,8 +254,7 @@
                 alert('Bạn Chưa Nhập Gì Vào Khung Bình Luận');
             }
             
-        });
-
+        });        
     </script>
     
 @endsection
