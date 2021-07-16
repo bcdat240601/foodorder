@@ -13,8 +13,10 @@ class ShopController extends Controller
         $category = Category::where([['id','>',1],['id','<',9]])->get();
         $id = $_GET['id'];
         $data=Food::find($id);
+        $getcate = DB::table('food')->select('CategoryID')->where('id',$id)->first();
+        $getrelate = DB::table('food')->where([['CategoryID',$getcate->CategoryID],['id','<>',$id]])->inRandomOrder()->limit(10)->get();
         $binhluan = DB::table('binhluan')->join('customer','binhluan.idkh','=','customer.id')->where('idfood',$id)->orderByDesc('created_at')->get();
-        return view('web/ProductDetail',["data"=>$data,'category'=>$category,'binhluan'=>$binhluan]);
+        return view('web/ProductDetail',["data"=>$data,'category'=>$category,'binhluan'=>$binhluan,'getrelate'=>$getrelate]);
     }
 
 }
