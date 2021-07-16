@@ -96,10 +96,10 @@
                         {{-- endbinhluan --}}
                     </div><!--/product-details-->
 
-                    <div class="recommended_items"><!--recommended_items-->
+                    {{-- <div class="recommended_items"><!--recommended_items-->
                         <h2 class="title text-center" style="color: red">Related products</h2>
                         
-                        <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
+                        {{-- <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="item active">	
                                     <div class="col-sm-4">
@@ -190,12 +190,12 @@
                               <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
                                 <i class="fa fa-angle-right" style="background-color:seagreen"></i>
                               </a>			
-                        </div>
-                    </div>
+                        </div> --}}
+                    {{-- </div> --}} 
                 <span style="display: none" id="getcusname">@if (session()->has('namekh')){{session()->get('namekh')}}@endif</span>    
             </div>            
             </div>
-            <div id="slide-relate">
+            {{-- <div id="slide-relate">
                 <h2 style="display: block">MỘT SỐ SẢN PHẨM LIÊN QUAN</h2>
                 @if (isset($getrelate))
                     @foreach ($getrelate as $item)
@@ -205,8 +205,51 @@
                         </div>
                     @endforeach
                 @endif
+            </div> --}}
+        </div> 
+        <div class="row">
+            <div class="recommended_items" style="display:block;" ><!--recommended_items-->
+                <h2 class="title text-center" style="color: red">New product</h2>
+                <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <div id="slide-relate">
+                                <h2 style="display: block">MỘT SỐ SẢN PHẨM LIÊN QUAN</h2>
+                                @if (isset($getrelate))
+                                    @foreach ($getrelate as $item)
+                                        <div class="item-relate" style="display: inline-block">
+                                            <div><a href="{{ asset('detail?id='.$item->id) }}"><img style="width: 230px;height:240px;border: solid 1px seagreen" src="{{ asset('images/product-details/'.$item->Image_Name) }}" alt=""></a></div>
+                                            <div style="text-align: center"><a href="{{ asset('detail?id='.$item->id) }}">{{$item->FoodName}}</a></div>
+                                        </div>
+                                    @endforeach
+                                @endif
+                            </div>
+                        </div>
+                        <div class="item">	
+                            <div id="slide-relate">
+                                <h2 style="display: block">MỘT SỐ SẢN PHẨM LIÊN QUAN</h2>
+                                @if (isset($getrelate))
+                                    @foreach ($getrelate as $item)
+                                        <div class="item-relate" style="display: inline-block">
+                                            <div><a href="{{ asset('detail?id='.$item->id) }}"><img style="width: 230px;height:240px;border: solid 1px seagreen" src="{{ asset('images/product-details/'.$item->Image_Name) }}" alt=""></a></div>
+                                            <div style="text-align: center"><a href="{{ asset('detail?id='.$item->id) }}">{{$item->FoodName}}</a></div>
+                                        </div>
+                                    @endforeach
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
+                        <i class="fa fa-angle-left" style="background-color: #1AC8ED;margin-left: 55px;"></i>
+                    </a>
+                    <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
+                        <i class="fa fa-angle-right" style="background-color:seagreen; margin-right: 65px;"></i>
+                    </a>			
+                </div>
             </div>
+            </  
     </div>
+        
 </section>
 
 @endsection
