@@ -203,9 +203,9 @@
 						<div class="single-widget">
 							<h2 style="color:white">Community</h2>
 							<ul class="nav nav-pills nav-stacked">
-								<li><a href="">Facebook <i class="fa fa-facebook"></i> </a></li>
-								<li><a href="">Youtube <i class="fa fa-youtube-play"></i></a></li>
-								<li><a href="">Twitter <i class="fa fa-twitter"></i></a></li>
+								<li><a >Facebook <i class="fa fa-facebook"></i> </a></li>
+								<li><a >Youtube <i class="fa fa-youtube-play"></i></a></li>
+								<li><a >Twitter <i class="fa fa-twitter"></i></a></li>
 							</ul>
 						</div>
 					</div>	

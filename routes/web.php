@@ -3,10 +3,12 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\foodcontroller;
 use App\Http\Controllers\MyprofileController;
-use App\Models\Food;
-use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Models\Food;
+use App\Models\Category;
+use App\Models\User;
+use App\Models\Admin;
 
 //Route::match(['get', 'post'], '/login', [LoginUserController::class, 'login'])->name('loginuser');
 Route::post('/login',"LoginUserController@login");
@@ -59,25 +61,32 @@ Route::get('/Introduce',function(){
 });
 
 Route::get('/Shoppingguide',function(){
-    return view('Web/Shoppingguide');
+    $category = Category::where([['id','>',1],['id','<',9]])->get();
+    $items = session()->get('cart');
+    return view('Web/Shoppingguide',['items'=>$items,'category'=>$category]);
 });
 Route::get('/productdetail',function(){
     return view('Web/productdetail');
 });
 Route::get('/PaymentGuide', function(){
-    return view('Web/PaymentGuide');
+    $category = Category::where([['id','>',1],['id','<',9]])->get();
+    return view('Web/PaymentGuide',['category'=>$category]);
 });
 Route::get('/GeneralPolicy', function (){
-    return view('Web/GeneralPolicy');
+    $category = Category::where([['id','>',1],['id','<',9]])->get();
+    return view('Web/GeneralPolicy',['category'=>$category]);
 });
 Route::get('/ShippingPolicy', function (){
-    return view('Web/ShippingPolicy');
+    $category = Category::where([['id','>',1],['id','<',9]])->get();
+    return view('Web/ShippingPolicy',['category'=>$category]);
 });
 Route::get('/ReturnPolicy', function (){
-    return view('Web/ReturnPolicy');
+    $category = Category::where([['id','>',1],['id','<',9]])->get();
+    return view('Web/ReturnPolicy',['category'=>$category]);
 });
 Route::get('/InformationPrivacy', function (){
-    return view('Web/InformationPrivacy');
+    $category = Category::where([['id','>',1],['id','<',9]])->get();
+    return view('Web/InformationPrivacy',['category'=>$category]);
 });
 
 Route::get('/checkout', function(){
