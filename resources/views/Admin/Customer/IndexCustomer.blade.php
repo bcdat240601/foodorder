@@ -1,6 +1,7 @@
 @extends('admin/layout')
 @section('content')
 <div class="container">
+    <div class="table-responsive"> 
     <table class="table table-bordered display" id="table_id">
         <thead>
             <tr>
@@ -33,5 +34,6 @@
             @endforeach
         </tbody>
     </table>
+    </div>
 </div>
 @endsection

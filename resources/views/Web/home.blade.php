@@ -84,7 +84,9 @@
                     <div class="shipping text-center"><!--shipping-->
                         <img src="{{ asset('images/home/s11.jpg')}}" alt="" />
                     </div><!--/shipping-->   
-                    
+                    <div class="shipping text-center"><!--shipping-->
+                        <img src="{{ asset('img/market.jpg')}}" alt=""  style="width:270px;height:340px;"/>
+                    </div><!--/shipping--> 
                 </div>
             </div>
             

@@ -1,6 +1,7 @@
 @extends('admin/layout')
 @section('content')
 <div class="container">
+    <div class="table-responsive">
     <table class="table table-bordered display" id="table_id">
         <br>
         <button style="background-color: crimson;"><a href="{{ asset('admin/category/addcategory') }}" style="color: white">Add New Category</a></button><br>
@@ -32,5 +33,6 @@
             @endforeach
         </tbody>
     </table>
+    </div>
 </div>
 @endsection

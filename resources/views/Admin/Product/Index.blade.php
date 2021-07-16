@@ -1,6 +1,7 @@
 @extends('admin/layout')
 @section('content')
 <div class="container">
+    <div class="table-responsive"> 
     <br>
         <button style="background-color: crimson;"><a href="{{ asset('admin/product/add') }}" style="color: white">Add New Product</a></button><br>
         <br>
@@ -46,6 +47,7 @@
             @endforeach
         </tbody>
     </table>
+</div>
 </div>
     
 @endsection

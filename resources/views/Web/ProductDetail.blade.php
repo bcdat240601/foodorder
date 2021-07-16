@@ -71,8 +71,8 @@
                                     <div class="row mt-3">
                                 <input type="text" name="id" class="getidfood" value="{{$data->id}}" style="display: none">                                
                                 <div class="col-md-12"><label class="labels" for="Comment"></label> <img class="img-profile rounded-circle"src="{{ asset('img/man.png') }}" style="text-align: right;">
-                                    <input class="form-control formnhap" type="text" name="comment" placeholder="Đánh Giá Sản Phẩm..." style="width:79%;text-align:left;margin-left: 14%;margin-top: -39px;">
-                                    <button type="submit" class="btn btn-warning binhluan" style="background: #7553f1;margin-top:11px;margin-bottom: 11px;">Lưu</button>
+                                    <input class="form-control formnhap" type="text" name="comment" placeholder="Rating Product..." style="width:79%;text-align:left;margin-left: 14%;margin-top: -39px;">
+                                    <button type="submit" class="btn btn-warning binhluan" style="background: #7553f1;margin-top:11px;margin-bottom: 11px;">Post</button>
                                 </div>
                                 {{-- <div class="col-md-12">   
                             </div> --}}
@@ -80,11 +80,11 @@
                                 </div>
                         </div>
                         {{-- binhluan --}}
-                        <div id="cmtarea" style="overflow-y: scroll;height:200px;padding-top:0px;border: 1px solid black;">
+                        <div id="cmtarea" style="overflow-y: scroll;height:200px;padding-top:0px;border: 1px solid seagreen;">
                             <div class="product-information bl" style="padding-left: 0px;padding-top: 0px;padding-bottom: 0px;" >
                             @if (isset($binhluan))
                                 @foreach ($binhluan as $item)
-                                <div style="border:solid 1px;padding-left: 35px;">
+                                <div style="border:solid 1px seagreen;padding-left: 35px;">
                                     <span><img class="img-profile rounded-circle"src="{{ asset('img/man.png') }}" style="text-align: right;"><h3 class="name" style="margin-top: -58px;
                                         margin-left: 60px;">{{$item->CustomerName}}</h3></span>
                                         <span class="cmt" style=" margin-left: 64px;margin-top: -3px;">{{$item->loibinhluan}}</span>
@@ -95,103 +95,6 @@
                         </div>
                         {{-- endbinhluan --}}
                     </div><!--/product-details-->
-
-                    {{-- <div class="recommended_items"><!--recommended_items-->
-                        <h2 class="title text-center" style="color: red">Related products</h2>
-                        
-                        {{-- <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
-                            <div class="carousel-inner">
-                                <div class="item active">	
-                                    <div class="col-sm-4">
-                                        <div class="product-image-wrapper">
-                                            <div class="single-products">
-                                                <div class="productinfo text-center">
-                                                    <img src="images/home/recommend1.jpg" alt="" />
-                                                    <h2>$56</h2>
-                                                    <p>Easy Polo Black Edition</p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                                </div>
-                                                
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="product-image-wrapper">
-                                            <div class="single-products">
-                                                <div class="productinfo text-center">
-                                                    <img src="images/home/recommend2.jpg" alt="" />
-                                                    <h2>$56</h2>
-                                                    <p>Easy Polo Black Edition</p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                                </div>
-                                                
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="product-image-wrapper">
-                                            <div class="single-products">
-                                                <div class="productinfo text-center">
-                                                    <img src="images/home/recommend3.jpg" alt="" />
-                                                    <h2>$56</h2>
-                                                    <p>Easy Polo Black Edition</p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                                </div>
-                                                
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">	
-                                    <div class="col-sm-4">
-                                        <div class="product-image-wrapper">
-                                            <div class="single-products">
-                                                <div class="productinfo text-center">
-                                                    <img src="images/home/recommend1.jpg" alt="" />
-                                                    <h2>$56</h2>
-                                                    <p>Easy Polo Black Edition</p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                                </div>
-                                                
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="product-image-wrapper">
-                                            <div class="single-products">
-                                                <div class="productinfo text-center">
-                                                    <img src="images/home/recommend2.jpg" alt="" />
-                                                    <h2>$56</h2>
-                                                    <p>Easy Polo Black Edition</p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                                </div>
-                                                
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="product-image-wrapper">
-                                            <div class="single-products">
-                                                <div class="productinfo text-center">
-                                                    <img src="images/home/recommend3.jpg" alt="" />
-                                                    <h2>$56</h2>
-                                                    <p>Easy Polo Black Edition</p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                                </div>
-                                                
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                             <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
-                                <i class="fa fa-angle-left" style="background-color: seagreen"></i>
-                              </a>
-                              <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
-                                <i class="fa fa-angle-right" style="background-color:seagreen"></i>
-                              </a>			
-                        </div> --}}
-                    {{-- </div> --}} 
                 <span style="display: none" id="getcusname">@if (session()->has('namekh')){{session()->get('namekh')}}@endif</span>    
             </div>            
             </div>
@@ -209,12 +112,12 @@
         </div> 
         <div class="row">
             <div class="recommended_items" style="display:block;" ><!--recommended_items-->
-                <h2 class="title text-center" style="color: red">New product</h2>
+                <h2 class="title text-center" style="color: red">New Related product</h2>
                 <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="item active">
                             <div id="slide-relate">
-                                <h2 style="display: block">MỘT SỐ SẢN PHẨM LIÊN QUAN</h2>
+                                {{-- <h2 style="display: block">MỘT SỐ SẢN PHẨM LIÊN QUAN</h2> --}}
                                 @if (isset($getrelate))
                                     @foreach ($getrelate as $item)
                                         <div class="item-relate" style="display: inline-block">
@@ -227,7 +130,7 @@
                         </div>
                         <div class="item">	
                             <div id="slide-relate">
-                                <h2 style="display: block">MỘT SỐ SẢN PHẨM LIÊN QUAN</h2>
+                                {{-- <h2 style="display: block">MỘT SỐ SẢN PHẨM LIÊN QUAN</h2> --}}
                                 @if (isset($getrelate))
                                     @foreach ($getrelate as $item)
                                         <div class="item-relate" style="display: inline-block">
@@ -243,7 +146,7 @@
                         <i class="fa fa-angle-left" style="background-color: #1AC8ED;margin-left: 55px;"></i>
                     </a>
                     <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
-                        <i class="fa fa-angle-right" style="background-color:seagreen; margin-right: 65px;"></i>
+                        <i class="fa fa-angle-right" style="background-color:#1AC8ED; margin-right: 65px;"></i>
                     </a>			
                 </div>
             </div>

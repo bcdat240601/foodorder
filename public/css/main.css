@@ -70,7 +70,7 @@ a#scrollUp i {
 **************************/
 
 .header_top {
-    background: none repeat scroll 0 0 #F0F0E9;
+    background: none repeat scroll 0 0 #09BC8A;
 }
 
 .contactinfo ul li:first-child {
@@ -90,7 +90,7 @@ a#scrollUp i {
 .social-icons ul li a {
     border: 0 none;
     border-radius: 0;
-    color: #696763;
+    color: #D2FF28;
     padding: 0px;
 }
 
@@ -339,7 +339,7 @@ ul.sub-menu {
 **************************/
 
 #footer {
-    background: #F0F0E9;
+ 
 }
 
 .footer-top .container {
@@ -456,11 +456,10 @@ ul.sub-menu {
 }
 
 .footer-widget {
-    margin-bottom: 68px;
+    margin-bottom: 31px;
 }
 
 .footer-widget .container {
-    border-top: 1px solid #FFFFFF;
     padding-top: 15px;
 }
 
@@ -478,7 +477,7 @@ ul.sub-menu {
 }
 
 .single-widget ul li a {
-    color: #8C8C88;
+    color: #00d6d6;
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
     font-weight: 300;
@@ -491,7 +490,7 @@ ul.sub-menu {
 
 .single-widget ul li a:hover {
     background: none;
-    color: #FE980F;
+    color: #D16666;;
 }
 
 .searchform input {

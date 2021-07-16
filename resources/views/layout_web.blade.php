@@ -35,8 +35,8 @@
 					<div class="col-sm-6">
 						<div class="contactinfo">
 							<ul class="nav nav-pills">
-								<li><a href="#" style="color:red"><i class="fa fa-phone"></i> 0938800837</a></li>
-								<li><a href="#" style="color: red"><i class="fa fa-envelope"></i> anhkiettmail2@gmail.com</a></li>
+								<li><a href="#" style="color:#003049"><i class="fa fa-phone"></i> 0938800837</a></li>
+								<li><a href="#" style="color: #003049"><i class="fa fa-envelope"></i> anhkiettmail2@gmail.com</a></li>
 							</ul>
 						</div>
 					</div>
@@ -89,8 +89,10 @@
 								@endguest
 								@auth
 									<li><a href="{{ asset('logout')}}" style="color:green"><i class="fa fa-lock"></i> Logout</a></li><br>
-									<br><li>Hello!! {{Auth::user()->CustomerName}}</li>
+									<br><li><span style="color: #F56960;">Hello!! {{Auth::user()->CustomerName}}</span><span> </span><img class="img-profile rounded-circle"
+										src="{{ asset('img/undraw_profile.svg') }}" style="height: 4rem;"></li><br>
 								@endauth
+								<li><a href="{{ asset('admin/login')}}" style="color:#1AC8ED"><i class="fa fa-user"></i>Admin</a></li><br>
 							</ul>
 						</div>
 					</div>
@@ -146,12 +148,12 @@
 	<footer id="footer"><!--Footer-->
 		
 		
-		<div class="footer-widget" style="background-color: white">
-			<div class="container" style="background-color: white">
+		<div class="footer-widget" style="background-color: #002a32;line-height: 3.428571;">
+			<div class="container" style="background-color: #002a32">
 				<div class="row">
 					<div class="col-sm-2" >
 						<div class="single-widget">
-							<h2 style="color:green">About US</h2>
+							<h2 style="color:white">About US</h2>
 							<ul class="nav nav-pills nav-stacked">
 								<li><a href="#">anhkiettmail2@gmail.com</li>
 								<li><a href="#">0938800837</a></li>
@@ -161,7 +163,7 @@
 					</div>
 					<div class="col-sm-2">
 						<div class="single-widget">
-							<h2 style="color:green">Quick help</h2>
+							<h2 style="color:white">Quick help</h2>
 							<ul class="nav nav-pills nav-stacked">
 								<li><a href="{{ asset('PaymentGuide')}}">Payment Guide</a></li>
 								<li><a href="{{ asset('Shoppingguide')}}">Shopping Guide</a></li>
@@ -171,7 +173,7 @@
 					</div>
 					<div class="col-sm-2" >
 						<div class="single-widget">
-							<h2 style="color:green">Purchase Policy</h2>
+							<h2 style="color:white">Purchase Policy</h2>
 							<ul class="nav nav-pills nav-stacked">
 								<li><a href="{{ asset('ReturnPolicy')}}">Goods return Policy</a></li>
 								<li><a href="{{ asset('ShippingPolicy')}}">Shipping Policy</a></li>
@@ -180,7 +182,7 @@
 					</div>
 					<div class="col-sm-2" >
 						<div class="single-widget">
-							<h2 style="color:green">Privacy Policy</h2>
+							<h2 style="color:white">Privacy Policy</h2>
 							<ul class="nav nav-pills nav-stacked">
 								<li><a href="{{ asset('GeneralPolicy')}}">General Policies and Regulations</a></li>
 								<li><a href="{{ asset('InformationPrivacy') }}">Information privacy policy</a></li>
@@ -189,7 +191,7 @@
 					</div>
 					<div class="col-sm-2" >
 						<div class="single-widget">
-							<h2 style="color:green">Quick link</h2>
+							<h2 style="color:white">Quick link</h2>
 							<ul class="nav nav-pills nav-stacked">
 								<li><a href="{{ asset('home') }}">Home</a></li>
 								<li><a href="{{ asset('Introduce') }}">Introduce</a></li>
@@ -199,14 +201,15 @@
 					</div>
 					<div class="col-sm-2">
 						<div class="single-widget">
-							<h2 style="color:green">Community</h2>
+							<h2 style="color:white">Community</h2>
 							<ul class="nav nav-pills nav-stacked">
-								<li><a href="">Facebook</a></li>
-								<li><a href="">Youtube</a></li>
-								<li><a href="">Instagram</a></li>
+								<li><a href="">Facebook <i class="fa fa-facebook"></i> </a></li>
+								<li><a href="">Youtube <i class="fa fa-youtube-play"></i></a></li>
+								<li><a href="">Twitter <i class="fa fa-twitter"></i></a></li>
 							</ul>
 						</div>
 					</div>	
+					
 				</div>
 			</div>
 		</div>
