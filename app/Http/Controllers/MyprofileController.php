@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Food;
 use App\Models\Category;
 use App\Models\User;
+use App\Models\Admin;
 
 use DB;
 class MyprofileController extends Controller
@@ -22,6 +23,20 @@ class MyprofileController extends Controller
         $model->CustomerName = $req->name;      
         $model->Address = $req->address;
         $model->Phone = $req->phonenumber;
+        $model->email = $req->email;
+        $model->save();
+        return redirect()->back();
+    }
+    public function account(){
+        $idkh = session()->get('idad');
+        $admin = Admin::where('id','=',$idkh)->first();
+        return view('Admin/Auth/profile',['admin'=>$admin]);
+    }
+    public function editadmin(Request $req){
+        $model = Admin::find($req->id);
+        $model->name = $req->name;      
+        // $model->Address = $req->address;
+        // $model->Phone = $req->phonenumber;
         $model->email = $req->email;
         $model->save();
         return redirect()->back();

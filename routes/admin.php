@@ -77,11 +77,7 @@ Route::middleware('auth:admin')->group(function (){
 
 
 
-Route::get('/logout',function(){
-    Auth::logout();
-    session()->forget('islogin');
-    return redirect('admin/login');
-});
+Route::get('/logout',[LoginAdminController::class,'logout']);
 Route::get('product/comment/', [MyprofileController::class, 'comment']);
 Route::get('product/comment={id}', [MyprofileController::class, 'showcomment']);
 Route::get('product/comment/delete', [MyprofileController::class, 'deletecmt']);
@@ -90,4 +86,7 @@ Route::get('product/thongke', function(){
 });
 Route::get('thongkeloai',[MyprofileController::class, 'thongkeloai'])->name('thongketheoloai');
 Route::get('thongketatca',[MyprofileController::class, 'thongke'])->name('thongketatca');
+
+Route::get('/myaccount', [MyprofileController::class, 'account']);
+Route::post('edit/admin',[MyprofileController::class, 'editadmin'])->name('editadmin');
  
