@@ -172,5 +172,16 @@ class DController extends Controller
             return view('Web/forgotpassword',['category'=>$category,'error'=>$error,'check'=>$check]);
         }
     }
-
+    public function showinvoices(){
+        $category = Category::where([['id','>',1],['id','<',9]])->get();
+        $idkh = session()->get('idkh');
+        $hoadon = DB::table('orderfood')->where('CustomerID',$idkh)->get();
+        return view('user/invoices',['category'=>$category,'hoadon'=>$hoadon]);
+    }
+    public function showinvoicesdetail(){
+        $category = Category::where([['id','>',1],['id','<',9]])->get();
+        $id = $_GET['id'];
+        $hoadondt = DB::table('orderdetail')->where('OrderFoodID',$id)->get();
+        return view('user/invoicesdetail',['category'=>$category,'hoadondt'=>$hoadondt]);
+    }
 }

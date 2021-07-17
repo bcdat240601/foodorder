@@ -1,12 +1,13 @@
 @extends('layout_web')
 @section('content')
 <div class="container rounded bg-white mt-5 mb-5">
-    <div class="row">
+    <div class="row" style="margin-bottom: 80px;border-top: solid 1px;border-bottom: solid 1px;padding-bottom:25px;padding-top:25px">
         <div class="col-md-3 border-right">
             <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
                 <span class="font-weight-bold">{{$user->CustomerName}}</span><br>
                 <span class="text-black-50">{{$user->email}}</span>
-                <button style="text-align: center"><a href="{{ asset('changepass') }}">Đổi mật khẩu</a></button>
+                <button class="btn btn-info" style="text-align: center;width: 150px;margin: 10px 0 10px 0"><a style="color: white" href="{{ asset('changepass') }}">Change Password</a></button>
+                <button class="btn btn-info" style="text-align: center;width: 150px;margin: 10px 0 10px 0"><a style="color: white" href="{{ asset('invoices') }}">Purchase History</a></button>
             </div>            
         </div>
         <div class="col-md-5 border-right">

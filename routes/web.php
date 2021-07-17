@@ -162,3 +162,6 @@ Route::post('sendemail', 'DController@sendmail')->name('sendmail');
 Route::post('verifycode', 'DController@verifycode')->name('verifycode');
 Route::post('getpass','DController@getpass')->name('getpass');
 Route::post('Customer/rgsendemail', 'Customercontroller@sendmail');
+
+Route::get('invoices','DController@showinvoices');
+Route::get('invoicesdetail','DController@showinvoicesdetail');
