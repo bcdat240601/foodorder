@@ -130,7 +130,7 @@
                         @endif
                     </div>
                 @else
-                <h2>Không Tìm Thấy Sản Phẩm</h2>
+                <h2>Product Not Found !!!!</h2>
                 @endif
                 </div><!--features_items-->
             </div>
@@ -148,13 +148,17 @@
 
             var id_sl="sl-"+id;
             var soluong=$("#"+id_sl).val();
-
+            if(!Math.floor(soluong) == soluong || !$.isNumeric(soluong)){
+                alert('You Entered Wrong Number Of Quantity!!!!!');
+                $("#"+id_sl).focus();
+                return;
+            }
             var id_price="price-"+id;
             var price =$("#"+id_price).text();
             var name =$(this).data("name");
             
-            if (soluong=="" && soluong ==0){
-                alert("không co")
+            if (soluong == "" || soluong == 0){
+                alert("You Entered Wrong Number Of Quantity!!!")
                 $("#"+id_sl).focus();
                 return;
             }
@@ -171,18 +175,18 @@
         });
         $('.add-wish').click(function () {      
             var name = $(this).data('name');                   
-            var f = confirm('Bạn Có Chắc Muốn Thêm '+name+' Vào Danh Sách Ưa Thích');
+            var f = confirm('Are You Sure To Add '+name+' To Wishlist ?');
             var id = $(this).data('id');
             if(f == true){                
                 $.get('addwish',{id:id},function(data){
                     if(data == 0){
-                        alert('Bạn Phải Đăng Nhập Để Thêm Sản Phẩm Vào Danh Sách Yêu Thích');                        
+                        alert('You Must Login To Add This Item To Wishlist');                        
                     }
                     if(data == 1){
-                        alert('Thêm Vào Danh Sách Yêu Thích Thành Công');                        
+                        alert('Add To Wishlist Successfully');                        
                     }
                     if(data == 2){
-                        alert('Đã Thêm Sản Phẩm Này Vào Danh Sách Ưa Thích');                        
+                        alert('This Product Is Already In Wishlist');                        
                     }                    
                 });
             }            

@@ -73,7 +73,7 @@ class DController extends Controller
         if($hint != null){
             $data = DB::table('food')->select('id','FoodName')->where('FoodName','LIKE',"%{$hint}%")->get();
             if(!$data->isEmpty()){
-                $output = '<ul class="dropdown-menu" style="display:block">';        
+                $output = '<ul class="dropdown-menu" style="display:block;">';        
                 foreach ($data as $value) {
                     $output .= '<li><a href="'.url("/detail?id={$value->id}").'" class="item">'.$value->FoodName.'</a></li>';
                 }            

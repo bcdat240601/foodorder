@@ -82,7 +82,7 @@
                                         <a class="small">Already have an account? Login!</a>                                        
                                     </div> --}}
                                     <div class="text-center">
-                                        <a href="{{ asset('') }}">Về Trang Chủ</a>
+                                        <a href="{{ asset('home') }}">Back To Home</a>
                                     </div>                                    
                                 </div>
                             </div>

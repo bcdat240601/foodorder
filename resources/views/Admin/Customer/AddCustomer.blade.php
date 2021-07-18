@@ -19,8 +19,8 @@
             <div class="container" style="width: 100%; max-width: 1200px; margin-left: auto; margin-right: auto;">
             <div class="login-form" style="width: 100%; max-width: 500px; margin: 30px auto;  background-color: #ffffff; padding: 20px; border: 3px dotted #cccccc; border-radius: 10px;">                                                    
                     <h1 style="color:red; font-size: 20px; margin-bottom: 30px;">New User Signup!</h1>
-                    <span id="thongtin" style="display: none;width:332px;color:red;">Thiếu Thông Tin, Xin Vui Lòng Điền Đầy Đủ Thông Tin</span>
-                    <span id="ten" style="display: none;width:332px;color:red;">Tên Người Dùng Có Kí Tự Đặc Biệt</span>
+                    <span id="thongtin" style="display: none;width:332px;color:red;">Missing Information, Please Fill In Full Information</span>
+                    <span id="ten" style="display: none;width:332px;color:red;">Customer Name With Special Characters</span>
                     <div class="input-box" >
                         <i ></i>
                         <input type="name" class="name" name="CustomerName" placeholder="Enter your customer name" style="padding: 7.5px 7.5px;width: 100%; border: 1px solid #cccccc;outline: none;" required>
@@ -29,13 +29,13 @@
                         <i ></i>
                         <input type="Address" class="address" name="Address" placeholder="Enter your address" style="padding: 7.5px 7.5px;width: 100%; border: 1px solid #cccccc;outline: none;" required>
                     </div>
-                    <span id="SDT" style="display: none;width:332px;color:red;">Sai Hoặc Thiếu Số Điện Thoại</span>    
+                    <span id="SDT" style="display: none;width:332px;color:red;">Wrong Phone Number</span>    
                     <div class="input-box">
                         <i ></i>
                         <input type="phone" class="phone" name="Phone" placeholder="Enter your phone" style="padding: 7.5px 7.5px;width: 100%; border: 1px solid #cccccc;outline: none;" required>
                     </div>
-                    <span id="Email1" style="display: none;width:332px;color:red;">Email Không Hợp Lệ</span>
-                    <span id="Email2" style="display: none;width:332px;color:red;">Trùng Email</span>
+                    <span id="Email1" style="display: none;width:332px;color:red;">Invalid Email</span>
+                    <span id="Email2" style="display: none;width:332px;color:red;">Email Exist</span>
                     <div class="input-box">
                         <i ></i>
                         <input type="email" class="email" name="Email" placeholder="Enter your email" style="padding: 7.5px 7.5px;width: 100%; border: 1px solid #cccccc;outline: none;" required>
@@ -44,11 +44,11 @@
                         <i ></i>
                         <input type="password" class="password" name="Password" placeholder="Enter your password" style="padding: 7.5px 7.5px;width: 100%; border: 1px solid #cccccc;outline: none;" required>
                     </div>
-                    <span id="code" style="display: none;width:332px;color:red;">Mã Xác Nhận Không Đúng</span>
+                    <span id="code" style="display: none;width:332px;color:red;">Wrong Verify Code</span>
                     <div class="input-box" style="margin-bottom: 10px;">
                         <i ></i>
-                        <input type="text" name="code" class="code" placeholder="Nhập Mã Xác Nhận" style="padding: 7.5px 7.5px;width: 80%; border: 1px solid #cccccc;outline: none;" >
-                        <button id="sendagain">Gửi Mã</button>
+                        <input type="text" name="code" class="code" placeholder="Nhập Mã Xác Nhận" style="padding: 7.5px 7.5px;width: 72%; border: 1px solid #cccccc;outline: none;" >
+                        <button id="sendagain" style="background-color: orange">Send Verify Code</button>
                     </div>            
                     <div class="btn-box" style="text-align: right;margin-top: 30px;">
                         <button type="submit" style="padding: 7.5px 15px;border-radius: 2px;background-color: #009999;color: #ffffff;border: none;outline: none; width: 100px;" class="nhan">
@@ -91,7 +91,7 @@
                                     $('#code').css('display', 'inline-block');                                                        
                                 }                        
                                 if(data == 3){
-                                    alert('Đăng Kí Thành Công,Bạn Sẽ Được Chuyển Sang Trang Đăng Nhập');
+                                    alert('Sign Up Successfully,You will be redirected to the Login Page');
                                     window.location.href = $('#urllogin').text();
                                 }
                             });
@@ -113,10 +113,10 @@
             var Email = $('.email').val();
             if(Email != ""){
                 $.post('rgsendemail',{"_token": "{{ csrf_token() }}",email:Email},function(){
-                    alert('Đã Gửi Mã Xác Nhận');
+                    alert('The Code Has Been Sent');
                 });
             }else{
-                alert('Bạn Cần Nhập Email Để Nhận Mã Xác Nhận');
+                alert('You Must Enter Your Email First');
             }     
         });
     function checkphone(pho){

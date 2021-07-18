@@ -20,11 +20,11 @@
                     <div class="row mt-2">
                         <div class="row mt-3">                                        
                             <input type="text" name="id" value="{{$user->id}}" style="display: none">
-                            <div class="col-md-12"><label class="labels" for="name">Tên</label><input class="form-control" type="text" name="name" value="{{$user->CustomerName}}"></div>
-                            <div class="col-md-12"><label class="labels" for="address">Địa Chỉ</label><input class="form-control" type="text" name="address" value="{{$user->Address}}"></div>
-                            <div class="col-md-12"><label class="labels" for="phonenumber">Số điện thoại</label><input class="form-control" type="text" name="phonenumber" value="{{$user->Phone}}"></div>
+                            <div class="col-md-12"><label class="labels" for="name">Name</label><input class="form-control" type="text" name="name" value="{{$user->CustomerName}}"></div>
+                            <div class="col-md-12"><label class="labels" for="address">Address</label><input class="form-control" type="text" name="address" value="{{$user->Address}}"></div>
+                            <div class="col-md-12"><label class="labels" for="phonenumber">Phone Number</label><input class="form-control" type="text" name="phonenumber" value="{{$user->Phone}}"></div>
                             <div class="col-md-12"><label class="labels" for="email">Email</label><input class="form-control" type="email" name="email" value="{{$user->email}}"></div>
-                           <div class="col-md-12"><button type="submit" class="btn btn-warning" style="background: #d1e528;">lưu</button>
+                           <div class="col-md-12"><button type="submit" class="btn btn-warning" style="background: #d1e528;margin-top: 20px">Save</button>
                         </div>
                     </div>
                 </form>

@@ -131,7 +131,7 @@ class CartController extends Controller
             $cthd->save();
         }        
         session()->forget('cart');
-        echo 'Add Bill Thành Công';
+        echo 'Add Bill Successfully';
     }
     // public function count(){
     //     $cart=session()->get('cart');
