@@ -13,7 +13,7 @@ use DB;
 class MyprofileController extends Controller
 {
     public function show(){
-        $category = Category::where([['id','>',1],['id','<',9]])->get();
+        $category = DB::table('category')->get();
         $idkh = session()->get('idkh');
         $user = User::where('id','=',$idkh)->first();
         $items = session()->get('cart');

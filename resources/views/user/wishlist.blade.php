@@ -50,5 +50,36 @@
                 });
             }
         });
+        $(".add-to-cart").click(function (e) { 
+            var id =$(this).data("id");  
+            
+
+            var id_sl="sl-"+id;
+            var soluong=$("#"+id_sl).val();
+            if(!Math.floor(soluong) == soluong || !$.isNumeric(soluong)){
+                alert('You Entered Wrong Number Of Quantity!!!!!');
+                $("#"+id_sl).focus();
+                return;
+            }   
+            var id_price="price-"+id;
+            var price =$("#"+id_price).text();
+            var name =$(this).data("name");
+            
+            if (soluong=="" || soluong == 0){
+                alert("You Entered Wrong Number Of Quantity!!!")
+                $("#"+id_sl).focus();
+                return;
+            }
+           
+            $.get("{{ URL::asset('addtocart') }}", {name:name, id:id, sl:soluong, price:price},  
+                function (data) {
+                    alert('You have successfully added the product to your cart');    
+                }
+            );
+            
+
+            
+            
+        });
     </script>
 @endsection

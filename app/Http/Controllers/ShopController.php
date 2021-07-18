@@ -10,7 +10,7 @@ use DB;
 class ShopController extends Controller
 {
     public function show(){
-        $category = Category::where([['id','>',1],['id','<',9]])->get();
+        $category = DB::table('category')->get();
         $id = $_GET['id'];
         $data=Food::find($id);
         $getcate = DB::table('food')->select('CategoryID')->where('id',$id)->first();

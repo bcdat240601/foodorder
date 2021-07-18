@@ -11,7 +11,7 @@ class foodcontroller extends Controller
 {
     public function show(){
         $id = $_GET['id'];
-        $category = Category::where([['id','>',1],['id','<',9]])->get();
+        $category = DB::table('category')->get();
         $data=null;
         if($id=="all")
             $data = Food::paginate(9);
