@@ -97,86 +97,56 @@
                     <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="item active">	
+                                @if (isset($new))
+                                @foreach ($new as $item)	
                                 <div class="col-sm-4">
                                     <div class="product-image-wrapper">
                                         <div class="single-products">
                                             <div class="productinfo text-center">
-                                                <img src="images/home/recommend1.jpg" alt="" />
-                                                <h2>$56</h2>
-                                                <p>Easy Polo Black Edition</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                                <img style="height: 255px;" src="{{ asset('images/product-details/'.$item->Image_Name) }}" alt="" />
+                                                <h2>${{$item->Price}}</h2>
+                                                <p style="color: #0D5C63;">{{$item->FoodName}}</p>
+                                                {{-- <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a> --}}
                                             </div>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="product-image-wrapper">
-                                        <div class="single-products">
-                                            <div class="productinfo text-center">
-                                                <img src="images/home/recommend2.jpg" alt="" />
-                                                <h2>$56</h2>
-                                                <p>Easy Polo Black Edition</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                            <div class="product-overlay">
+                                                <div class="overlay-content">
+                                                    <h2><span id="price-{{$item->id}}">{{$item->Price}}</span><span> đ</span></h2>
+                                                    <p style="color: #0D5C63;">{{$item->FoodName}}</p>
+                                                    <input type="text" id="sl-{{$item->id}}" value="1" required>
+                                                    <button  class="btn btn-default add-to-cart" data-name="{{$item->FoodName}}" data-id="{{$item->id}}"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+                                                </div>
                                             </div>
-                                            
                                         </div>
-                                    </div>
+                                    </div>  
                                 </div>
-                                <div class="col-sm-4">
-                                    <div class="product-image-wrapper">
-                                        <div class="single-products">
-                                            <div class="productinfo text-center">
-                                                <img src="images/home/recommend3.jpg" alt="" />
-                                                <h2>$56</h2>
-                                                <p>Easy Polo Black Edition</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                            </div>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
+                                @endif  
                             </div>
                             <div class="item">	
+                                @if (isset($new))
+                                @foreach ($new as $item)	
                                 <div class="col-sm-4">
                                     <div class="product-image-wrapper">
                                         <div class="single-products">
                                             <div class="productinfo text-center">
-                                                <img src="images/home/recommend1.jpg" alt="" />
-                                                <h2>$56</h2>
-                                                <p>Easy Polo Black Edition</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                                <img style="height: 255px;" src="{{ asset('images/product-details/'.$item->Image_Name) }}" alt="" />
+                                                <h2>${{$item->Price}}</h2>
+                                                <p style="color: #0D5C63;">{{$item->FoodName}}</p>
+                                                {{-- <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a> --}}
                                             </div>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="product-image-wrapper">
-                                        <div class="single-products">
-                                            <div class="productinfo text-center">
-                                                <img src="images/home/recommend2.jpg" alt="" />
-                                                <h2>$56</h2>
-                                                <p>Easy Polo Black Edition</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                            <div class="product-overlay">
+                                                <div class="overlay-content">
+                                                    <h2><span id="price-{{$item->id}}">{{$item->Price}}</span><span> đ</span></h2>
+                                                    <p style="color: #0D5C63;">{{$item->FoodName}}</p>
+                                                    <input type="text" id="sl-{{$item->id}}" value="1" required>
+                                                    <button  class="btn btn-default add-to-cart" data-name="{{$item->FoodName}}" data-id="{{$item->id}}"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+                                                </div>
                                             </div>
-                                            
                                         </div>
-                                    </div>
+                                    </div>  
                                 </div>
-                                <div class="col-sm-4">
-                                    <div class="product-image-wrapper">
-                                        <div class="single-products">
-                                            <div class="productinfo text-center">
-                                                <img src="images/home/recommend3.jpg" alt="" />
-                                                <h2>$56</h2>
-                                                <p>Easy Polo Black Edition</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                            </div>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
+                                @endif
                             </div>
                         </div>
                          <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
@@ -188,261 +158,157 @@
                     </div>
                 </div>
                 <div class="recommended_items"><!--recommended_items-->
-                    <h2 class="title text-center" style="color: red">Promotional products</h2>
+                    <h2 class="title text-center" style="color: red">Best Seller products</h2>
                     
                     <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
-                            <div class="item active">	
+                            <div class="item active">
+                                @if (isset($thongke))
+                                @foreach ($thongke as $item)	
                                 <div class="col-sm-4">
                                     <div class="product-image-wrapper">
                                         <div class="single-products">
                                             <div class="productinfo text-center">
-                                                <img src="images/home/recommend1.jpg" alt="" />
-                                                <h2>$56</h2>
-                                                <p>Easy Polo Black Edition</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                                <img style="height: 255px;" src="{{ asset('images/product-details/'.$item->Image_Name) }}" alt="" />
+                                                <h2>${{$item->Price}}</h2>
+                                                <p style="color: #0D5C63;">{{$item->FoodName}}</p>
+                                                {{-- <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a> --}}
                                             </div>
-                                            
+                                            <div class="product-overlay">
+                                                <div class="overlay-content">
+                                                    <h2><span id="price-{{$item->id}}">{{$item->Price}}</span><span> đ</span></h2>
+                                                    <p style="color: #0D5C63;">{{$item->FoodName}}</p>
+                                                    <input type="text" id="sl-{{$item->id}}" value="1" required>
+                                                    <button  class="btn btn-default add-to-cart" data-name="{{$item->FoodName}}" data-id="{{$item->id}}"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+                                                </div>
+                                            </div>   
                                         </div>
-                                    </div>
+                                    </div>  
                                 </div>
-                                <div class="col-sm-4">
-                                    <div class="product-image-wrapper">
-                                        <div class="single-products">
-                                            <div class="productinfo text-center">
-                                                <img src="images/home/recommend2.jpg" alt="" />
-                                                <h2>$56</h2>
-                                                <p>Easy Polo Black Edition</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                            </div>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="product-image-wrapper">
-                                        <div class="single-products">
-                                            <div class="productinfo text-center">
-                                                <img src="images/home/recommend3.jpg" alt="" />
-                                                <h2>$56</h2>
-                                                <p>Easy Polo Black Edition</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                            </div>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
+                                @endif
                             </div>
                             <div class="item">	
+                                @if (isset($thongke))
+                                @foreach ($thongke as $item)	
                                 <div class="col-sm-4">
                                     <div class="product-image-wrapper">
                                         <div class="single-products">
                                             <div class="productinfo text-center">
-                                                <img src="images/home/recommend1.jpg" alt="" />
-                                                <h2>$56</h2>
-                                                <p>Easy Polo Black Edition</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                                <img style="height: 255px;" src="{{ asset('images/product-details/'.$item->Image_Name) }}" alt=""  />
+                                                <h2>${{$item->Price}}</h2>
+                                                <p style="color: #0D5C63;">{{$item->FoodName}}</p>
+                                                {{-- <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a> --}}
                                             </div>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="product-image-wrapper">
-                                        <div class="single-products">
-                                            <div class="productinfo text-center">
-                                                <img src="images/home/recommend2.jpg" alt="" />
-                                                <h2>$56</h2>
-                                                <p>Easy Polo Black Edition</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                            <div class="product-overlay">
+                                                <div class="overlay-content">
+                                                    <h2><span id="price-{{$item->id}}">{{$item->Price}}</span><span> đ</span></h2>
+                                                    <p style="color: #0D5C63;">{{$item->FoodName}}</p>
+                                                    <input type="text" id="sl-{{$item->id}}" value="1" required>
+                                                    <button  class="btn btn-default add-to-cart" data-name="{{$item->FoodName}}" data-id="{{$item->id}}"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+                                                </div>
                                             </div>
-                                            
                                         </div>
-                                    </div>
+                                    </div>  
                                 </div>
-                                <div class="col-sm-4">
-                                    <div class="product-image-wrapper">
-                                        <div class="single-products">
-                                            <div class="productinfo text-center">
-                                                <img src="images/home/recommend3.jpg" alt="" />
-                                                <h2>$56</h2>
-                                                <p>Easy Polo Black Edition</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                            </div>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
+                                @endif
                             </div>
                         </div>
                          <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
-                            <i class="fa fa-angle-left"></i>
+                            {{-- <i class="fa fa-angle-left"></i> --}}
                           </a>
                           <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
-                            <i class="fa fa-angle-right"></i>
+                            {{-- <i class="fa fa-angle-right"></i> --}}
                           </a>			
                     </div>
                 </div>
                 <div class="features_items"><!--features_items-->
                     <h2 class="title text-center" style="color: red">All Product</h2>
+                    @if (isset($all))
+                     @foreach ($all as $item)	
                     <div class="col-sm-4">
                         <div class="product-image-wrapper">
                             <div class="single-products">
                                     <div class="productinfo text-center">
-                                        <img src="images/home/product1.jpg" alt="" />
-                                        <h2>$56</h2>
-                                        <p>Easy Polo Black Edition</p>
-                                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                        <img style="height: 255px;" src="{{ asset('images/product-details/'.$item->Image_Name) }}" alt="" />
+                                        <h2>{{$item->Price}}đ</h2>
+                                        <p style="color: #0D5C63;">{{$item->FoodName}}</p>
+                                        {{-- <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a> --}}
                                     </div>
                                     <div class="product-overlay">
                                         <div class="overlay-content">
-                                            <h2>$56</h2>
-                                            <p>Easy Polo Black Edition</p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                            <h2><span id="price-{{$item->id}}">{{$item->Price}}</span><span> đ</span></h2>
+                                            <p style="color: #0D5C63;">{{$item->FoodName}}</p>
+                                            <input type="text" id="sl-{{$item->id}}" value="1" required>
+                                            <button  class="btn btn-default add-to-cart" data-name="{{$item->FoodName}}" data-id="{{$item->id}}"><i class="fa fa-shopping-cart"></i>Add to cart</button>
                                         </div>
                                     </div>
                             </div>
                             <div class="choose">
                                 <ul class="nav nav-pills nav-justified">
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
+                                    <li><a href="{{ asset('/detail?id='.$item->id) }}"><i class="fa fa-plus-square"></i>Detail</a></li>
+                                    <li><button class="add-wish" data-name="{{$item->FoodName}}" data-id="{{$item->id}}"><i class="fa fa-plus-square"></i>Add to wishlist</button></li>
+                                    {{-- <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li> --}}
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-4">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <img src="images/home/product2.jpg" alt="" />
-                                    <h2>$56</h2>
-                                    <p>Easy Polo Black Edition</p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                </div>
-                                <div class="product-overlay">
-                                    <div class="overlay-content">
-                                        <h2>$56</h2>
-                                        <p>Easy Polo Black Edition</p>
-                                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="choose">
-                                <ul class="nav nav-pills nav-justified">
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <img src="images/home/product3.jpg" alt="" />
-                                    <h2>$56</h2>
-                                    <p>Easy Polo Black Edition</p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                </div>
-                                <div class="product-overlay">
-                                    <div class="overlay-content">
-                                        <h2>$56</h2>
-                                        <p>Easy Polo Black Edition</p>
-                                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="choose">
-                                <ul class="nav nav-pills nav-justified">
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <img src="images/home/product4.jpg" alt="" />
-                                    <h2>$56</h2>
-                                    <p>Easy Polo Black Edition</p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                </div>
-                                <div class="product-overlay">
-                                    <div class="overlay-content">
-                                        <h2>$56</h2>
-                                        <p>Easy Polo Black Edition</p>
-                                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                    </div>
-                                </div>
-                                <img src="images/home/new.png" class="new" alt="" />
-                            </div>
-                            <div class="choose">
-                                <ul class="nav nav-pills nav-justified">
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <img src="images/home/product5.jpg" alt="" />
-                                    <h2>$56</h2>
-                                    <p>Easy Polo Black Edition</p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                </div>
-                                <div class="product-overlay">
-                                    <div class="overlay-content">
-                                        <h2>$56</h2>
-                                        <p>Easy Polo Black Edition</p>
-                                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                    </div>
-                                </div>
-                                <img src="images/home/sale.png" class="new" alt="" />
-                            </div>
-                            <div class="choose">
-                                <ul class="nav nav-pills nav-justified">
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <img src="images/home/product6.jpg" alt="" />
-                                    <h2>$56</h2>
-                                    <p>Easy Polo Black Edition</p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                </div>
-                                <div class="product-overlay">
-                                    <div class="overlay-content">
-                                        <h2>$56</h2>
-                                        <p>Easy Polo Black Edition</p>
-                                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="choose">
-                                <ul class="nav nav-pills nav-justified">
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                 
-                
+                    @endforeach
+                    @endif
                 </div><!--features_items-->
                 
             </div>
         </div>
     </div>
 </section>
+@endsection
+@section('scripts')
+    <script>
+        $(".add-to-cart").click(function (e) { 
+            var id =$(this).data("id");  
+            
+
+            var id_sl="sl-"+id;
+            var soluong=$("#"+id_sl).val();
+
+            var id_price="price-"+id;
+            var price =$("#"+id_price).text();
+            var name =$(this).data("name");
+            
+            if (soluong=="" && soluong ==0){
+                alert("không co")
+                $("#"+id_sl).focus();
+                return;
+            }
+           
+            $.get("{{ URL::asset('addtocart') }}", {name:name, id:id, sl:soluong, price:price},  
+                function (data) {
+                    alert('You have successfully added the product to your cart');    
+                }
+            );
+            
+
+            
+            
+        });
+        $('.add-wish').click(function () {      
+            var name = $(this).data('name');                   
+            var f = confirm('Bạn Có Chắc Muốn Thêm '+name+' Vào Danh Sách Ưa Thích');
+            var id = $(this).data('id');
+            if(f == true){                
+                $.get('addwish',{id:id},function(data){
+                    if(data == 0){
+                        alert('Bạn Phải Đăng Nhập Để Thêm Sản Phẩm Vào Danh Sách Yêu Thích');                        
+                    }
+                    if(data == 1){
+                        alert('Thêm Vào Danh Sách Yêu Thích Thành Công');                        
+                    }
+                    if(data == 2){
+                        alert('Đã Thêm Sản Phẩm Này Vào Danh Sách Ưa Thích');                        
+                    }                    
+                });
+            }            
+        });
+    </script>
 @endsection

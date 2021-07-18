@@ -7,6 +7,7 @@ use App\Models\Food;
 use App\Models\Category;
 use App\Models\User;
 use App\Models\Admin;
+use Carbon\Carbon;
 
 use DB;
 class MyprofileController extends Controller
@@ -105,5 +106,11 @@ class MyprofileController extends Controller
             session()->put('typesanpham',$type);
             return view('admin/thongke',['thongke'=>$thongke,'from'=>$from,'to'=>$to,'title'=>$title]);
         }
+    }
+    public function home(){
+        $past='2021-06-30 17:11:24';
+        $now = Carbon::now();
+        $thongke = DB::table('orderdetail')->join('food','orderdetail.FoodID','=','food.id')->select('food.FoodName','food.Image_Name','orderdetail.Subtotal',DB::raw('SUM(orderdetail.Quantity) as Quantity'))->where([['created_at','>',$past],['created_at','<',$now]])->groupBy('food.FoodName','orderdetail.Subtotal')->orderByDesc('Quantity')->take(3)->get();
+        
     }
 }

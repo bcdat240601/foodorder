@@ -2,21 +2,14 @@
 
 use App\Http\Controllers\LoginAdminController;
 use App\Http\Controllers\MyprofileController;
-use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\admin\HomeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
 
 Route::match(['get', 'post'], '/login', [LoginAdminController::class, 'login'])->name('admin.login');
 Route::middleware('auth:admin')->group(function (){
-    Route::get('/', function(){ 
-        if(session('islogin') == 1){
-            $user = Auth::guard('admin')->user();
-        //    echo 'Xin chào Admin, '. $user->name;
-            return view('admin/home');
-            }
-            else return  view('Admin/Auth/Login');
-    })->name('dashboard');
+    Route::get('/',[HomeController::class, 'index'])->name('dashboard');
     Route::group(['prefix'=>'/product'],function(){
         Route::get('/index', function(){
             return view("admin/Product/index");
@@ -89,4 +82,4 @@ Route::get('thongketatca',[MyprofileController::class, 'thongke'])->name('thongk
 
 Route::get('/myaccount', [MyprofileController::class, 'account']);
 Route::post('edit/admin',[MyprofileController::class, 'editadmin'])->name('editadmin');
- 
+Route::get('/aha', [MyprofileController::class, 'home']);
