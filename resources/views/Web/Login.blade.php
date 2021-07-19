@@ -16,7 +16,7 @@
                     @csrf
                     <h1 style="color:red; font-size: 20px; margin-bottom: 30px;">Login to your account</h1>
                     @if (isset($check))
-                        <span style="color: red">Wrong Account Or Password</span>
+                        <span style="color: red">Wrong Email Or Password</span>
                     @endif
                     <div class="input-box" style="margin-bottom: 10px;">
                         <i ></i>
