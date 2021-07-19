@@ -61,7 +61,7 @@ class CartController extends Controller
         return $found;
     }
     public function show(){
-        $category = Category::where([['id','>',1],['id','<',9]])->get();
+        $category = DB::table('category')->get();
         $cart= session()->get("cart");
         return view('web/Cart',['data'=>$cart,'category'=>$category]);
     }
@@ -131,7 +131,7 @@ class CartController extends Controller
             $cthd->save();
         }        
         session()->forget('cart');
-        echo 'Add Bill Thành Công';
+        echo 'Add Bill Successfully';
     }
     // public function count(){
     //     $cart=session()->get('cart');

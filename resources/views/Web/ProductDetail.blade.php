@@ -122,7 +122,7 @@
                                     @foreach ($getrelate as $item)
                                         <div class="item-relate" style="display: inline-block">
                                             <div><a href="{{ asset('detail?id='.$item->id) }}"><img style="width: 230px;height:240px;border: solid 1px seagreen" src="{{ asset('images/product-details/'.$item->Image_Name) }}" alt=""></a></div>
-                                            <div style="text-align: center"><a href="{{ asset('detail?id='.$item->id) }}">{{$item->FoodName}}</a></div>
+                                            <div style="text-align: center;max-width: 230px;overflow: hidden;white-space: nowrap"><a href="{{ asset('detail?id='.$item->id) }}">{{$item->FoodName}}</a></div>
                                         </div>
                                     @endforeach
                                 @endif
@@ -135,7 +135,7 @@
                                     @foreach ($getrelate as $item)
                                         <div class="item-relate" style="display: inline-block">
                                             <div><a href="{{ asset('detail?id='.$item->id) }}"><img style="width: 230px;height:240px;border: solid 1px seagreen" src="{{ asset('images/product-details/'.$item->Image_Name) }}" alt=""></a></div>
-                                            <div style="text-align: center"><a href="{{ asset('detail?id='.$item->id) }}">{{$item->FoodName}}</a></div>
+                                            <div style="text-align: center;max-width: 230px;overflow: hidden;white-space: nowrap"><a href="{{ asset('detail?id='.$item->id) }}">{{$item->FoodName}}</a></div>
                                         </div>
                                     @endforeach
                                 @endif

@@ -17,7 +17,7 @@ class DController extends Controller
 {
     public function showwishlist(){
         $idkh = session()->get('idkh');
-        $category = Category::where([['id','>',1],['id','<',9]])->get();
+        $category = DB::table('category')->get();
         $wishitem = DB::table('wishlist')->join('food','wishlist.idfood','=','food.id')->where('idkh',$idkh)->get();
         return view('user/wishlist',['category'=>$category,'wishlist'=>$wishitem]);
     }
@@ -63,7 +63,7 @@ class DController extends Controller
 
     }
     public function search(){
-        $category = Category::where([['id','>',1],['id','<',9]])->get();
+        $category = DB::table('category')->get();
         $search = $_GET['search'];
         $data = DB::table('food')->where('FoodName','LIKE',"%{$search}%")->paginate(9);
         return view ("Web/Shop", ["data"=>$data,'category'=>$category,'search'=>$search]);
@@ -73,7 +73,7 @@ class DController extends Controller
         if($hint != null){
             $data = DB::table('food')->select('id','FoodName')->where('FoodName','LIKE',"%{$hint}%")->get();
             if(!$data->isEmpty()){
-                $output = '<ul class="dropdown-menu" style="display:block">';        
+                $output = '<ul class="dropdown-menu" style="display:block;">';        
                 foreach ($data as $value) {
                     $output .= '<li><a href="'.url("/detail?id={$value->id}").'" class="item">'.$value->FoodName.'</a></li>';
                 }            
@@ -114,11 +114,11 @@ class DController extends Controller
         }        
     }
     public function showformmail(){
-        $category = Category::where([['id','>',1],['id','<',9]])->get();
+        $category = DB::table('category')->get();
         return view('Web/forgotpassword',['category'=>$category]);
     }
     public function sendmail(Request $req){        
-        $category = Category::where([['id','>',1],['id','<',9]])->get();
+        $category = DB::table('category')->get();
         $email = $req->email;
         $data = DB::table('customer')->select('email')->where('email',$email)->get();
         if(!$data->isEmpty()){
@@ -143,7 +143,7 @@ class DController extends Controller
         }
     }    
     public function verifycode(Request $req){
-        $category = Category::where([['id','>',1],['id','<',9]])->get();
+        $category = DB::table('category')->get();
         $code = $req->code;
         $codeverify = session()->get('code');
         if($code == $codeverify){
@@ -156,7 +156,7 @@ class DController extends Controller
         }
     }
     public function getpass(Request $req){
-        $category = Category::where([['id','>',1],['id','<',9]])->get();
+        $category = DB::table('category')->get();
         $password1 = $req->password1;
         $password2 = $req->password2;
         $email = session()->get('email');
@@ -173,13 +173,13 @@ class DController extends Controller
         }
     }
     public function showinvoices(){
-        $category = Category::where([['id','>',1],['id','<',9]])->get();
+        $category = DB::table('category')->get();
         $idkh = session()->get('idkh');
         $hoadon = DB::table('orderfood')->where('CustomerID',$idkh)->get();
         return view('user/invoices',['category'=>$category,'hoadon'=>$hoadon]);
     }
     public function showinvoicesdetail(){
-        $category = Category::where([['id','>',1],['id','<',9]])->get();
+        $category = DB::table('category')->get();
         $id = $_GET['id'];
         $hoadondt = DB::table('orderdetail')->where('OrderFoodID',$id)->get();
         return view('user/invoicesdetail',['category'=>$category,'hoadondt'=>$hoadondt]);

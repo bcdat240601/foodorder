@@ -2,7 +2,7 @@
 @section('content')
 <div class="container rounded bg-white mt-5 mb-5">
     <div class="row" style="margin-bottom: 80px;border-top: solid 1px;border-bottom: solid 1px;padding-bottom: 25px;">
-        <div class="col-md-3 border-right" style="text-align: center;line-height: 233px;">
+        <div class="col-md-3 border-right" style="text-align: center;transform: translate(0%, 100%)">
             <button class="btn btn-danger" style="width: 150px;height: 65px;"><a style="color: white" href="{{ asset('myprofile') }}">My Profile</a></button>
         </div>
         <div class="col-md-9 border-right">

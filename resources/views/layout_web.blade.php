@@ -27,7 +27,7 @@
     <link rel="apple-touch-icon-precomposed" href="{{ asset('images/ico/apple-touch-icon-57-precomposed.png') }}">	
 </head><!--/head-->
 
-<body>
+<body id="body">
 	<header id="header"><!--header-->
 		<div class="header_top"><!--header_top-->
 			<div class="container">
@@ -244,6 +244,20 @@
 					}
 				});
 			}
+		});		
+		$('.ip-search').focus(function () { 
+			var gethint = $(this).val();
+			if(gethint != null){
+				$.post('hint',{"_token": "{{ csrf_token() }}",gethint:gethint},function(data){
+					if(gethint != null){
+						$('#hint').fadeIn();
+						$('#hint').html(data);
+					}
+				});
+			}	
+		});
+		$('#body').click(function (e) { 							
+			$('#hint').css('display', 'none');
 		});		
 	</script>
 	@yield('scripts')

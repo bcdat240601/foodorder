@@ -1,7 +1,7 @@
 @extends('layout_web')
 @section('content')
 <section id="cart_items">
-    <div class="container">
+    <div class="container" style="margin-bottom: 80px">
         <div class="table-responsive cart_info">
             <table class="table" style="color: green">
                 <thead>
@@ -31,13 +31,13 @@
                 </tbody>                
             </table>
             @if ($data == null)
-                <h2 style="text-align: center">Không Có Sản Phẩm Nào Trong Giỏ Hàng</h2>
+                <h2 style="text-align: center">There Are No Products In The Shopping Cart</h2>
             @endif
             <h1 style="float: right" >Total: <span id="total" style="color: red"></span></h1>
             <span id="login" style="display: none">{{session()->get('login')}}</span>
         </div>
         @if (session('cart') != null)
-            <div style="text-align: center"><button id="addbill">Xác Nhận Thanh Toán</button></div>
+            <div style="text-align: center;height: 45px;"><button style="width: 20%;height: 100%;background-color: cadetblue;" id="addbill">CHECKOUT</button></div>
         @endif
     </div>
     
@@ -73,6 +73,21 @@
                     tinh()
             })                        
         })
+        $('.quantities').keyup(function(){            
+            if($(this).val()<=0)
+            {
+                $(this).val(1)
+                
+            }
+            var val=$(this).val()
+            var id=$(this).data('id')
+            var id_sub="#sub-"+id;
+            $.get('upquantity',{ id:id, sl:val },
+                function(data){                         
+                    $(id_sub).text(data)
+                    tinh()
+            })                        
+        })
         $('.btn-del').click(function(){
             var id = $(this).data('id');
             $.get('delitem',{id:id},function(data){
@@ -87,10 +102,10 @@
             var login = $('#login').text();
             var total = $('#total').text();             
             if(login == 0 || login == null){
-                alert('Bạn Cần Đăng Nhập Mới Có Thể Thanh Toán');
+                alert('You Must Login First To CheckOut');
                 return 0;
             }
-            var f = confirm('Bạn Có Add Hóa Đơn');        
+            var f = confirm('Do You Want To Confirm A Bill ?');        
             if(f == true && login == 1){
                 $.get('addbill',{total:total},function(data){
                     alert(data);

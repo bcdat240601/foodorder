@@ -51,17 +51,17 @@ Route::get('/cart', function(){
 Route::get('/food', 'foodcontroller@show');
 
 Route::get('/Contact',function(){
-    $category = Category::where([['id','>',1],['id','<',9]])->get();
+    $category = DB::table('category')->get();
     return view('Web/Contact',['category'=>$category]);
 });
 
 Route::get('/Introduce',function(){
-    $category = Category::where([['id','>',1],['id','<',9]])->get();
+    $category = DB::table('category')->get();
     return view('Web/Introduce',['category'=>$category]);
 });
 
 Route::get('/Shoppingguide',function(){
-    $category = Category::where([['id','>',1],['id','<',9]])->get();
+    $category = DB::table('category')->get();
     $items = session()->get('cart');
     return view('Web/Shoppingguide',['items'=>$items,'category'=>$category]);
 });
@@ -69,32 +69,32 @@ Route::get('/productdetail',function(){
     return view('Web/productdetail');
 });
 Route::get('/PaymentGuide', function(){
-    $category = Category::where([['id','>',1],['id','<',9]])->get();
+    $category = DB::table('category')->get();
     return view('Web/PaymentGuide',['category'=>$category]);
 });
 Route::get('/GeneralPolicy', function (){
-    $category = Category::where([['id','>',1],['id','<',9]])->get();
+    $category = DB::table('category')->get();
     return view('Web/GeneralPolicy',['category'=>$category]);
 });
 Route::get('/ShippingPolicy', function (){
-    $category = Category::where([['id','>',1],['id','<',9]])->get();
+    $category = DB::table('category')->get();
     return view('Web/ShippingPolicy',['category'=>$category]);
 });
 Route::get('/ReturnPolicy', function (){
-    $category = Category::where([['id','>',1],['id','<',9]])->get();
+    $category = DB::table('category')->get();
     return view('Web/ReturnPolicy',['category'=>$category]);
 });
 Route::get('/InformationPrivacy', function (){
-    $category = Category::where([['id','>',1],['id','<',9]])->get();
+    $category = DB::table('category')->get();
     return view('Web/InformationPrivacy',['category'=>$category]);
 });
 
 Route::get('/checkout', function(){
-    $category = Category::where([['id','>',1],['id','<',9]])->get();
+    $category = DB::table('category')->get();
     return view('Web/checkout',['category'=>$category]);
 });
 Route::get('/login', function(){
-    $category = Category::where([['id','>',1],['id','<',9]])->get();
+    $category = DB::table('category')->get();
     return view('Web/login',['category'=>$category]);
 });
 
