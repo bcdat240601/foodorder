@@ -55,8 +55,7 @@ class Customercontroller extends Controller
         $customer -> CustomerName = $req -> CustomerName;
         $customer -> Address = $req -> Address;
         $customer -> Phone = $req -> Phone;
-        $customer -> Email = $req -> Email;
-        $customer -> Password = $req -> Password;
+        $customer -> Email = $req -> Email;        
 
         
         $customer ->save();       

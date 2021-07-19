@@ -4,7 +4,7 @@
     <h2 style="color: red">Edit Category:</h2>
     <form action="{{ route("category.edit") }}" enctype="multipart/form-data" method="POST">
         @csrf
-        <br><p style="color: green">ID:</p><input type="text" name="id" value="{{$data->id}}"/><br>
+        <br><p style="color: green">ID:</p><input style=" pointer-events: none;" type="text" name="id" value="{{$data->id}}"/><br>
         <p style="color: green">Catagory Name:</p><input type="text"  name="CatagoryName" value="{{$data->CatagoryName}}"/><br>
         <p style="color: green">Description:</p><input type="text" name="Description" value="{{$data->Description}}"/><br>
         <br><input type="submit" value="Edit Category" style="background-color: crimson; color: white"/>
