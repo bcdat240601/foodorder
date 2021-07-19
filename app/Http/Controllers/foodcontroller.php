@@ -43,21 +43,19 @@ class foodcontroller extends Controller
         $Description = $req -> Description;
         $Quantity = $req -> Quantity;
         $CategoryID = $req -> CategoryID;       
-        $Image_Name = $req -> Image_Name;
-       
-
-        
+        $Image_Name = $req -> Image_Name;       
         $food = new food();
-
         $food -> Foodname = $FoodName;
         $food -> Price = $Price;
         $food -> Description = $Description;
         $food -> Quantity = $Quantity;
         $food -> CategoryID = $CategoryID;
-        $food -> Image_Name = $Image_Name ->getClientOriginalName();
-        
-        $Image_Name->move('images/product-details', $Image_Name ->getClientOriginalName());
-
+        $Image_Name = $req -> Image_Name;
+        if ($req->hasFile('Image_Name'))
+        {
+            $food -> Image_Name = $Image_Name ->getClientOriginalName();
+            $Image_Name->move('images/product-details', $Image_Name->getClientOriginalName());
+        }
         $food -> save();
         return view("admin/product/add");
 
