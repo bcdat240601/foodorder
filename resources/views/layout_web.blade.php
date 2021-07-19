@@ -26,7 +26,14 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ asset('images/ico/apple-touch-icon-72-precomposed.png') }}">
     <link rel="apple-touch-icon-precomposed" href="{{ asset('images/ico/apple-touch-icon-57-precomposed.png') }}">	
 </head><!--/head-->
-
+<style>
+	.mainmenu ul li a{
+		color: green;
+	}
+	.mainmenu ul li a:hover{
+		color: #F56960;
+	}
+</style>
 <body id="body">
 	<header id="header"><!--header-->
 		<div class="header_top"><!--header_top-->
@@ -99,7 +106,6 @@
 				</div>
 			</div>
 		</div><!--/header-middle-->
-	
 		<div class="header-bottom"><!--header-bottom-->
 			<div class="container">
 				<div class="row">
@@ -114,23 +120,23 @@
 						</div>
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="{{ asset('home') }}" class="active" style="color: green">Home</a></li>
-								<li class="dropdown"><a href="#" style="color: green">Shop<i class="fa fa-angle-down"></i></a>
+								<li><a href="{{ asset('home') }}" class="active">Home</a></li>
+								<li class="dropdown"><a href="#" >Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
 										@foreach ($category as $item)
 											<li><a href="{{ asset('shop?id='.$item->id) }}">{{$item->CatagoryName}}</a></li>										
 										@endforeach
                                     </ul>
                                 </li> 
-								<li><a href="{{ asset('Introduce')}}" style="color: green">Introduce</a></li>								
-								<li><a href="{{ asset('Contact')}}" style="color: green">Contact</a></li>
+								<li><a href="{{ asset('Introduce')}}" >Introduce</a></li>								
+								<li><a href="{{ asset('Contact')}}" >Contact</a></li>
 								{{-- <li><a href="{{ asset('checkout')}}" style="color: green">Checkout</a></li> --}}
-								<li><a href="{{ asset('cart')}}" style="color: green">Cart</a></li>
+								<li><a href="{{ asset('cart')}}" >Cart</a></li>
 								@if (session()->has('idkh'))
-								<li><a href="{{ asset('wishlist') }}" style="color: green">Wishlist</a></li>
+								<li><a href="{{ asset('wishlist') }}" >Wishlist</a></li>
 								@endif
 								@if (session('login') == 1)
-									<li><a href="{{ asset('myprofile') }}" style="color: green">Account</a></li>
+									<li><a href="{{ asset('myprofile') }}" >Account</a></li>
 								@endif
 								@if (session('login') == 0)
 									<li><a href="{{ asset('/Customer/AddCustomer')}}" style="color: blue">Sign-Up</a></li>

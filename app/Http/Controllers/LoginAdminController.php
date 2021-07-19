@@ -24,7 +24,7 @@ class LoginAdminController extends Controller
             session()->put('islogin',1);
             return redirect()->route('dashboard');
         } else {
-            $message = 'tài khoản  không hợp lệ';
+            $message = 'Maybe you wrong email or password';
             return view('Admin/Auth/Login',['message'=>$message]);
         }
     }
