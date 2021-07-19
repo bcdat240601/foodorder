@@ -123,6 +123,10 @@ class MyprofileController extends Controller
     }
     public function deletecat(){
         $row = $_GET['row'];
+        $check = DB::table('food')->where('CategoryID',$row)->get();
+        if(!$check->isEmpty()){
+            return 'This Category Already Has Products .If You Want To Delete This Category, Please Delete Those Products First!!!!!';
+        }
         $model = DB::table('category')->where('id', '=', $row)->delete();        
     }
 }
