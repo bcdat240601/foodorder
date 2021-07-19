@@ -121,4 +121,8 @@ class MyprofileController extends Controller
         $row = $_GET['row'];
         $model = DB::table('customer')->where('id', '=', $row)->delete();        
     }
+    public function deletecat(){
+        $row = $_GET['row'];
+        $model = DB::table('category')->where('id', '=', $row)->delete();        
+    }
 }
