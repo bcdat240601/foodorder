@@ -17,7 +17,7 @@ class DController extends Controller
 {
     public function showwishlist(){
         $idkh = session()->get('idkh');
-        $category = Category::where([['id','>',1],['id','<',9]])->get();
+        $category = DB::table('category')->get();
         $wishitem = DB::table('wishlist')->join('food','wishlist.idfood','=','food.id')->where('idkh',$idkh)->get();
         return view('user/wishlist',['category'=>$category,'wishlist'=>$wishitem]);
     }

@@ -73,6 +73,21 @@
                     tinh()
             })                        
         })
+        $('.quantities').keyup(function(){            
+            if($(this).val()<=0)
+            {
+                $(this).val(1)
+                
+            }
+            var val=$(this).val()
+            var id=$(this).data('id')
+            var id_sub="#sub-"+id;
+            $.get('upquantity',{ id:id, sl:val },
+                function(data){                         
+                    $(id_sub).text(data)
+                    tinh()
+            })                        
+        })
         $('.btn-del').click(function(){
             var id = $(this).data('id');
             $.get('delitem',{id:id},function(data){

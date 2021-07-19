@@ -148,7 +148,7 @@
 
             var id_sl="sl-"+id;
             var soluong=$("#"+id_sl).val();
-            if(!Math.floor(soluong) == soluong || !$.isNumeric(soluong)){
+            if(!Math.floor(soluong) == soluong || !$.isNumeric(soluong) || soluong < 0){
                 alert('You Entered Wrong Number Of Quantity!!!!!');
                 $("#"+id_sl).focus();
                 return;
