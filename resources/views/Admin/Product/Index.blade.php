@@ -15,12 +15,12 @@
                 <td style="color: white; background-color: orangered">CategoryID</td>
                 <td style="color: white; background-color: orangered">Image_Name</td>
                 <td style="color: white; background-color: orangered">Status</td>
-                
+                <td style="color: white; background-color: orangered">Delete</td>
             </tr>
         </thead>
         <tbody>
             @foreach ($data as $item)
-                <tr>
+                <tr id="h-{{$item->id }}" data-id="{{$item->id}}">
                     <td style="color: green">
                         {{$item->id}}
                     </td>
@@ -42,12 +42,25 @@
                     <td>
                         <a href="{{ asset('admin/product/edit/'.$item->id) }}">Edit</a>
                     </td>
-                    
+                    <td><button class="delete" data-row="{{$item->id}}">Delete</button></td>
                 </tr>
             @endforeach
         </tbody>
     </table>
 </div>
-</div>
-    
+</div>    
+@endsection
+@section('script')
+<script>
+       $(".delete").click(function () {         
+            var f=confirm("Are you sure");
+            if(f==true)
+            {     
+                var row=$(this).data("row");                
+                $.get("food/delete",{row:row},function(data){
+                });
+                $("#h-"+row).hide();
+            }
+        });
+</script>
 @endsection

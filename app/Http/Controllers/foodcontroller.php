@@ -90,7 +90,7 @@ class foodcontroller extends Controller
         return view('admin/Product/edit', ['data'=>$data]);
     }
     public function delete(){
-        
+       
     }
     public function detail(){
 

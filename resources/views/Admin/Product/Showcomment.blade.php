@@ -51,7 +51,7 @@
 @section('script')
 <script>
        $(".delete").click(function () {         
-            var f=confirm("Bạn có muốn xóa");
+            var f=confirm("Are you sure");
             if(f==true)
             {     
                 var row=$(this).data("row");                

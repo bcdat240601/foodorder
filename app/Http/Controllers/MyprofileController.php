@@ -113,4 +113,9 @@ class MyprofileController extends Controller
         $thongke = DB::table('orderdetail')->join('food','orderdetail.FoodID','=','food.id')->select('food.FoodName','food.Image_Name','orderdetail.Subtotal',DB::raw('SUM(orderdetail.Quantity) as Quantity'))->where([['created_at','>',$past],['created_at','<',$now]])->groupBy('food.FoodName','orderdetail.Subtotal')->orderByDesc('Quantity')->take(3)->get();
         
     }
+    public function deletefood(){
+        $row = $req->row;
+        $model = DB::table('food')->where('id', '=', $row)->delete();
+        return view('admin/product/index');
+    }
 }

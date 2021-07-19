@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LoginAdminController;
 use App\Http\Controllers\MyprofileController;
+use App\Http\Controllers\foodcontroller;
 use App\Http\Controllers\admin\HomeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -24,10 +25,10 @@ Route::middleware('auth:admin')->group(function (){
         Route::get('/edit/{id}','foodcontroller@showformedit');
         Route::post("/edit", "foodcontroller@edit")->name('food.edit');
 
-        Route::get('/delete',function(){
-            return view("admin/Product/delete");
-        });
-        Route::post("/delete", "foodcontroller@delete")->name('food.delete');
+        // Route::get('/delete',function(){
+        //     return view("admin/Product/delete");
+        // });
+        // Route::post("/delete", "foodcontroller@delete")->name('food.delete');
     });
 
     Route::group(['prefix'=>'/customer'],function(){
@@ -74,6 +75,7 @@ Route::get('/logout',[LoginAdminController::class,'logout']);
 Route::get('product/comment/', [MyprofileController::class, 'comment']);
 Route::get('product/comment={id}', [MyprofileController::class, 'showcomment']);
 Route::get('product/comment/delete', [MyprofileController::class, 'deletecmt']);
+
 Route::get('product/thongke', function(){
     return view("admin/thongke");
 });
@@ -83,3 +85,5 @@ Route::get('thongketatca',[MyprofileController::class, 'thongke'])->name('thongk
 Route::get('/myaccount', [MyprofileController::class, 'account']);
 Route::post('edit/admin',[MyprofileController::class, 'editadmin'])->name('editadmin');
 Route::get('/aha', [MyprofileController::class, 'home']);
+
+Route::get('product/food/delete', [MyprofileController::class, 'deletefood']);
