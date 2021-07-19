@@ -119,6 +119,14 @@ class MyprofileController extends Controller
     }
     public function deletecus(){
         $row = $_GET['row'];
+        $checkbl = DB::table('binhluan')->where('idkh',$row)->get();
+        if(!$checkbl->isEmpty()){
+            return 'This Customer Commented In Some Products .If You Want To Delete This Customer, Please Delete Those Comments First!!!!!';
+        }
+        $checkbill = DB::table('orderfood')->where('CustomerID',$row)->get();
+        if(!$checkbill->isEmpty()){
+            return 'This Customer Has Purchased Some Products .If You Want To Delete This Customer, Please Delete The Bill First!!!!!';
+        }
         $model = DB::table('customer')->where('id', '=', $row)->delete();        
     }
     public function deletecat(){

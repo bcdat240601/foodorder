@@ -47,8 +47,12 @@
             {     
                 var row=$(this).data("row");                                
                 $.get("cus/delete",{row:row},function(data){
-                });
-                $("#h-"+row).hide();
+                    if(data != null){
+                        alert(data);
+                    }else{
+                        $("#h-"+row).hide();
+                    }
+                });                
             }
         });
 </script>
