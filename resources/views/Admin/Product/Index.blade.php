@@ -56,7 +56,7 @@
             var f=confirm("Are you sure");
             if(f==true)
             {     
-                var row=$(this).data("row");                
+                var row=$(this).data("row");                                
                 $.get("food/delete",{row:row},function(data){
                 });
                 $("#h-"+row).hide();

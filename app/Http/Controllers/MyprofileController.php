@@ -114,8 +114,7 @@ class MyprofileController extends Controller
         
     }
     public function deletefood(){
-        $row = $req->row;
-        $model = DB::table('food')->where('id', '=', $row)->delete();
-        return view('admin/product/index');
+        $row = $_GET['row'];
+        $model = DB::table('food')->where('id', '=', $row)->delete();        
     }
 }
