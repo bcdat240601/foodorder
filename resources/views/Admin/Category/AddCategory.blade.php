@@ -2,14 +2,32 @@
 @section('content')
 <div class="container" style="margin-left: 100px">
     <h2 style="color: red">Add Category:</h2>
-    <form action="{{route('category.add')}}" enctype="multipart/form-data" method="POST">
+    <span id="thongbao" style="color: red;display: none;">Fill Full Infor</span>
+    <form id="form" action="{{route('category.add')}}" enctype="multipart/form-data" method="POST">
     @csrf
-    <br><p style="color: green">Category Name:</p><input type="text" name="CatagoryName"/><br>
+    <br><p style="color: green">Category Name:</p><input class="name" type="text" name="CatagoryName"/><br>
         <p style="color: green">Description:</p>
-        <textarea name="Description" id="" cols="80" rows="10"></textarea><br>
+        <textarea class="mota" name="Description" id="" cols="80" rows="10"></textarea><br>
     <br><input type="submit" value="Add category" style="background-color: crimson; color: white; width: 150px;"/>
         <button style="background-color: green;"><a href="{{ asset('admin/category/indexcategory') }}" style="color: white">Return Manage Category page</a></button><br>
         <br>
     </form>
 </div>
 @endsection
+@section('script')
+<script>
+    // $('#price').css('display', 'none');
+    $('#thongbao').css('display', 'none');
+    $('#form').submit(function () { 
+      var ten = $('.name').val();      
+      var mota = $('.mota').val();    
+      if(ten != "" && mota != ""){
+          alert('Add success');
+          return true;
+      }else{        
+      $('#thongbao').css('display', 'block');
+      return false;
+      }
+    });
+  </script>
+  @endsection

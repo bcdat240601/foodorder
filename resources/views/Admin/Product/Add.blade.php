@@ -33,7 +33,7 @@
       var ten = $('.name').val();      
       var mota = $('.mota').val();    
       if(ten != "" && mota != ""){
-          alert('Thêm Sản Phẩm Thành Công');
+          alert('Add success');
           return true;
       }else{        
       $('#thongbao').css('display', 'block');

@@ -27,11 +27,32 @@
     <link rel="apple-touch-icon-precomposed" href="{{ asset('images/ico/apple-touch-icon-57-precomposed.png') }}">	
 </head><!--/head-->
 <style>
+	.category-products .panel-default .panel-heading h4 a{
+		color: green;
+	}
 	.mainmenu ul li a{
 		color: green;
 	}
 	.mainmenu ul li a:hover{
 		color: #F56960;
+	}
+	#login{
+		color: red;
+	}
+	#logout{
+		color:green;
+	}
+	#admin{
+		color: #1AC8ED;
+	}
+	#login:hover{
+		color:blue;
+	}
+	#logout:hover{
+		color: blue;
+	}
+	#admin:hover{
+		color:yellow;
 	}
 </style>
 <body id="body">
@@ -92,14 +113,14 @@
 						<div class="shop-menu clearfix pull-right">
 							<ul class="nav navbar-nav">
 								@guest
-									<li><a href="{{ asset('login')}}" style="color: red"><i class="fa fa-lock"></i> Login</a></li>
+									<li><a id="login" href="{{ asset('login')}}" ><i class="fa fa-lock"></i> Login</a></li>
 								@endguest
 								@auth
-									<li><a href="{{ asset('logout')}}" style="color:green"><i class="fa fa-lock"></i> Logout</a></li><br>
+									<li><a id="logout" href="{{ asset('logout')}}" ><i class="fa fa-lock"></i> Logout</a></li><br>
 									<br><li><span style="color: #F56960;">Hello!! {{Auth::user()->CustomerName}}</span><span> </span><img class="img-profile rounded-circle"
 										src="{{ asset('img/undraw_profile.svg') }}" style="height: 4rem;"></li><br>
 								@endauth
-								<li><a href="{{ asset('admin/login')}}" style="color:#1AC8ED"><i class="fa fa-user"></i>Admin</a></li><br>
+								<li><a id="admin" href="{{ asset('admin/')}}"><i class="fa fa-user"></i>Admin</a></li><br>
 							</ul>
 						</div>
 					</div>
