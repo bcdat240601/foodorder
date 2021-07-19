@@ -89,3 +89,5 @@ Route::post('edit/admin',[MyprofileController::class, 'editadmin'])->name('edita
 Route::get('/aha', [MyprofileController::class, 'home']);
 
 Route::get('product/food/delete', [MyprofileController::class, 'deletefood']);
+Route::get('customer/cus/delete', [MyprofileController::class, 'deletecus']);
+Route::get('category/cat/delete', [MyprofileController::class, 'deletecat']);

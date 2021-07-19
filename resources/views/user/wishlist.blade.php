@@ -17,7 +17,7 @@
                         <h2  style="color: green"><span id="price-{{$item->id}}">{{$item->Price}}</span><span> đ</span></h2>
                         
                         <p>{{$item->FoodName}}</p>
-                        <input type="text" id="sl-{{$item->id}}" value="1" required>
+                        <input style="top:-13px;position:relative;" type="text" id="sl-{{$item->id}}" value="1" required>
                         <button  class="btn btn-default add-to-cart" data-name="{{$item->FoodName}}" data-id="{{$item->id}}"><i class="fa fa-shopping-cart"></i>Add to cart</button>
                     </div>
                 </div>

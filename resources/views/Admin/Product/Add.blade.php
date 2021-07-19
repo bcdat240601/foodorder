@@ -21,6 +21,7 @@
         </select><br> 
         <br><input type="submit" value="Add product" style="background-color: crimson; color: white" />   
     </form>  
+    <button style="background-color: blue;"><a href="{{ asset('admin/product/index') }}" style="color: white">back</a></button><br>   
 </div> 
 @endsection
 @section('script')
@@ -31,7 +32,7 @@
       var ten = $('.name').val();      
       var mota = $('.mota').val();    
       if(ten != "" && mota != ""){
-          alert('Thêm Sản Phẩm Thành Công');
+          alert('Add success');
           return true;
       }else{        
       $('#thongbao').css('display', 'block');
