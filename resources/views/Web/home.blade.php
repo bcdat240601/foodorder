@@ -223,7 +223,8 @@
                           </a>			
                     </div>
                 </div>
-                <div class="features_items"><!--features_items-->
+                <!--features_items-->
+                {{-- <div class="features_items">
                     <h2 class="title text-center" style="color: red">All Product</h2>
                     @if (isset($all))
                      @foreach ($all as $item)	
@@ -233,8 +234,7 @@
                                     <div class="productinfo text-center">
                                         <img style="height: 255px;" src="{{ asset('images/product-details/'.$item->Image_Name) }}" alt="" />
                                         <h2>{{$item->Price}}đ</h2>
-                                        <p style="color: #0D5C63;">{{$item->FoodName}}</p>
-                                        {{-- <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a> --}}
+                                        <p style="color: #0D5C63;">{{$item->FoodName}}</p>                                        
                                     </div>
                                     <div class="product-overlay">
                                         <div class="overlay-content">
@@ -248,15 +248,15 @@
                             <div class="choose">
                                 <ul class="nav nav-pills nav-justified">
                                     <li><a href="{{ asset('/detail?id='.$item->id) }}"><i class="fa fa-plus-square"></i>Detail</a></li>
-                                    <li><button class="add-wish" data-name="{{$item->FoodName}}" data-id="{{$item->id}}"><i class="fa fa-plus-square"></i>Add to wishlist</button></li>
-                                    {{-- <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li> --}}
+                                    <li><button class="add-wish" data-name="{{$item->FoodName}}" data-id="{{$item->id}}"><i class="fa fa-plus-square"></i>Add to wishlist</button></li>                                    
                                 </ul>
                             </div>
                         </div>
                     </div>
                     @endforeach
                     @endif
-                </div><!--features_items-->
+                </div> --}}
+                <!--features_items-->
                 
             </div>
         </div>
