@@ -37,7 +37,7 @@ class foodcontroller extends Controller
         return view("admin/product/index",["data"=>$data]);
     }
     public function add(Request $req){
-      
+        $category = DB::table('category')->get();
         $FoodName = $req -> FoodName;
         $Price = $req -> Price;
         $Description = $req -> Description;
@@ -57,7 +57,7 @@ class foodcontroller extends Controller
             $Image_Name->move('images/product-details', $Image_Name->getClientOriginalName());
         }
         $food -> save();
-        return view("admin/product/add");
+        return view("admin/product/add",['category'=>$category]);
 
         
     }
