@@ -11,13 +11,9 @@
         <p style="color: green">Description:</p><textarea class="mota" name="Description" id="" cols="80" rows="10" value="{{$data->Description}}"></textarea> 
         <p style="color: green">Quantity:</p><input type="number" name="Quantity" value="{{$data->Quantity}}"><br>
         <p style="color: green">Category ID:</p><select name="CategoryID" id="">
-            <option value=2 @if ($data->CategoryID==2)selected @endif>Fresh Food</option>
-            <option value=3 @if ($data->CategoryID==3)selected @endif>Meat</option>
-            <option value=4 @if ($data->CategoryID==4)selected @endif>Fruit</option>
-            <option value=5 @if ($data->CategoryID==5)selected @endif>Sea Food</option>
-            <option value=6 @if ($data->CategoryID==6)selected @endif>Canner Food</option>
-            <option value=7 @if ($data->CategoryID==7)selected @endif>Vegetables</option>
-            <option value=8 @if ($data->CategoryID==8)selected @endif>Drinks</option>
+            @foreach ($category as $item)
+            <option value={{$item->id }}>{{$item->CatagoryName}}</option>
+            @endforeach
         </select><br>      
         <br><img src="{{ asset('images/product-details/'. $data->Image_Name) }}" style="width: 100px; height: 100px;" alt="">
         <p style="color: green">Image_Name:</p><input type="file" name= "Image_Name" accept="image/png, image/jpeg"/><br>

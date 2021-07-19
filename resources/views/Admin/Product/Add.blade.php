@@ -13,16 +13,13 @@
         <p style="color: green">Quantity: </p><input type="number" name= "Quantity"/><br>
         <p style="color: green">Image_Name:</p><input type="file" name= "Image_Name" accept="image/png, image/jpeg"  required value=""><br>
         <p style="color: green">Category ID:</p><select name="CategoryID" id="">
-            <option value=2>Fresh Food</option>
-            <option value=3>Meat</option>
-            <option value=4>Fruit</option>
-            <option value=5>Sea Food</option>
-            <option value=6>Canner Food</option>
-            <option value=7>Vegetables</option>
-            <option value=8>Drinks</option>
+            @foreach ($category as $item)
+            <option value={{$item->id }}>{{$item->CatagoryName}}</option>
+            @endforeach
         </select><br> 
         <br><input type="submit" value="Add product" style="background-color: crimson; color: white" />   
     </form>  
+    <button style="background-color: blue;"><a href="{{ asset('admin/product/index') }}" style="color: white">back</a></button><br>   
 </div> 
 @endsection
 @section('script')

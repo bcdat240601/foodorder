@@ -104,7 +104,7 @@
                                         <div class="single-products">
                                             <div class="productinfo text-center">
                                                 <img style="height: 255px;" src="{{ asset('images/product-details/'.$item->Image_Name) }}" alt="" />
-                                                <h2>${{$item->Price}}</h2>
+                                                <h2>{{$item->Price}}đ</h2>
                                                 <p style="color: #0D5C63;">{{$item->FoodName}}</p>
                                                 {{-- <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a> --}}
                                             </div>
@@ -130,7 +130,7 @@
                                         <div class="single-products">
                                             <div class="productinfo text-center">
                                                 <img style="height: 255px;" src="{{ asset('images/product-details/'.$item->Image_Name) }}" alt="" />
-                                                <h2>${{$item->Price}}</h2>
+                                                <h2>{{$item->Price}}đ</h2>
                                                 <p style="color: #0D5C63;">{{$item->FoodName}}</p>
                                                 {{-- <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a> --}}
                                             </div>
@@ -170,7 +170,7 @@
                                         <div class="single-products">
                                             <div class="productinfo text-center">
                                                 <img style="height: 255px;" src="{{ asset('images/product-details/'.$item->Image_Name) }}" alt="" />
-                                                <h2>${{$item->Price}}</h2>
+                                                <h2>{{$item->Price}}đ</h2>
                                                 <p style="color: #0D5C63;">{{$item->FoodName}}</p>
                                                 {{-- <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a> --}}
                                             </div>
@@ -196,7 +196,7 @@
                                         <div class="single-products">
                                             <div class="productinfo text-center">
                                                 <img style="height: 255px;" src="{{ asset('images/product-details/'.$item->Image_Name) }}" alt=""  />
-                                                <h2>${{$item->Price}}</h2>
+                                                <h2>{{$item->Price}}đ</h2>
                                                 <p style="color: #0D5C63;">{{$item->FoodName}}</p>
                                                 {{-- <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a> --}}
                                             </div>

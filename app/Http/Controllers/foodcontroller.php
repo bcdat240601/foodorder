@@ -87,7 +87,8 @@ class foodcontroller extends Controller
     }
     public function showformedit($id){
         $data = food::find($id);
-        return view('admin/Product/edit', ['data'=>$data]);
+        $category = DB::table('category')->get();
+        return view('admin/Product/edit', ['data'=>$data,'category'=>$category]);
     }
     public function delete(){
        
