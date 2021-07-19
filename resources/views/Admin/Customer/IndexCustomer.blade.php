@@ -11,6 +11,8 @@
                 <td style="color: white; background-color: orangered">Phone</td>
                 <td style="color: white; background-color: orangered">Status</td>
                 <td style="color: white; background-color: #72A1E5">Delete</td>
+                <td style="color: white; background-color: yellow;color:black;">Bill</td>
+                <td style="background-color: yellow;color:black;">Comment</td>
             </tr>
         </thead>
         <tbody>
@@ -32,6 +34,12 @@
                         <a href="{{ asset('admin/customer/edit/'.$item->id) }}">Edit</a>
                     </td>
                     <td><button class="delete" data-row="{{$item->id}}">Delete</button></td>
+                    <td>
+                        <a href="{{ asset('admin/customer/bill='.$item->id) }}">Bill</a>
+                    </td>
+                    <td>
+                        <a href="{{ asset('admin/customer/comm='.$item->id) }}">Read</a>
+                    </td>
                 </tr>
             @endforeach
         </tbody>
@@ -47,7 +55,7 @@
             {     
                 var row=$(this).data("row");                                
                 $.get("cus/delete",{row:row},function(data){
-                    if(data != null){
+                    if(data != ""){
                         alert(data);
                     }else{
                         $("#h-"+row).hide();

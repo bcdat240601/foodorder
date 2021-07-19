@@ -31,7 +31,7 @@
                                 </tr>
                                 @endforeach
                             @else
-                                <h3>BẠN CHƯA THANH TOÁN HÓA ĐƠN NÀO</h3>
+                                <h3>You haven't purchased any bill</h3>
                             @endif
                         </tbody>                        
                     </table>

@@ -137,4 +137,33 @@ class MyprofileController extends Controller
         }
         $model = DB::table('category')->where('id', '=', $row)->delete();        
     }
+    public function showbill(Request $req){
+        $id = $req->id;
+        $bill = DB::table('orderfood')->where('CustomerID',$id)->get();
+        return view('admin/Customer/bill',['bill'=>$bill]);
+    }
+    public function showbl(Request $req){
+        $id = $req->id;
+        $binhluan = DB::table('binhluan')->where('idkh',$id)->get();
+        return view('admin/Customer/comm',['binhluan'=>$binhluan]);
+    }
+    public function deletebill(){
+        $row = $_GET['row'];
+        $detail = DB::table('orderdetail')->where('OrderFoodID','=',$row)->delete();
+        $model = DB::table('orderfood')->where('ID', '=', $row)->delete();
+    }
+    public function deletebl(Request $req){
+        $row = $req->row;
+        $model = DB::table('binhluan')->where('stt', '=', $row)->delete();      
+    }
+    public function detailbill(Request $req){
+        $id = $req->id;
+        $hoadondt = DB::table('orderdetail')->where('OrderFoodID',$id)->get();
+        return view('admin/Customer/detailbill',['hoadondt'=>$hoadondt]);
+    }
+    public function deletede(Request $req){
+        $row = $req->row;
+        $rows = $req->rows;
+        $model = DB::table('orderdetail')->where([['OrderFoodID','=',$rows],['FoodID','=',$row]])->delete();      
+    }
 }

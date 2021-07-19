@@ -91,3 +91,10 @@ Route::get('/aha', [MyprofileController::class, 'home']);
 Route::get('product/food/delete', [MyprofileController::class, 'deletefood']);
 Route::get('customer/cus/delete', [MyprofileController::class, 'deletecus']);
 Route::get('category/cat/delete', [MyprofileController::class, 'deletecat']);
+
+Route::get('customer/bill={id}', [MyprofileController::class, 'showbill']);
+Route::get('customer/debl={id}', [MyprofileController::class, 'detailbill']);
+Route::get('customer/bill/delete', [MyprofileController::class, 'deletebill']);
+Route::get('customer/comm={id}', [MyprofileController::class, 'showbl']);
+Route::get('customer/comm/delete', [MyprofileController::class, 'deletebl']);
+Route::get('customer/detailbill/delete', [MyprofileController::class, 'deletede']);
