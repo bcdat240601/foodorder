@@ -121,11 +121,20 @@ class MyprofileController extends Controller
         $row = $_GET['row'];
         $checkbl = DB::table('binhluan')->where('idkh',$row)->get();
         if(!$checkbl->isEmpty()){
-            return 'This Customer Commented In Some Products .If You Want To Delete This Customer, Please Delete Those Comments First!!!!!';
+            $deletebl = DB::table('binhluan')->where('idkh',$row)->delete();
         }
         $checkbill = DB::table('orderfood')->where('CustomerID',$row)->get();
         if(!$checkbill->isEmpty()){
-            return 'This Customer Has Purchased Some Products .If You Want To Delete This Customer, Please Delete The Bill First!!!!!';
+            $deletedetail = DB::table('orderdetail')->join('orderfood','orderdetail.OrderFoodID','=','orderfood.ID')->where('orderfood.CustomerID',$row)->delete();
+            $deletebill = DB::table('orderfood')->where('CustomerID',$row)->delete();
+        }
+        $wishlist = DB::table('wishlist')->where('idkh',$row)->get();
+        if(!$wishlist->isEmpty()){
+            $deletewishl = DB::table('wishlist')->where('idkh',$row)->delete();
+        }        
+        $idkh = session()->get('idkh');
+        if($row == $idkh){
+            session()->put('login',0);
         }
         $model = DB::table('customer')->where('id', '=', $row)->delete();        
     }
