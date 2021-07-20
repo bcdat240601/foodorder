@@ -37,7 +37,7 @@
             <span id="login" style="display: none">{{session()->get('login')}}</span>
         </div>
         @if (session('cart') != null)
-            <div style="text-align: center;height: 45px;"><button style="width: 20%;height: 100%;background-color: cadetblue;" id="addbill">CHECKOUT</button></div>
+            <div style="text-align: center;height: 45px;"><button style="width: 20%;height: 100%;background-color: cadetblue;"><a href="#" id="savetotal">CHECKOUT</a></button></div>
         @endif
     </div>
     
@@ -112,6 +112,17 @@
                     window.location.reload(true);
                 });
             }
+        });
+        $('#savetotal').click(function () { 
+            var login = $('#login').text();
+            var total = $('#total').text();                
+            if(login != 1){
+                alert('You Must Login First To CheckOut');
+                return 0;
+            }                      
+            $.get('session',{total:total},function(data){
+                window.location.href = data;
+            });
         });
     </script>
 @endsection

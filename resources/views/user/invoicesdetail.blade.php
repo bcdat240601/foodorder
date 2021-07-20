@@ -27,8 +27,8 @@
                                 <tr>
                                 <td><a>{{$item->FoodName}}</a></td>
                                 <td><a>{{$item->Quantity}}</a></td>                                                                
-                                <td> {{number_format($item->UnitCost)}} VNĐ</td>
-                                <td> {{number_format($item->Subtotal)}} VNĐ</td>
+                                <td> {{number_format($item->UnitCost)}} $</td>
+                                <td> {{number_format($item->Subtotal)}} $</td>
                                 <td> {{$item->created_at}}</td>                                
                                 </tr>
                                 @endforeach

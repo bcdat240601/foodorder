@@ -2,6 +2,17 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use PayPal\Api\Item;
+use PayPal\Api\Payer;
+use PayPal\Api\Amount;
+use PayPal\Api\Details;
+use PayPal\Api\Payment;
+use PayPal\Api\ItemList;
+use PayPal\Api\WebProfile;
+use PayPal\Api\InputFields;
+use PayPal\Api\Transaction;
+use PayPal\Api\RedirectUrls;
+use PayPal\Api\PaymentExecution;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +28,5 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::post('create-payment', 'DController@createpayment');
+Route::post('execute-payment', 'DController@executepayment');

@@ -91,7 +91,8 @@ Route::get('/InformationPrivacy', function (){
 
 Route::get('/checkout', function(){
     $category = DB::table('category')->get();
-    return view('Web/checkout',['category'=>$category]);
+    $cart = session()->get('cart');
+    return view('Web/checkout',['category'=>$category,'data'=>$cart]);
 });
 Route::get('/login', function(){
     $category = DB::table('category')->get();
@@ -165,3 +166,8 @@ Route::post('Customer/rgsendemail', 'Customercontroller@sendmail');
 
 Route::get('invoices','DController@showinvoices');
 Route::get('invoicesdetail','DController@showinvoicesdetail');
+Route::get('session', function () {
+    $total = $_GET['total'];
+    session()->put('total',$total);
+    return 'http://localhost/foodorder/public/checkout';
+});
