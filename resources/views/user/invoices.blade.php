@@ -25,7 +25,7 @@
                                 @foreach ($hoadon as $item)
                                 <tr>
                                 <td><a>{{$item->ID}}</a></td>                                
-                                <td> {{number_format($item->Total)}} VNĐ</td>
+                                <td> {{number_format($item->Total)}} $</td>
                                 <td> {{$item->created_at}}</td>
                                 <td class="detail"><a href="{{ asset('invoicesdetail?id='.$item->ID) }}">Invoice Detail</a></td>                                
                                 </tr>

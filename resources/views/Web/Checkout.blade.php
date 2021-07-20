@@ -104,142 +104,61 @@
                 </div>					
             </div>
         </div> --}}
-        <div id="customer-information">
+        {{-- <div id="customer-information">
             <div id="row">
                 <input type="text">
             </div>
-        </div>
+        </div> --}}
         <div class="review-payment">
             <h2>Review & Payment</h2>
         </div>
 
-        <div class="table-responsive cart_info">
-            <table class="table table-condensed">
+        <div class="table-responsive cart_info">        
+            <table class="table" style="color: green">
                 <thead>
-                    <tr class="cart_menu">
-                        <td class="image">Item</td>
-                        <td class="description"></td>
-                        <td class="price">Price</td>
-                        <td class="quantity">Quantity</td>
-                        <td class="total">Total</td>
-                        <td></td>
-                    </tr>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Item Product</th>  
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Price</th>
+                    <th scope="col"> Subtotal</th>                    
+                  </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td class="cart_product">
-                            <a href=""><img src="images/cart/one.png" alt=""></a>
-                        </td>
-                        <td class="cart_description">
-                            <h4><a href="">Colorblock Scuba</a></h4>
-                            <p>Web ID: 1089772</p>
-                        </td>
-                        <td class="cart_price">
-                            <p>$59</p>
-                        </td>
-                        <td class="cart_quantity">
-                            <div class="cart_quantity_button">
-                                <a class="cart_quantity_up" href=""> + </a>
-                                <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-                                <a class="cart_quantity_down" href=""> - </a>
-                            </div>
-                        </td>
-                        <td class="cart_total">
-                            <p class="cart_total_price">$59</p>
-                        </td>
-                        <td class="cart_delete">
-                            <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-                        </td>
+                    @isset($data)
+                    @foreach ($data as $item)
+                    <tr id="row-{{$item->id}}">
+                        <td style="color: black">{{$item->id}}</td>
+                        <th style="color: black">{{$item->name}}</th>
+                        <td style="color: black"><input style="pointer-events: none" type="text" data-id="{{$item->id}}" value="{{$item->quantity}}" class="quantities"></td>
+                        <td style="color: black">{{$item->price}}</td>
+                        <td class="sub-total" id="sub-{{$item->id}}" style="color: black"> {{$item->getSubTotal()}}</td>                        
+                        
                     </tr>
-
-                    <tr>
-                        <td class="cart_product">
-                            <a href=""><img src="images/cart/two.png" alt=""></a>
-                        </td>
-                        <td class="cart_description">
-                            <h4><a href="">Colorblock Scuba</a></h4>
-                            <p>Web ID: 1089772</p>
-                        </td>
-                        <td class="cart_price">
-                            <p>$59</p>
-                        </td>
-                        <td class="cart_quantity">
-                            <div class="cart_quantity_button">
-                                <a class="cart_quantity_up" href=""> + </a>
-                                <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-                                <a class="cart_quantity_down" href=""> - </a>
-                            </div>
-                        </td>
-                        <td class="cart_total">
-                            <p class="cart_total_price">$59</p>
-                        </td>
-                        <td class="cart_delete">
-                            <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="cart_product">
-                            <a href=""><img src="images/cart/three.png" alt=""></a>
-                        </td>
-                        <td class="cart_description">
-                            <h4><a href="">Colorblock Scuba</a></h4>
-                            <p>Web ID: 1089772</p>
-                        </td>
-                        <td class="cart_price">
-                            <p>$59</p>
-                        </td>
-                        <td class="cart_quantity">
-                            <div class="cart_quantity_button">
-                                <a class="cart_quantity_up" href=""> + </a>
-                                <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-                                <a class="cart_quantity_down" href=""> - </a>
-                            </div>
-                        </td>
-                        <td class="cart_total">
-                            <p class="cart_total_price">$59</p>
-                        </td>
-                        <td class="cart_delete">
-                            <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-                        </td>
-                    </tr>
+                    @endforeach
+                    @endisset   
+                    @if (session()->has('total'))
                     <tr>
                         <td colspan="4">&nbsp;</td>
                         <td colspan="2">
-                            <table class="table table-condensed total-result">
-                                <tr>
-                                    <td>Cart Sub Total</td>
-                                    <td>$59</td>
-                                </tr>
-                                <tr>
-                                    <td>Exo Tax</td>
-                                    <td>$2</td>
-                                </tr>
+                            <table class="table table-condensed total-result">                                
                                 <tr class="shipping-cost">
                                     <td>Shipping Cost</td>
                                     <td>Free</td>										
                                 </tr>
                                 <tr>
                                     <td>Total</td>
-                                    <td><span>$61</span></td>
+                                    <td><span id="total">{{session()->get('total')}}</span> $</td>
                                 </tr>
                             </table>
                         </td>
-                    </tr>
-                </tbody>
+                    </tr>                 
+                    @endif
+                </tbody>                
             </table>
-        </div>
-        <div class="payment-options">
-                <span>
-                    <label><input type="checkbox"> Direct Bank Transfer</label>
-                </span>
-                <span>
-                    <label><input type="checkbox"> Check Payment</label>
-                </span>
-                <span>
-                    <label><input type="checkbox"> Paypal</label>
-                </span>
-            </div>
+        </div>        
     </div>
+    <span id="login" style="display: none">{{session()->get('login')}}</span>
     <div style="text-align: center;height: 45px;" id="paypal-button"></div>
 </section> <!--/#cart_items-->
     
@@ -248,7 +167,9 @@
         {{-- paypal checkout   --}}
         <script src="https://www.paypalobjects.com/api/checkout.js"></script>
         <script>
-          paypal.Button.render({
+        var login = $('#login').text();
+        var total = $('#total').text();
+        paypal.Button.render({
         env: 'sandbox', // Or 'production'
         style: {
           size: 'large',
@@ -259,7 +180,7 @@
         // 1. Add a payment callback
         payment: function(data, actions) {
           // 2. Make a request to your server
-          return actions.request.post('api/create-payment')
+          return actions.request.post('api/create-payment?total='+ total)
             .then(function(res) {
               // 3. Return res.id from the response
               // console.log(res);
@@ -275,8 +196,11 @@
             payerID:   data.payerID
           })
             .then(function(res) {
-              console.log(res);
-              alert('PAYMENT WENT THROUGH!!');
+              console.log(res);              
+              $.get('addbill',{total:total},function(data){
+                    alert(data);
+                    window.location.reload(true);
+                });
               // 3. Show the buyer a confirmation message.
             });
         }

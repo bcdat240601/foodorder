@@ -23,6 +23,7 @@ use PayPal\Api\InputFields;
 use PayPal\Api\Transaction;
 use PayPal\Api\RedirectUrls;
 use PayPal\Api\PaymentExecution;
+use Session;
 
 class DController extends Controller
 {
@@ -195,7 +196,7 @@ class DController extends Controller
         $hoadondt = DB::table('orderdetail')->where('OrderFoodID',$id)->get();
         return view('user/invoicesdetail',['category'=>$category,'hoadondt'=>$hoadondt]);
     }
-    public function createpayment(){
+    public function createpayment(Request $req){
         $apiContext = new \PayPal\Rest\ApiContext(
             new \PayPal\Auth\OAuthTokenCredential(
                 'AXLzO5gcxE17qkZnwdMRD1_lcW5_LLj_DAlm_YvxfrZVt0Gb08kOD5_lY3uWagwgAo5NKBZlCOg6c3dM',     // ClientID
@@ -206,42 +207,42 @@ class DController extends Controller
         $payer = new Payer();
         $payer->setPaymentMethod("paypal");
     
-        $item1 = new Item();
-        $item1->setName('Ground Coffee 40 oz')
-            ->setCurrency('USD')
-            ->setQuantity(1)
-            ->setSku("123123") // Similar to `item_number` in Classic API
-            ->setPrice(7);
-        $item2 = new Item();
-        $item2->setName('Granola bars')
-            ->setCurrency('USD')
-            ->setQuantity(5)
-            ->setSku("321321") // Similar to `item_number` in Classic API
-            ->setPrice(2);
-        // $items = array();
-        // $items[1] = $item1;
-        // $items[2] = $item2;
-        // $items = array();
-        // $index = 0;
-        // foreach ($object_array_with_items as $_item) {
-        // $index++;
-        // $items[$index] = new Item();
-        // $items[$index]->setName($_item['name_key'])
-        //             ->setCurrency('USD')
-        //             ->setQuantity($_item['quantity_key'])
-        //             ->setSku("321321")
-        //             ->setPrice($_item['price_key']);
+        // $item1 = new Item();
+        // $item1->setName('Ground Coffee 40 oz')
+        //     ->setCurrency('USD')
+        //     ->setQuantity(1)
+        //     ->setSku("123123") // Similar to `item_number` in Classic API
+        //     ->setPrice(7);
+        // $item2 = new Item();
+        // $item2->setName('Granola bars')
+        //     ->setCurrency('USD')
+        //     ->setQuantity(5)
+        //     ->setSku("321321") // Similar to `item_number` in Classic API
+        //     ->setPrice(2);
+        // $cart=session()->get('cart');
+        // $total=session()->get('total');
+        $items = array();
+        // $index = 0;        
+        // foreach ((array)$cart as $_item) {
+        //     $index++;
+        //     $items[$index] = new Item();
+        //     $items[$index]->setName($_item->name)
+        //                 ->setCurrency('USD')
+        //                 ->setQuantity($_item->quantity)
+        //                 ->setSku(rand(100000,999999))
+        //                 ->setPrice($_item->price);    
+        // }        
         $itemList = new ItemList();
-        $itemList->setItems(array($item1,$item2));        
+        $itemList->setItems($items);        
     
         $details = new Details();
         $details->setShipping(0)
             ->setTax(0)
-            ->setSubtotal(17);
+            ->setSubtotal($req->total);
     
         $amount = new Amount();
         $amount->setCurrency("USD")
-            ->setTotal(17)
+            ->setTotal($req->total)
             ->setDetails($details);
     
         $transaction = new Transaction();

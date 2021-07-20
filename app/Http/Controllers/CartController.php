@@ -131,6 +131,7 @@ class CartController extends Controller
             $cthd->save();
         }        
         session()->forget('cart');
+        session()->forget('total');
         echo 'Add Bill Successfully';
     }
     // public function count(){
