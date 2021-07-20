@@ -97,12 +97,12 @@
                                 <div class="productinfo text-center">
                                     <img src="{{ asset('images/product-details/'.$item->Image_Name) }}" alt="" style="height: 200px"/>
                                     <h2 style="color: green">{{$item->FoodName}}</h2>
-                                    <p style="color: red">{{$item->Price}} đ</p>
+                                    <p style="color: red">{{$item->Price}} $</p>
                                     {{-- <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a> --}}
                                 </div>
                                 <div class="product-overlay">
                                     <div class="overlay-content">
-                                        <h2  style="color: green"><span id="price-{{$item->id}}">{{$item->Price}}</span><span> đ</span></h2>
+                                        <h2  style="color: green"><span id="price-{{$item->id}}">{{$item->Price}}</span><span>$</span></h2>
                                         
                                         <p>{{$item->FoodName}}</p>
                                         <input type="text" id="sl-{{$item->id}}" value="1" required>

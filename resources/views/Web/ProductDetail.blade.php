@@ -54,7 +54,7 @@
                                 </button>
                             </span>
                             <p><b>Availability:</b> In Stock</p>
-                            <p><b>Order online:</b> Order online for home delivery on time (if late, you will receive a voucher of VND 50000) </p>
+                            <p><b>Order online:</b> Order online for home delivery on time (if late, you will receive a voucher of $ 50000) </p>
                             <strong style="color:red"> Exchange and return products within 7 days</strong>
                         </div><!--/product-information-->
                     </div>
