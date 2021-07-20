@@ -9,7 +9,7 @@
             </ol>
         </div><!--/breadcrums-->
 
-        <div class="step-one">
+        {{-- <div class="step-one">
             <h2 class="heading">Step1</h2>
         </div>
         <div class="checkout-options">
@@ -26,13 +26,13 @@
                     <a href=""><i class="fa fa-times"></i>Cancel</a>
                 </li>
             </ul>
-        </div><!--/checkout-options-->
+        </div><!--/checkout-options--> --}}
 
         <div class="register-req">
             <p>Please use Register And Checkout to easily get access to your order history, or use Checkout as Guest</p>
         </div><!--/register-req-->
 
-        <div class="shopper-informations">
+        {{-- <div class="shopper-informations">
             <div class="row">
                 <div class="col-sm-3">
                     <div class="shopper-info">
@@ -102,6 +102,11 @@
                         <label><input type="checkbox"> Shipping to bill address</label>
                     </div>	
                 </div>					
+            </div>
+        </div> --}}
+        <div id="customer-information">
+            <div id="row">
+                <input type="text">
             </div>
         </div>
         <div class="review-payment">
@@ -235,6 +240,46 @@
                 </span>
             </div>
     </div>
+    <div style="text-align: center;height: 45px;" id="paypal-button"></div>
 </section> <!--/#cart_items-->
     
+@endsection
+@section('scripts')
+        {{-- paypal checkout   --}}
+        <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+        <script>
+          paypal.Button.render({
+        env: 'sandbox', // Or 'production'
+        style: {
+          size: 'large',
+          color: 'gold',
+          shape: 'pill',
+        },
+        // Set up the payment:
+        // 1. Add a payment callback
+        payment: function(data, actions) {
+          // 2. Make a request to your server
+          return actions.request.post('api/create-payment')
+            .then(function(res) {
+              // 3. Return res.id from the response
+              // console.log(res);
+              return res.id;
+            });
+        },
+        // Execute the payment:
+        // 1. Add an onAuthorize callback
+        onAuthorize: function(data, actions) {
+          // 2. Make a request to your server
+          return actions.request.post('api/execute-payment', {
+            paymentID: data.paymentID,
+            payerID:   data.payerID
+          })
+            .then(function(res) {
+              console.log(res);
+              alert('PAYMENT WENT THROUGH!!');
+              // 3. Show the buyer a confirmation message.
+            });
+        }
+      }, '#paypal-button');
+        </script>
 @endsection

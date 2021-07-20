@@ -37,7 +37,7 @@
             <span id="login" style="display: none">{{session()->get('login')}}</span>
         </div>
         @if (session('cart') != null)
-            <div style="text-align: center;height: 45px;"><button style="width: 20%;height: 100%;background-color: cadetblue;" id="addbill">CHECKOUT</button></div>
+            <div style="text-align: center;height: 45px;"><button style="width: 20%;height: 100%;background-color: cadetblue;"><a href="{{ asset('checkout') }}">CHECKOUT</a></button></div>
         @endif
     </div>
     
