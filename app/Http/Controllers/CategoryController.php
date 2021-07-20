@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
     public function indexcategory(){
-        $data = category::select("id","CatagoryName","Description")->get();
+        $data = category::select("id","CatagoryName","Description","avaiable")->get();
         return view("admin/category/indexcategory",["data"=>$data]);
     }
     public function addcate(Request $req){

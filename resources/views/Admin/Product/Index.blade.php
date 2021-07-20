@@ -15,7 +15,7 @@
                 <td style="color: white; background-color: orangered">CategoryID</td>
                 <td style="color: white; background-color: orangered">Image_Name</td>
                 <td style="color: white; background-color: orangered">Status</td>
-                <td style="color: white; background-color: orangered">Delete</td>
+                <td style="color: white; background-color: orangered">Selling Status</td>
             </tr>
         </thead>
         <tbody>
@@ -30,8 +30,8 @@
                     <td style="color:gray">
                         {{$item->Price}}
                     </td>
-                    <td style="color: orange">
-                        {{$item->Quantity}}
+                    <td  style="color: orange">
+                        <span id="quan-{{$item->id}}">{{$item->Quantity}}</span>
                     </td>
                     <td style="color: green">
                         {{$item->CategoryID}}
@@ -42,7 +42,17 @@
                     <td>
                         <a href="{{ asset('admin/product/edit/'.$item->id) }}">Edit</a>
                     </td>
-                    <td><button class="delete" data-row="{{$item->id}}">Delete</button></td>
+                    <td><button @if ($item->Quantity==0)
+                        style="display:none;"
+                    @elseif($item->Quantity>0)
+                    style="display:block;"
+                    @endif class="delete" id="of-{{$item->id}}" data-row="{{$item->id}}">Sold out</button>
+                    <button @if ($item->Quantity==0)
+                        style="display:block;"
+                    @elseif($item->Quantity>0)
+                    style="display:none;"
+                    @endif class="on" id="on-{{$item->id}}" data-row="{{$item->id}}">Sell</button>
+                    </td>
                 </tr>
             @endforeach
         </tbody>
@@ -57,9 +67,23 @@
             if(f==true)
             {     
                 var row=$(this).data("row");                                
-                $.get("food/delete",{row:row},function(data){
-                });
-                $("#h-"+row).hide();
+                $.get("food/delete",{row:row},function(data){                   
+                    $("#of-"+row).hide();
+                    $("#on-"+row).show();
+                    document.getElementById("quan-"+row).innerText=0;                 
+                });                
+            }
+        });
+        $(".on").click(function () {         
+            var f=confirm("Are you sure");
+            if(f==true)
+            {     
+                var row=$(this).data("row");                                
+                $.get("food/on",{row:row},function(data){                   
+                    $("#of-"+row).show();
+                    $("#on-"+row).hide();  
+                    document.getElementById("quan-"+row).innerText=1;                  
+                });                
             }
         });
 </script>
