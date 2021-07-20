@@ -115,7 +115,15 @@ class MyprofileController extends Controller
     }
     public function deletefood(){
         $row = $_GET['row'];
-        $model = DB::table('food')->where('id', '=', $row)->delete();        
+        $food = food::find($row);  
+        $food -> Quantity = 0;
+        $food ->save();      
+    }
+    public function sellfood(){
+        $row = $_GET['row'];
+        $food = food::find($row);  
+        $food -> Quantity = 1;
+        $food ->save();      
     }
     public function deletecus(){
         $row = $_GET['row'];
@@ -140,11 +148,15 @@ class MyprofileController extends Controller
     }
     public function deletecat(){
         $row = $_GET['row'];
-        $check = DB::table('food')->where('CategoryID',$row)->get();
-        if(!$check->isEmpty()){
-            return 'This Category Already Has Products .If You Want To Delete This Category, Please Delete Those Products First!!!!!';
-        }
-        $model = DB::table('category')->where('id', '=', $row)->delete();        
+        $cat = Category::find($row);  
+        $cat -> avaiable = 0;
+        $cat ->save();       
+    }
+    public function oncat(){
+        $row = $_GET['row'];
+        $cat = Category::find($row);  
+        $cat -> avaiable = 1;
+        $cat ->save();       
     }
     public function showbill(Request $req){
         $id = $req->id;

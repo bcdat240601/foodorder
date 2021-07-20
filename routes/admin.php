@@ -89,8 +89,10 @@ Route::post('edit/admin',[MyprofileController::class, 'editadmin'])->name('edita
 Route::get('/aha', [MyprofileController::class, 'home']);
 
 Route::get('product/food/delete', [MyprofileController::class, 'deletefood']);
+Route::get('product/food/on', [MyprofileController::class, 'sellfood']);
 Route::get('customer/cus/delete', [MyprofileController::class, 'deletecus']);
 Route::get('category/cat/delete', [MyprofileController::class, 'deletecat']);
+Route::get('category/cat/on', [MyprofileController::class, 'oncat']);
 
 Route::get('customer/bill={id}', [MyprofileController::class, 'showbill']);
 Route::get('customer/debl={id}', [MyprofileController::class, 'detailbill']);

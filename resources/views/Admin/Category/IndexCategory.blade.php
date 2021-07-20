@@ -11,8 +11,8 @@
                 <td style="color: white; background-color: orangered">ID</td>
                 <td style="color: white; background-color: orangered">CategoryName</td>
                 <td style="color: white; background-color: orangered">Description</td>
-                <td style="color: white; background-color: orangered">Status</td>
-                <td style="color: white; background-color: #72A1E5">Delete</td>
+                <td style="color: white; background-color: orangered">Edit</td>
+                <td style="color: white; background-color: #72A1E5">Status</td>
             </tr>
         </thead>
         <tbody>
@@ -30,7 +30,17 @@
                 <td>
                     <a href="{{ asset('admin/category/edit/'.$item->id) }}">Edit</a>
                 </td>
-                <td><button class="delete" data-row="{{$item->id}}">Delete</button></td>
+                <td><button @if ($item->avaiable==0)
+                    style="display:none;"
+                @elseif($item->avaiable==1)
+                style="display:block;"
+                @endif class="delete" id="of-{{$item->id}}" data-row="{{$item->id}}">OFF</button>
+                <button @if ($item->avaiable==1)
+                    style="display:none;"
+                @elseif ($item->avaiable==0)
+                style="display:block;"
+                @endif class="on" id="on-{{$item->id}}" data-row="{{$item->id}}">ON</button>
+                </td>
             </tr>
             @endforeach
         </tbody>
@@ -40,17 +50,25 @@
 @endsection
 @section('script')
 <script>
-       $(".delete").click(function () {         
+      $(".delete").click(function () {         
             var f=confirm("Are you sure");
             if(f==true)
             {     
                 var row=$(this).data("row");                                
-                $.get("cat/delete",{row:row},function(data){
-                    if(data != null){
-                        alert(data);
-                    }else{
-                        $("#h-"+row).hide();
-                    }
+                $.get("cat/delete",{row:row},function(data){                   
+                    $("#of-"+row).hide();
+                    $("#on-"+row).show();                    
+                });                
+            }
+        });
+        $(".on").click(function () {         
+            var f=confirm("Are you sure");
+            if(f==true)
+            {     
+                var row=$(this).data("row");                                
+                $.get("cat/on",{row:row},function(data){                   
+                    $("#of-"+row).show();
+                    $("#on-"+row).hide();                    
                 });                
             }
         });
