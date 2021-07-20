@@ -3,7 +3,7 @@
 <div class="container rounded bg-white mt-5 mb-5">
     <div class="row" style="border-top: solid 1px;border-bottom: solid 1px;margin-bottom: 80px;">
         <div class="col-md-3 border-right" style="text-align: center;transform: translate(0%, 100%);">
-            <button class="btn btn-danger" style="width: 150px;height: 65px;"><a style="color: white" href="{{ asset('myprofile') }}">My Profile</a></button>
+            <button class="btn btn-danger" style="width: 150px;height: 65px;"><a style="color: white;width: 100%;height: 100%;display:inline-block" href="{{ asset('myprofile') }}">My Profile</a></button>
         </div>
         <div class="col-md-9 border-right">
             <div class="p-3 py-5">

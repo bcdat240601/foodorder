@@ -8,9 +8,10 @@
         <div class="col-md-8 border-right">
             <div class="p-3 py-5">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h3 class="text-right">Bill</h3>
+                    <h3 style="color: black" class="text-right">Bill</h3>
                 </div>
                 <section class="hero-slider">
+                    @if (isset($bill) && !$bill->isEmpty())
                     <table class="table table-dark table-striped" style="margin-top: 20px;">
                         <thead>
                           <tr>
@@ -20,23 +21,22 @@
                             <th scope="col">Detail:</th>   
                             <th scope="col">delete</th>                           
                           </tr>
-                        </thead>
-                        <tbody>
-                            @if (isset($bill))
-                                @foreach ($bill as $item)
-                                <tr id="h-{{$item->ID}}" data-id="{{$item->ID}}">
-                                <td><a>{{$item->ID}}</a></td>                                
-                                <td> {{number_format($item->Total)}} VNĐ</td>
-                                <td> {{$item->created_at}}</td>
-                                <td class="detail"><a style="color: red" href="{{ asset('admin/customer/debl='.$item->ID) }}">Invoice Detail</a></td>   
-                                <td><button class="delete" data-row="{{$item->ID}}">Delete</button></td>                             
-                                </tr>
-                                @endforeach
-                            @else
-                                <h3>You haven't purchased any bill</h3>
-                            @endif
-                        </tbody>                        
+                        </thead>                        
+                        <tbody>                            
+                            @foreach ($bill as $item)
+                            <tr id="h-{{$item->ID}}" data-id="{{$item->ID}}">
+                            <td><a>{{$item->ID}}</a></td>                                
+                            <td> {{number_format($item->Total)}} VNĐ</td>
+                            <td> {{$item->created_at}}</td>
+                            <td class="detail"><a style="color: red" href="{{ asset('admin/customer/debl='.$item->ID) }}">Invoice Detail</a></td>   
+                            <td><button class="delete" data-row="{{$item->ID}}">Delete</button></td>                             
+                            </tr>
+                            @endforeach                                                                                        
+                        </tbody>                                                                       
                     </table>
+                    @else
+                            <h3>This Customer Hasn't Purchased Any Items</h3>    
+                    @endif 
             </div>
         </div>                    
     </div>

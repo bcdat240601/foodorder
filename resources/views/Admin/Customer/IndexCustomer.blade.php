@@ -54,12 +54,8 @@
             if(f==true)
             {     
                 var row=$(this).data("row");                                
-                $.get("cus/delete",{row:row},function(data){
-                    if(data != ""){
-                        alert(data);
-                    }else{
-                        $("#h-"+row).hide();
-                    }
+                $.get("cus/delete",{row:row},function(){                    
+                    $("#h-"+row).hide();                    
                 });                
             }
         });
