@@ -156,7 +156,7 @@
                     @endif
                 </tbody>                
             </table>
-            <a href="{{ asset('cart') }}"><button>Edit Cart</button></a>
+            <a href="{{ asset('cart') }}"><button class="btn btn-success">Edit Cart</button></a>
         </div>        
     </div>
     <span id="login" style="display: none">{{session()->get('login')}}</span>
