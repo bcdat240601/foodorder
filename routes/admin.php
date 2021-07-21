@@ -19,7 +19,7 @@ Route::middleware('auth:admin')->group(function (){
         Route::get('/index',"foodcontroller@index");
 
         Route::get('/add',function(){
-            $category = DB::table('category')->get();
+            $category = DB::table('category')->where('avaiable',1)->get();
             return view("admin/Product/add",['category'=>$category]);
         });
         Route::post("/add", "foodcontroller@add")->name('food.add');

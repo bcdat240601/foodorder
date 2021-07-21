@@ -169,5 +169,5 @@ Route::get('invoicesdetail','DController@showinvoicesdetail');
 Route::get('session', function () {
     $total = $_GET['total'];
     session()->put('total',$total);
-    return 'http://localhost/foodorder/public/checkout';
+    return 'http://localhost:8080/foodorder/public/checkout';
 });

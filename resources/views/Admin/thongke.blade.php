@@ -31,7 +31,7 @@
         <span>From Date:</span> <input type="date" name="from"><br>
         <br>
         <span>To Date:</span> <input type="date" name="to"><br>
-        <input type="submit" value="Result">
+        <input type="submit" value="RESULT">
     </form>
     </div>
     <div class="thongkeall" @if (session()->has('typeall'))
@@ -55,7 +55,7 @@
         <span>From Date:  </span><input type="date" name="from"><br>
         <br>
         <span>To Date:</span> <input type="date" name="to"><br>
-        <input type="submit" value="Kết Quả">
+        <input type="submit" value="RESULT">
     </form>
     </div>
 </div>
