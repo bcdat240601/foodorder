@@ -19,7 +19,7 @@ class CategoryController extends Controller
         $Category = new category();
         $Category -> CatagoryName = $CatagoryName;
         $Category -> Description = $Description;
-
+        $Category -> avaiable = 1;
         $Category ->save();
         return view("admin/Category/AddCategory");
     }
