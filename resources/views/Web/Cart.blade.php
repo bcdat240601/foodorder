@@ -36,8 +36,8 @@
             <h1 style="float: right" >Total: <span id="total" style="color: red"></span></h1>
             <span id="login" style="display: none">{{session()->get('login')}}</span>
         </div>
-        @if (session('cart') != null)
-            <div style="text-align: center;height: 45px;"><button style="width: 20%;height: 100%;background-color: cadetblue;"><a href="#" id="savetotal">CHECKOUT</a></button></div>
+        @if (session('cart') != null)        
+            <div style="text-align: center;height: 45px;"><a href="#" id="savetotal"><button style="width: 20%;height: 100%;background-color: cadetblue;">SAVE CART</button></a></div>
         @endif
     </div>
     

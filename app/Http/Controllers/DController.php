@@ -197,6 +197,7 @@ class DController extends Controller
         return view('user/invoicesdetail',['category'=>$category,'hoadondt'=>$hoadondt]);
     }
     public function createpayment(Request $req){
+        //composer require paypal/rest-api-sdk-php:*
         $apiContext = new \PayPal\Rest\ApiContext(
             new \PayPal\Auth\OAuthTokenCredential(
                 'AXLzO5gcxE17qkZnwdMRD1_lcW5_LLj_DAlm_YvxfrZVt0Gb08kOD5_lY3uWagwgAo5NKBZlCOg6c3dM',     // ClientID
