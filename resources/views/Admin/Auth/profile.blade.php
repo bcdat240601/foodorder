@@ -39,8 +39,8 @@
                     <div class="row mt-2">
                         <div class="row mt-3">                                        
                             <input type="text" name="id" value="{{$admin->id}}" style="display: none">
-                            <div class="col-md-12"><label class="labels" for="name">Tên</label><input class="form-control" type="text" name="name" value="{{$admin->name}}  "></div>
-                            <div class="col-md-12"><label class="labels" for="email">Email</label><input class="form-control" type="email" name="email" value="{{$admin->email}}"></div>
+                            <div class="col-md-12"><label class="labels" for="name">Tên</label><input class="form-control" type="text" name="name" value="{{$admin->name}}" required></div>
+                            <div class="col-md-12"><label class="labels" for="email">Email</label><input class="form-control" type="email" name="email" value="{{$admin->email}}" required></div>
                            <div class="col-md-12"><button type="submit" class="btn btn-warning" style="background: #06155b;">Confirm</button>
                         </div>
                     </div>
