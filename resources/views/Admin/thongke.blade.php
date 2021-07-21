@@ -20,32 +20,21 @@
     <form  action="{{ route('thongketheoloai') }}" method="get">
         <span>Select the Type of Product To Reckon: </span>
         <select name="type" >
-            <option value="2"  @if (session('typesanpham')==2)
+            {{-- <option value="2"  @if (session('typesanpham')==2)
             selected
-        @endif>Fresh food</option>
-            <option value="3" @if (session('typesanpham')==3)
+        @endif>Fresh food</option> --}}
+        @if (isset($category))
+        @foreach ($category as $item)
+            <option  @if (session('typesanpham')==$item->id)
             selected
-        @endif>Meat</option>
-            <option value="4" @if (session('typesanpham')==4)
-            selected
-        @endif>Fruit</option>
-            <option value="5" @if (session('typesanpham')==5)
-            selected
-        @endif>Sea food</option>
-            <option value="6" @if (session('typesanpham')==6)
-            selected
-        @endif>Canner food</option>
-            <option value="7" @if (session('typesanpham')==7)
-            selected
-        @endif>Vegetables</option>
-            <option value="8" @if (session('typesanpham')==8)
-            selected
-        @endif>Drinks</option>
+        @endif value={{$item->id}}>{{$item->CatagoryName}}</option>
+        @endforeach
+    @endif
         </select><br>
         <span>From Date:</span> <input type="date" name="from"><br>
         <br>
         <span>To Date:</span> <input type="date" name="to"><br>
-        <input type="submit" value="Kết Quả">
+        <input type="submit" value="RESULT">
     </form>
     </div>
     <div class="thongkeall" @if (session()->has('typeall'))
@@ -69,7 +58,7 @@
         <span>From Date:  </span><input type="date" name="from"><br>
         <br>
         <span>To Date:</span> <input type="date" name="to"><br>
-        <input type="submit" value="Kết Quả">
+        <input type="submit" value="RESULT">
     </form>
     </div>
 </div>

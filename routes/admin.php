@@ -19,7 +19,7 @@ Route::middleware('auth:admin')->group(function (){
         Route::get('/index',"foodcontroller@index");
 
         Route::get('/add',function(){
-            $category = DB::table('category')->get();
+            $category = DB::table('category')->where('avaiable',1)->get();
             return view("admin/Product/add",['category'=>$category]);
         });
         Route::post("/add", "foodcontroller@add")->name('food.add');
@@ -79,7 +79,8 @@ Route::get('product/comment={id}', [MyprofileController::class, 'showcomment']);
 Route::get('product/comment/delete', [MyprofileController::class, 'deletecmt']);
 
 Route::get('product/thongke', function(){
-    return view("admin/thongke");
+    $category = DB::table('category')->where('avaiable',1)->get();
+    return view("admin/thongke",['category'=>$category]);
 });
 Route::get('thongkeloai',[MyprofileController::class, 'thongkeloai'])->name('thongketheoloai');
 Route::get('thongketatca',[MyprofileController::class, 'thongke'])->name('thongketatca');
