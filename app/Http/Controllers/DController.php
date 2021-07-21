@@ -55,7 +55,7 @@ class DController extends Controller
         $idkh = session()->get('idkh');
         $idfood = $_GET['id'];
         DB::table('wishlist')->where([['idkh',$idkh],['idfood',$idfood]])->delete();
-        echo 'Đã Xóa Sản Phẩm Thành Công';
+        echo 'Product has been deleted';
     }
     public function comment(Request $req){
         $cusname = session()->get('namekh');

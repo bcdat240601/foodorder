@@ -42,7 +42,7 @@
         $('.delete').click(function () { 
             var name = $(this).data('name');
             var id = $(this).data('id');
-            var f = confirm('Bạn Có Chắc Muốn Xóa '+name+' Chứ ?');
+            var f = confirm('Do you want to delete'+ name + ' ?');
             if(f == true){                
                 $.get('delete',{id:id},function(data){
                     alert(data);

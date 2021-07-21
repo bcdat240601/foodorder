@@ -103,8 +103,9 @@ class MyprofileController extends Controller
             $to = $_GET['to']." 00:00:00";
             $title = ['Best selling Product','Cost','Quantity'];
             $thongke = DB::table('orderdetail')->join('food','orderdetail.FoodID','=','food.id')->select('food.FoodName','orderdetail.Subtotal',DB::raw('SUM(orderdetail.Quantity) as Quantity'))->where([['created_at','>',$from],['created_at','<',$to],['CategoryID','=',$type]])->groupBy('food.FoodName','orderdetail.Subtotal')->orderByDesc('Quantity')->take(10)->get();
+            $category = DB::table('category')->get();
             session()->put('typesanpham',$type);
-            return view('admin/thongke',['thongke'=>$thongke,'from'=>$from,'to'=>$to,'title'=>$title]);
+            return view('admin/thongke',['thongke'=>$thongke,'from'=>$from,'to'=>$to,'title'=>$title,'category'=>$category]);
         }
     }
     public function home(){

@@ -160,7 +160,7 @@
         </div>        
     </div>
     <span id="login" style="display: none">{{session()->get('login')}}</span>
-    <div style="text-align: center;height: 45px;" id="paypal-button"></div>
+    <div style="text-align: center;height: 45px;margin-bottom:80px;" id="paypal-button"></div>
 </section> <!--/#cart_items-->
     
 @endsection

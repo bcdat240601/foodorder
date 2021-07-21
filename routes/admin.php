@@ -79,7 +79,8 @@ Route::get('product/comment={id}', [MyprofileController::class, 'showcomment']);
 Route::get('product/comment/delete', [MyprofileController::class, 'deletecmt']);
 
 Route::get('product/thongke', function(){
-    return view("admin/thongke");
+    $category = DB::table('category')->get();
+    return view("admin/thongke",['category'=>$category]);
 });
 Route::get('thongkeloai',[MyprofileController::class, 'thongkeloai'])->name('thongketheoloai');
 Route::get('thongketatca',[MyprofileController::class, 'thongke'])->name('thongketatca');
