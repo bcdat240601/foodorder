@@ -61,7 +61,7 @@ class CartController extends Controller
         return $found;
     }
     public function show(){
-        $category = DB::table('category')->get();
+        $category = DB::table('category')->where('avaiable',1)->get();
         $cart= session()->get("cart");
         return view('web/Cart',['data'=>$cart,'category'=>$category]);
     }

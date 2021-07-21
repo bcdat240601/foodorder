@@ -11,8 +11,8 @@ class foodcontroller extends Controller
 {
     public function show(){
         $id = $_GET['id'];
-        $category = DB::table('category')->get();
-        $data = DB::table('food')->where('CategoryID','=',$id)->paginate(9);
+        $category = DB::table('category')->where('avaiable',1)->get();
+        $data = DB::table('food')->where([['CategoryID','=',$id],['Quantity',1]])->paginate(9);
 
         return view ("Web/Shop", ["data"=>$data,'category'=>$category,'id'=>$id]);
     }
