@@ -101,3 +101,4 @@ Route::get('customer/bill/delete', [MyprofileController::class, 'deletebill']);
 Route::get('customer/comm={id}', [MyprofileController::class, 'showbl']);
 Route::get('customer/comm/delete', [MyprofileController::class, 'deletebl']);
 Route::get('customer/detailbill/delete', [MyprofileController::class, 'deletede']);
+Route::post('product/answer',[MyprofileController::class, 'answer']);

@@ -7,6 +7,7 @@ use App\Models\Food;
 use App\Models\Category;
 use App\Models\User;
 use App\Models\Admin;
+use App\Models\answer;
 use Carbon\Carbon;
 
 use DB;
@@ -48,7 +49,7 @@ class MyprofileController extends Controller
     }
     public function showcomment($id){
         $data=Food::find($id);
-        $binhluan = DB::table('binhluan')->join('customer','binhluan.idkh','=','customer.id')->where('idfood',$id)->orderByDesc('created_at')->get();
+        $binhluan = DB::table('binhluan')->join('customer','binhluan.idkh','=','customer.id')->leftJoin('answer','binhluan.stt','=','answer.idbl')->where('idfood',$id)->orderByDesc('created_at')->get();
         return view('admin/Product/Showcomment',["data"=>$data,'binhluan'=>$binhluan]);
     }
     public function deletecmt(Request $req){
@@ -187,5 +188,15 @@ class MyprofileController extends Controller
         $row = $req->row;
         $rows = $req->rows;
         $model = DB::table('orderdetail')->where([['OrderFoodID','=',$rows],['FoodID','=',$row]])->delete();      
+    }
+    public function answer(Request $req){
+        $answer = new answer();
+        $answer->idkh = $req->cusid;
+        $answer->idbl = $req->idbl;
+        $answer->answer = $req->loibinhluan;
+        $answer->create_at =Carbon::now();
+        $answer->checki=0;
+        $answer->save();
+        return $req->loibinhluan;
     }
 }

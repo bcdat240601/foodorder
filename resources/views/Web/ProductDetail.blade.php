@@ -88,6 +88,7 @@
                                     <span><img class="img-profile rounded-circle"src="{{ asset('img/man.png') }}" style="text-align: right;"><h3 class="name" style="margin-top: -58px;
                                         margin-left: 60px;">{{$item->CustomerName}}</h3></span>
                                         <span class="cmt" style=" margin-left: 64px;margin-top: -3px;">{{$item->loibinhluan}}</span>
+                                        <span class="cmt" style=" margin-left: 64px;margin-top: -3px;"><img class="img-profile rounded-circle"src="{{ asset('img/undraw_profile_1.svg') }}" style="text-align: right;">Admin:{{$item->answer}}</span>
                                 </div>
                                 @endforeach
                             @endif
