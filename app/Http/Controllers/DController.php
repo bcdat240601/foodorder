@@ -77,13 +77,13 @@ class DController extends Controller
     public function search(){
         $category = DB::table('category')->where('avaiable',1)->get();
         $search = $_GET['search'];
-        $data = DB::table('food')->join('category','food.CategoryID','=','category.id')->where([['FoodName','LIKE',"%{$search}%"],['category.avaiable','=',1],['Quantity',1]])->paginate(9);
+        $data = DB::table('food')->join('category','food.CategoryID','=','category.id')->where([['FoodName','LIKE',"%{$search}%"],['category.avaiable','=',1],['Quantity','>=',1]])->paginate(9);
         return view ("Web/Shop", ["data"=>$data,'category'=>$category,'search'=>$search]);
     }
     public function hint(Request $req){
         $hint = $req->gethint;
         if($hint != null){
-            $data = DB::table('food')->join('category','food.CategoryID','=','category.id')->select('food.id','food.FoodName')->where([['FoodName','LIKE',"%{$hint}%"],['category.avaiable','=',1],['Quantity',1]])->get();
+            $data = DB::table('food')->join('category','food.CategoryID','=','category.id')->select('food.id','food.FoodName')->where([['FoodName','LIKE',"%{$hint}%"],['category.avaiable','=',1],['Quantity','>=',1]])->get();
             if(!$data->isEmpty()){
                 $output = '<ul class="dropdown-menu" style="display:block;">';        
                 foreach ($data as $value) {

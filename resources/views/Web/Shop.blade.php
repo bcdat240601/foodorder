@@ -98,6 +98,8 @@
                                     <img src="{{ asset('images/product-details/'.$item->Image_Name) }}" alt="" style="height: 200px"/>
                                     <h2 style="color: green">{{$item->FoodName}}</h2>
                                     <p style="color: red">{{$item->Price}} $</p>
+                                    <label>Remaining Amount:</label>
+                                <span>{{$item->Quantity}}</span>
                                     {{-- <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a> --}}
                                 </div>
                                 <div class="product-overlay">

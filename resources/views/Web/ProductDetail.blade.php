@@ -44,6 +44,8 @@
                                 <span style="color: red">{{$data->Price}} đ</span>
                                 <label>Quantity:</label>
                                 <input type="text" id="sl-{{$data->id}}" value="1" required>
+                                <label>Remaining Amount:</label>
+                                <input type="text" id="sl-{{$data->Quantity}}" value="{{$data->Quantity}}" required>
                                 <button type="button" class="btn btn-fefault cart btn-addtocart" data-price="{{$data->Price}}" data-id="{{$data->id}}" data-name="{{$data->FoodName}}" style="background-color: royalblue">
                                     <i class="fa fa-shopping-cart"></i>
                                     Add to cart

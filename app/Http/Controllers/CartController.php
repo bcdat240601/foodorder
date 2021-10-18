@@ -111,12 +111,20 @@ class CartController extends Controller
     public function addbill(){
         $idkh = session()->get('idkh');
         $total = $_GET['total'];
+        $cart = session()->get('cart');
+        foreach ($cart as $key => $value) {
+            $food = Food::find($value->id);
+            if ($food->Quantity < $value->quantity) {
+                echo "Failed to add bill, your product's quantity is too large";
+                return ;
+            }
+        }        
         $hd = new orderfood();
         $hd->Dateshipped = null;
         $hd->Status = 0;
         $hd->Total = $total;
         $hd->CustomerID = $idkh;        
-        $cart = session()->get('cart');
+        
         $hd->save();
         $id = DB::table('orderfood')->select('ID')->max('ID');
         // $dem = $this->count();
@@ -129,7 +137,12 @@ class CartController extends Controller
             $cthd->UnitCost = $value->price;
             $cthd->Subtotal = $value->subtotal;
             $cthd->save();
-        }        
+        }
+        foreach ($cart as $key => $value) {
+            $food = Food::find($value->id);
+            $food->Quantity = $food->Quantity - $value->quantity;
+            $food->save();
+        }
         session()->forget('cart');
         session()->forget('total');
         echo 'Add Bill Successfully';
