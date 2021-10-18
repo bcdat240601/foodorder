@@ -15,7 +15,7 @@ class ShopController extends Controller
         $data=Food::find($id);
         $getcate = DB::table('food')->select('CategoryID')->where('id',$id)->first();
         $getrelate = DB::table('food')->where([['CategoryID',$getcate->CategoryID],['id','<>',$id],['Quantity','>=',1]])->inRandomOrder()->limit(10)->get();
-        $binhluan = DB::table('binhluan')->join('customer','binhluan.idkh','=','customer.id')->where('idfood',$id)->orderByDesc('created_at')->get();
+        $binhluan = DB::table('binhluan')->join('customer','binhluan.idkh','=','customer.id')->leftJoin('answer','binhluan.stt','=','answer.idbl')->where('idfood',$id)->orderByDesc('created_at')->get();
         return view('web/ProductDetail',["data"=>$data,'category'=>$category,'binhluan'=>$binhluan,'getrelate'=>$getrelate]);
     }
 
