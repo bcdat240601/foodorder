@@ -355,7 +355,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span style="color: red">Thai Hoang Anh Kiet | GreenWichSchool | 2021</span>
+                        <!-- <span style="color: red">Thai Hoang Anh Kiet | GreenWichSchool | 2021</span> -->
                     </div>
                 </div>
             </footer>

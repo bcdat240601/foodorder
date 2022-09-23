@@ -63,8 +63,8 @@
 					<div class="col-sm-6">
 						<div class="contactinfo">
 							<ul class="nav nav-pills">
-								<li><a href="#" style="color:#003049"><i class="fa fa-phone"></i> 0938800837</a></li>
-								<li><a href="#" style="color: #003049"><i class="fa fa-envelope"></i> anhkiettmail2@gmail.com</a></li>
+								<li><a href="#" style="color:#003049"><i class="fa fa-phone"></i> 0123456789</a></li>
+								<li><a href="#" style="color: #003049"><i class="fa fa-envelope"></i> chuong@gmail.com</a></li>
 							</ul>
 						</div>
 					</div>
@@ -182,8 +182,8 @@
 						<div class="single-widget">
 							<h2 style="color:white">About US</h2>
 							<ul class="nav nav-pills nav-stacked">
-								<li><a href="#">anhkiettmail2@gmail.com</li>
-								<li><a href="#">0938800837</a></li>
+								<li><a href="#">chuong@gmail.com</li>
+								<li><a href="#">0123456789</a></li>
 								<li><a href="https://www.google.com/maps/place/330%2F18%2F16+%C3%82u+D%C6%B0%C6%A1ng+L%C3%A2n,+Ph%C6%B0%E1%BB%9Dng+3,+Qu%E1%BA%ADn+8,+Th%C3%A0nh+ph%E1%BB%91+H%E1%BB%93+Ch%C3%AD+Minh,+Vi%E1%BB%87t+Nam/@10.7414513,106.6823523,17z/data=!3m1!4b1!4m5!3m4!1s0x31752fa92e5cc45b:0xe9557c961eaa867a!8m2!3d10.741446!4d106.684541?hl=vi-VN">330/18/16B Âu Dương Lân, Phường 3, Quận 8</a></li>
 							</ul>
 						</div>
@@ -194,7 +194,7 @@
 							<ul class="nav nav-pills nav-stacked">
 								<li><a href="{{ asset('PaymentGuide')}}">Payment Guide</a></li>
 								<li><a href="{{ asset('Shoppingguide')}}">Shopping Guide</a></li>
-								<li><a href="#">0753869006</a></li>								
+								<li><a href="#">0123456789</a></li>								
 							</ul>
 						</div>
 					</div>
@@ -243,10 +243,10 @@
 		
 		<div class="footer-bottom" style="background-color:white">
 			<div class="container" style="background-color: white">
-				<div class="row" >
-					<p class="pull-left" style="color: red">Thai Hoang Anh Kiet | GreenWichschool | 2021</p>
+				<!-- <div class="row" >
+					<p class="pull-left" style="color: red">Nguyen | GreenWichschool | 2021</p>
 					<p class="pull-right">Designed by <span><a target="_blank" href="https://www.facebook.com/thai.kiet.58" style="color: green">Thai Hoang Anh Kiet</a></span></p>
-				</div>
+				</div> -->
 			</div>
 		</div>
 		
